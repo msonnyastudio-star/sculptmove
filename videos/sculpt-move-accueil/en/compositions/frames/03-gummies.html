@@ -1,0 +1,117 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s3-stage{position:absolute;inset:0;overflow:hidden}
+    .s3-ground{position:absolute;inset:0;background:#eee5f3}
+    .s3-world{position:absolute;inset:0}
+
+    .s3-ph{position:absolute;overflow:hidden;background:#e7dcea}
+    .s3-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s3-hero{left:0;top:0;bottom:0;width:46cqw}
+    .s3-hero img{object-position:38% 30%;transform-origin:30% 35%}
+    .s3-key{position:absolute;top:0;bottom:0;left:46cqw;width:2px;background:#c59a52}
+    .s3-card{left:53cqw;top:70cqh;width:14.6cqw;height:21.5cqh}
+    .s3-card img{object-position:50% 50%}
+    .s3-glint{position:absolute;top:-10%;bottom:-10%;left:0;width:45%;background:linear-gradient(104deg,rgba(255,250,240,0) 0%,rgba(255,250,240,.34) 50%,rgba(255,250,240,0) 100%)}
+    .s3-cap{position:absolute;left:69.8cqw;top:74.5cqh;margin:0}
+    .s3-cap-k{display:block;font-family:"Montserrat";font-weight:600;font-size:.7cqw;letter-spacing:.32em;color:#835a22;line-height:1;white-space:nowrap}
+    .s3-cap-t{display:block;padding-top:1.6cqh;font-style:italic;font-weight:500;font-size:2.3cqw;line-height:1.1;white-space:nowrap}
+
+    .s3-chrome{position:absolute;left:53cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s3-chrome b{font-weight:600;color:#835a22}
+    .s3-chrome i{display:block;width:2.2cqw;height:1px;background:#c59a52}
+    .s3-title{position:absolute;left:53cqw;top:15cqh;margin:0;font-weight:500;font-size:8.6cqw;line-height:.96;letter-spacing:-.022em}
+    .s3-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s3-l{display:block;white-space:nowrap}
+    .s3-l em{font-style:italic;font-weight:500}
+    .s3-rule{position:absolute;left:53cqw;top:48cqh;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s3-name{position:absolute;left:53cqw;top:51cqh;margin:0;font-weight:500;font-size:3.4cqw;line-height:1.05;letter-spacing:-.01em}
+    .s3-desc{position:absolute;left:53cqw;top:60cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.2cqw;letter-spacing:.2em;line-height:1.5;color:#5a3a68;white-space:nowrap}
+
+    .s3-edge{position:absolute;inset:0;pointer-events:none}
+    .s3-edge i{position:absolute;top:0;bottom:0;left:0;width:2px;background:#e0bd78;box-shadow:0 0 1.1cqw .12cqw rgba(214,176,106,.6)}
+
+    @container (max-aspect-ratio: 1/1){
+      .s3-hero{bottom:auto;width:auto;right:0;height:50cqh}
+      .s3-hero img{object-position:42% 22%;transform-origin:35% 30%}
+      .s3-key{top:50cqh;bottom:auto;left:0;right:0;width:auto;height:2px}
+      .s3-card{left:auto;right:5.4cqw;top:47cqh;width:38cqw;height:25cqh;border:1cqw solid #eee5f3;box-sizing:border-box}
+      .s3-cap{display:none}
+      .s3-hero::after{content:"";position:absolute;left:0;right:0;top:0;height:24%;background:linear-gradient(to bottom,rgba(36,10,49,.62),rgba(36,10,49,0))}
+      .s3-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw;color:#fbf7f0}
+      .s3-chrome b{color:#e3c48a}
+      .s3-chrome i{width:5cqw}
+      .s3-title{left:5.4cqw;top:54cqh;font-size:12.6cqw}
+      .s3-rule{left:5.4cqw;top:75.4cqh;width:12cqw}
+      .s3-name{left:5.4cqw;top:77.2cqh;font-size:5.8cqw}
+      .s3-desc{left:5.4cqw;top:83cqh;font-size:2.75cqw;letter-spacing:.16em;white-space:normal;width:89cqw}
+    }
+    .s3-ch{display:inline-block;white-space:pre}
+  </style>
+  <div id="root" data-composition-id="03-gummies" data-width="1920" data-height="1080" data-duration="4.8">
+    <div class="s3-stage">
+      <div id="s3-ground" class="clip s3-ground" data-start="0" data-duration="4.8" data-track-index="0"></div>
+      <div class="s3-world">
+        <div class="s3-ph s3-hero"><img data-layout-allow-overflow src="assets/v2/gummies-femme.jpg" alt="Femme savourant un gummy Glutathion Glow Skin"></div>
+        <div class="s3-key" aria-hidden="true"></div>
+
+        <div class="s3-chrome"><b>N° 03</b><i></i><span>The gummies</span></div>
+        <h2 class="s3-title">
+          <span class="s3-m"><span class="s3-l">Beauty</span></span>
+          <span class="s3-m"><span class="s3-l"><em>duo.</em></span></span>
+        </h2>
+        <div class="s3-rule" aria-hidden="true"></div>
+        <p class="s3-name"><span class="s3-m"><span class="s3-l">Glutathion Glow Skin</span></span></p>
+        <p class="s3-desc">GUMMIES · BOTTLE OF 60</p>
+
+        <div class="s3-ph s3-card"><img data-layout-allow-overflow src="assets/v2/duo-produits.jpg" alt="Le duo Multi-Collagène et gummies Glutathion"><div class="s3-glint" aria-hidden="true"></div></div>
+        <p class="s3-cap">
+          <span class="s3-m"><span class="s3-l s3-cap-k">THE BEAUTY DUO</span></span>
+          <span class="s3-m"><span class="s3-l s3-cap-t">Collagen + Glutathione</span></span>
+        </p>
+      </div>
+    </div>
+    <div class="s3-edge" data-layout-allow-overflow aria-hidden="true"><i></i></div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="03-gummies"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,centered,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[...txt].map(c=>{const s=document.createElement('span');s.className='s3-ch';s.textContent=c;el.appendChild(s);return s;});
+        const px=em*parseFloat(getComputedStyle(el).fontSize), mid=(cs.length-1)/2;
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>(centered?i-mid:i)*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+
+      // Volet de droite à gauche (le plan précédent glisse à gauche dans la racine)
+      tl.fromTo(q('.s3-stage'),{clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s3-edge'),{xPercent:100,opacity:1},{xPercent:0,duration:.85,ease:'power4.inOut'},0);
+      tl.to(q('.s3-edge'),{opacity:0,duration:.3,ease:'power1.out'},.78);
+      tl.fromTo(q('.s3-world'),{xPercent:5},{xPercent:0,duration:1.25,ease:'power3.out'},0);
+
+      tl.fromTo(q('.s3-hero img'),{scale:1.28},{scale:1,duration:2.7,ease:'expo.out'},.1);
+      tl.fromTo(q('.s3-key'),{clipPath:'inset(0% 100% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.9,ease:'power3.inOut'},.8);
+
+      tl.fromTo(qa('.s3-title .s3-l'),{yPercent:112},{yPercent:0,duration:1.1,ease:'power4.out',stagger:.13},.55);
+      tl.fromTo(q('.s3-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.8,ease:'power3.out'},.8);
+      tl.fromTo(q('.s3-rule'),{scaleX:0},{scaleX:1,duration:.8,ease:'power3.inOut'},1.35);
+      tl.fromTo(q('.s3-name .s3-l'),{yPercent:112},{yPercent:0,duration:1.0,ease:'power4.out'},1.5);
+      track(q('.s3-desc'),.34,false,1.76,1.25);
+
+      // La vignette du duo, puis sa légende
+      tl.fromTo(q('.s3-card'),{clipPath:'inset(100% 0% 0% 0%)',yPercent:12},{clipPath:'inset(0% 0% 0% 0%)',yPercent:0,duration:1.0,ease:'power4.out'},2.15);
+      tl.fromTo(q('.s3-card img'),{scale:1.3},{scale:1,duration:1.8,ease:'expo.out'},2.15);
+      tl.fromTo(qa('.s3-cap .s3-l'),{yPercent:115},{yPercent:0,duration:.95,ease:'power4.out',stagger:.12},2.45);
+      tl.fromTo(q('.s3-card .s3-glint'),{xPercent:-130},{xPercent:250,duration:1.1,ease:'power2.inOut'},2.9);
+
+      window.__timelines['03-gummies']=tl;
+    })();
+  </script>
+</template>

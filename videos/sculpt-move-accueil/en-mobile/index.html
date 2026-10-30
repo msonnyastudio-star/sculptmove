@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        background: #321044;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #321044;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="20"
+      data-width="1080"
+      data-height="1350"
+    >
+      <div
+        id="el-01-ouverture"
+        class="scene"
+        data-composition-id="01-ouverture"
+        data-composition-src="compositions/frames/01-ouverture.html"
+        data-start="0"
+        data-duration="4.7"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1350"
+      ></div>
+
+      <div
+        id="el-02-collagene"
+        class="scene"
+        data-composition-id="02-collagene"
+        data-composition-src="compositions/frames/02-collagene.html"
+        data-start="3.8"
+        data-duration="4.8"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1350"
+      ></div>
+
+      <div
+        id="el-03-gummies"
+        class="scene"
+        data-composition-id="03-gummies"
+        data-composition-src="compositions/frames/03-gummies.html"
+        data-start="7.7"
+        data-duration="4.8"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1350"
+      ></div>
+
+      <div
+        id="el-04-creme"
+        class="scene"
+        data-composition-id="04-creme"
+        data-composition-src="compositions/frames/04-creme.html"
+        data-start="11.6"
+        data-duration="5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1350"
+      ></div>
+
+      <div
+        id="el-05-collection"
+        class="scene"
+        data-composition-id="05-collection"
+        data-composition-src="compositions/frames/05-collection.html"
+        data-start="15.7"
+        data-duration="4.3"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1350"
+      ></div>
+    </div>
+
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        // Le plan sortant accompagne le volet entrant (même direction, même courbe) : une seule caméra.
+        tl.fromTo("#el-01-ouverture", { yPercent: 0 }, { yPercent: -10, duration: 0.85, ease: "power4.inOut" }, 3.8);
+        tl.fromTo("#el-02-collagene", { xPercent: 0 }, { xPercent: -10, duration: 0.85, ease: "power4.inOut" }, 7.7);
+        tl.fromTo("#el-03-gummies", { yPercent: 0 }, { yPercent: -10, duration: 0.85, ease: "power4.inOut" }, 11.6);
+        tl.fromTo("#el-04-creme", { xPercent: 0 }, { xPercent: -10, duration: 0.85, ease: "power4.inOut" }, 15.7);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

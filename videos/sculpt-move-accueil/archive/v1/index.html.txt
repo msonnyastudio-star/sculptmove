@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #321044;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #321044;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-at0g"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="20"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div data-hf-id="hf-nesp"
+        id="el-01-signature"
+        class="scene"
+        data-composition-id="01-signature"
+        data-composition-src="compositions/frames/01-signature.html"
+        data-start="0"
+        data-duration="5.65"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-23ae"
+        id="el-02-duo"
+        class="scene"
+        data-composition-id="02-duo"
+        data-composition-src="compositions/frames/02-duo.html"
+        data-start="5"
+        data-duration="5.65"
+        data-track-index="1"
+      ></div>
+
+      <div data-hf-id="hf-ahjq"
+        id="el-03-creme"
+        class="scene"
+        data-composition-id="03-creme"
+        data-composition-src="compositions/frames/03-creme.html"
+        data-start="10"
+        data-duration="5.65"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-kwfu"
+        id="el-04-collection"
+        class="scene"
+        data-composition-id="04-collection"
+        data-composition-src="compositions/frames/04-collection.html"
+        data-start="15"
+        data-duration="5"
+        data-track-index="1"
+      ></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-signature", { x: -1920, duration: 0.65, ease: "power3.inOut" }, 5);
+        tl.fromTo("#el-02-duo", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.65, ease: "power3.inOut" }, 5);
+        tl.to("#el-02-duo", { x: -1920, duration: 0.65, ease: "power3.inOut" }, 10);
+        tl.fromTo("#el-03-creme", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.65, ease: "power3.inOut" }, 10);
+        tl.to("#el-03-creme", { x: -1920, duration: 0.65, ease: "power3.inOut" }, 15);
+        tl.fromTo("#el-04-collection", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.65, ease: "power3.inOut" }, 15);
+        tl.to({}, { duration: 20 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

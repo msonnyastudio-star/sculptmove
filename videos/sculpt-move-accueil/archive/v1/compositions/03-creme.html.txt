@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 700;font-display:block;src:url("assets/fonts/CormorantGaramond.ttf") format("truetype")}
+    @font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:400 700;font-display:block;src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype")}
+    @font-face{font-family:"Montserrat";font-style:normal;font-weight:100 900;font-display:block;src:url("assets/fonts/Montserrat.ttf") format("truetype")}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#321044;font-family:"Cormorant Garamond"}
+    .s03-ground{position:absolute;inset:0;background:#fbf7f0}
+    .s03-paper{position:absolute;left:48%;right:0;top:0;height:83%;background:#f2dce3}
+    .s03-wordmark{position:absolute;left:5%;top:6%;margin:0;font-size:2cqw;line-height:1;font-weight:500;letter-spacing:.02em}
+    .s03-badge{position:absolute;left:5%;top:19%;padding:.6cqw 1.05cqw;background:#321044;color:#fbf7f0;border-radius:6px;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.18em;line-height:1}
+    .s03-title{position:absolute;left:5%;top:27%;width:43%;margin:0;font-size:8cqw;line-height:.87;font-weight:500;letter-spacing:-.025em}
+    .s03-title span{display:block}
+    .s03-photo-stage{position:absolute;left:50.5%;top:22%;width:44.5%;aspect-ratio:955/540;transform-origin:50% 50%}
+    .s03-photo-crop{position:absolute;inset:0;overflow:hidden;border-radius:6px;background:#f2dce3}
+    .s03-photo{position:absolute;left:0;top:0;display:block;width:134.031414%;height:auto;max-width:none}
+    .s03-arc{position:absolute;left:-2.1%;top:-3.7%;width:104.2%;height:107.4%;overflow:visible;pointer-events:none}
+    .s03-arc path{fill:none;stroke:#c59a52;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .s03-product{position:absolute;left:5%;top:60%;width:40%;margin:0;font-size:3.4cqw;line-height:.95;font-weight:500;letter-spacing:-.015em}
+    .s03-product span{display:block}
+    .s03-details{position:absolute;left:50.5%;top:70%;width:44.5%;display:flex;align-items:center;justify-content:space-between;gap:2cqw;border-top:2px solid #321044;padding-top:1.1cqw;font-family:"Montserrat";font-size:1.35cqw;font-weight:400;line-height:1.35}
+    .s03-size{white-space:nowrap;font-weight:500;letter-spacing:.08em}
+    .s03-routine{position:absolute;left:5%;top:79%;margin:0;font-family:"Montserrat";font-size:1.4cqw;line-height:1.25;font-weight:400}
+    @container (max-aspect-ratio:1/1){
+      .s03-paper{left:0;top:32%;height:39.5%;width:100%}
+      .s03-badge{top:13.5%;font-size:1.8cqw;padding:1cqw 1.7cqw}
+      .s03-title{left:5%;top:18%;width:90%;font-size:10.5cqw;line-height:.86}
+      .s03-photo-stage{left:11%;top:35%;width:78%;aspect-ratio:955/540}
+      .s03-product{left:5%;top:72%;width:90%;font-size:6.2cqw;line-height:.98}
+      .s03-product span{display:inline}
+      .s03-product span+span::before{content:" "}
+      .s03-details{left:5%;top:78%;width:90%;font-size:2.1cqw;padding-top:.9cqw;gap:2cqw}
+      .s03-routine{left:5%;top:81%;font-size:2cqw;line-height:1.15}
+    }
+  /* release readability */
+.s03-badge,.s03-details,.s03-routine{font-size:1.5cqw}@container(max-aspect-ratio:1/1){.s03-wordmark{font-size:3cqw}.s03-badge{font-size:2.8cqw;top:12%}.s03-title{font-size:10cqw;top:18%}.s03-details{font-size:2.8cqw}.s03-routine{display:none}}
+/* end release readability */
+</style>
+  <div data-hf-id="hf-ni2z" id="root" data-composition-id="03-creme" data-width="1920" data-height="1080" data-duration="5.65">
+    <div data-hf-id="hf-p68e" id="s03-ground" class="clip s03-ground" data-start="0" data-duration="5.65" data-track-index="0"></div>
+    <div data-hf-id="hf-yd9l" class="s03-paper"></div>
+    <p data-hf-id="hf-t6bn" class="s03-wordmark">SCULPT MOVE</p>
+    <div data-hf-id="hf-l65z" class="s03-badge">NOUVEAU</div>
+    <h1 data-hf-id="hf-k42v" class="s03-title"><span data-hf-id="hf-yb65">… à</span><span data-hf-id="hf-4u2z">l’extérieur.</span></h1>
+    <div data-hf-id="hf-ttcm" class="s03-photo-stage">
+      <div data-hf-id="hf-97hy" class="s03-photo-crop"><img data-hf-id="hf-ai6b" data-layout-ignore="Intentional crop of the supplied product contact sheet" class="s03-photo" src="assets/pdrn-repair-cream.jpg" alt="Pot et boîte PDRN Repair Cream" width="1280" height="853"></div>
+      <svg data-hf-id="hf-h69m" class="s03-arc" viewBox="-20 -20 995 580" aria-hidden="true"><path data-hf-id="hf-c6h9" d="M-8 55 C-8 12 18 -8 65 -8 L904 -8 Q966 -8 966 53 L966 486 Q966 548 904 548 L830 548" /></svg>
+    </div>
+    <h2 data-hf-id="hf-vwpz" class="s03-product"><span data-hf-id="hf-fsfm">PDRN Repair</span><span data-hf-id="hf-5wjd">Cream</span></h2>
+    <div data-hf-id="hf-54e5" class="s03-details"><span data-hf-id="hf-15my" class="s03-texture">Gel-crème en capsules</span><span data-hf-id="hf-nejz" class="s03-size">50 g</span></div>
+    <p data-hf-id="hf-p1sc" class="s03-routine">Un nouveau geste dans votre routine.</p>
+  </div>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="03-creme"]');
+      const el = selector => root.querySelector(selector);
+      const arc = el('.s03-arc path');
+      const length = arc.getTotalLength();
+      arc.style.strokeDasharray = String(length);
+      arc.style.strokeDashoffset = String(length);
+      const tl = gsap.timeline({paused:true});
+      tl.fromTo(el('.s03-photo-stage'),{xPercent:18,rotation:3,opacity:0},{xPercent:0,rotation:0,opacity:1,duration:1.25,ease:'power3.out'},0);
+      tl.fromTo(el('.s03-badge'),{y:16,opacity:0},{y:0,opacity:1,duration:.45,ease:'power2.out'},.12);
+      tl.fromTo(el('.s03-title'),{y:28,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out'},.22);
+      tl.fromTo(el('.s03-product'),{y:24,opacity:0},{y:0,opacity:1,duration:.75,ease:'power3.out'},1.5);
+      tl.to(arc,{strokeDashoffset:0,duration:.8,ease:'power2.out'},2.05);
+      tl.fromTo(el('.s03-details'),{y:16,opacity:0},{y:0,opacity:1,duration:.6,ease:'power2.out'},2.5);
+      tl.fromTo(el('.s03-routine'),{y:15,opacity:0},{y:0,opacity:1,duration:.65,ease:'power1.out'},2.9);
+      tl.to({}, {duration:.85},4.15);
+      window.__timelines = window.__timelines || {};
+      window.__timelines['03-creme'] = tl;
+    })();
+  </script>
+</template>

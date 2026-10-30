@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 700;font-display:block;src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");}
+    @font-face{font-family:"Montserrat";font-style:normal;font-weight:100 900;font-display:block;src:url("assets/fonts/Montserrat.ttf") format("truetype");}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#321044;}
+    .s02-ground{position:absolute;inset:0;background:#fbf7f0;}
+    .s02-brand{position:absolute;left:5%;top:6%;font-family:"Cormorant Garamond";font-size:2cqw;font-weight:500;line-height:1;letter-spacing:.035em;}
+    .s02-title{position:absolute;left:5%;top:23%;width:46%;margin:0;font-family:"Cormorant Garamond";font-size:8.6cqw;font-weight:500;line-height:.91;letter-spacing:-.025em;}
+    .s02-title span{display:block;}
+    .s02-product{position:absolute;margin:0;}
+    .s02-product-primary{left:51%;top:15.5%;width:21%;height:56%;}
+    .s02-product-secondary{left:75%;top:23%;width:20%;height:50%;}
+    .s02-photo-frame{width:100%;height:calc(100% - 4.4cqh);border:2px solid #c59a52;padding:.55cqw;box-sizing:border-box;overflow:hidden;background:#fbf7f0;}
+    .s02-photo{display:block;width:100%;height:100%;object-fit:contain;}
+    .s02-label{position:absolute;left:0;top:calc(100% - 2.9cqh);width:100%;font-family:"Montserrat";font-size:1.12cqw;line-height:1.2;font-weight:500;letter-spacing:.035em;white-space:nowrap;}
+    .s02-label-part{display:inline-block;}
+    .s02-ritual{position:absolute;left:5%;top:64%;margin:0;font-family:"Montserrat";font-size:1.42cqw;font-weight:400;line-height:1.38;letter-spacing:.015em;}
+    .s02-index-wrap{position:absolute;left:5%;top:77%;width:40%;display:flex;align-items:center;gap:1.3cqw;color:#c59a52;}
+    .s02-rule{height:2px;width:5cqw;background:#c59a52;flex:none;transform-origin:left center;}
+    .s02-index{font-family:"Montserrat";font-size:1.05cqw;font-weight:500;letter-spacing:.16em;white-space:nowrap;}
+    @container(max-aspect-ratio:1/1){
+      .s02-title{left:5%;top:17%;width:90%;font-size:11.7cqw;line-height:.96;}
+      .s02-title span{display:inline;}
+      .s02-title span+span:before{content:" ";}
+      .s02-product-primary{left:5%;top:31%;width:43%;height:40%;}
+      .s02-product-secondary{left:52%;top:33%;width:43%;height:38%;}
+      .s02-photo-frame{height:calc(100% - 4cqh);padding:.7cqw;}
+      .s02-label{top:calc(100% - 2.5cqh);font-size:1.9cqw;letter-spacing:.005em;}
+      .s02-ritual{left:5%;top:74%;font-size:2.65cqw;}
+      .s02-index-wrap{left:5%;top:80%;width:90%;gap:2cqw;}
+      .s02-rule{width:10cqw;}
+      .s02-index{font-size:1.8cqw;letter-spacing:.14em;}
+    }
+  /* release readability */
+.s02-label,.s02-index{font-size:1.5cqw}.s02-ritual{font-size:1.5cqw}.s02-index{color:#321044}@container(max-aspect-ratio:1/1){.s02-brand{font-size:3cqw}.s02-label,.s02-index{font-size:2.8cqw}.s02-ritual{font-size:3cqw}.s02-index-wrap{top:79%}}
+/* end release readability */
+</style>
+  <div data-hf-id="hf-wevg" id="root" data-composition-id="02-duo" data-width="1920" data-height="1080" data-duration="5.65">
+    <div data-hf-id="hf-y7fw" id="s02-ground" class="clip s02-ground" data-start="0" data-duration="5.65" data-track-index="0"></div>
+    <div data-hf-id="hf-cqyf" class="s02-brand">SCULPT MOVE</div>
+    <h1 data-hf-id="hf-61c6" class="s02-title"><span data-hf-id="hf-3pta">De</span><span data-hf-id="hf-d86d">l’intérieur…</span></h1>
+    <figure data-hf-id="hf-0lay" class="s02-product s02-product-primary">
+      <div data-hf-id="hf-5fy5" class="s02-photo-frame s02-photo-primary"><img data-hf-id="hf-935t" class="s02-photo" src="assets/multi-collagene.jpg" alt="Multi-Collagène"></div>
+      <figcaption data-hf-id="hf-r1ej" class="s02-label"><span data-hf-id="hf-dtw3" class="s02-label-part s02-label-one">Multi-Collagène</span></figcaption>
+    </figure>
+    <figure data-hf-id="hf-tt3q" class="s02-product s02-product-secondary">
+      <div data-hf-id="hf-m4vl" class="s02-photo-frame s02-photo-secondary"><img data-hf-id="hf-va0n" class="s02-photo" src="assets/glutathion-glow-skin.jpg" alt="Gummies Glutathion"></div>
+      <figcaption data-hf-id="hf-dvrv" class="s02-label"><span data-hf-id="hf-stxg" class="s02-label-part s02-label-two">Gummies Glutathion</span></figcaption>
+    </figure>
+    <p data-hf-id="hf-whbt" class="s02-ritual">Deux formats, un même rituel.</p>
+    <div data-hf-id="hf-vk9n" class="s02-index-wrap"><span data-hf-id="hf-ji9l" class="s02-rule"></span><span data-hf-id="hf-hjky" class="s02-index">01 / LE DUO BEAUTÉ</span></div>
+  </div>
+  <script>
+    (function(){
+      var tl=gsap.timeline({paused:true});
+      tl.fromTo('.s02-title',{y:65,opacity:0},{y:0,opacity:1,duration:.74,ease:'power3.out'},0);
+      tl.fromTo('.s02-photo-primary',{y:120,rotation:-2,opacity:0},{y:0,rotation:0,opacity:1,duration:1.05,ease:'power3.out'},.08);
+      tl.fromTo('.s02-photo-secondary',{x:125,rotation:2,opacity:0},{x:0,rotation:0,opacity:1,duration:.84,ease:'power3.out'},.44);
+      tl.set('.s02-label-one',{opacity:0},0);
+      tl.set('.s02-label-two',{opacity:0},0);
+      tl.set('.s02-label-one',{opacity:1,y:76},1.42);
+      tl.to('.s02-label-one',{y:0,duration:.20,ease:'power4.out'},1.42);
+      tl.set('.s02-label-two',{opacity:1,y:46},1.61);
+      tl.to('.s02-label-two',{y:0,duration:.15,ease:'power4.out'},1.61);
+      tl.fromTo('.s02-ritual',{y:38,opacity:0},{y:0,opacity:1,duration:.52,ease:'power3.out'},2.6);
+      tl.fromTo('.s02-index-wrap',{y:24,opacity:0},{y:0,opacity:1,duration:.40,ease:'power3.out'},3.4);
+      tl.fromTo('.s02-rule',{scaleX:0},{scaleX:1,duration:.55,ease:'power3.out'},3.4);
+      tl.to({}, {duration:1.05},3.95);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['02-duo']=tl;
+    })();
+  </script>
+</template>

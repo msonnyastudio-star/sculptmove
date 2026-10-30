@@ -1,0 +1,150 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s5-stage{position:absolute;inset:0;overflow:hidden}
+    .s5-ground{position:absolute;inset:0;background:#fbf7f0}
+    .s5-world{position:absolute;inset:0}
+
+    .s5-card{position:absolute;top:26.5cqh;width:14.79cqw}
+    .s5-c1{left:46.875cqw}
+    .s5-c2{left:63.54cqw}
+    .s5-c3{left:80.21cqw}
+    .s5-ph{position:relative;width:100%;height:35.1cqh;overflow:hidden;background:#efe6e0;border-radius:3px}
+    .s5-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s5-c1 img{object-position:50% 46%}
+    .s5-c2 img{object-position:38% 30%}
+    .s5-c3 img{object-position:50% 50%}
+    .s5-lab{margin-top:3.4cqh}
+    .s5-lab-n{display:block;font-weight:500;font-size:1.5cqw;line-height:1.05;letter-spacing:-.005em}
+    .s5-lab-f{display:block;margin-top:1.3cqh;font-family:"Montserrat";font-weight:500;font-size:.8cqw;letter-spacing:.16em;line-height:1.4;color:#6b4a78}
+    .s5-lab .s5-l{white-space:normal}
+
+    .s5-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s5-chrome b{font-weight:600;color:#835a22}
+    .s5-chrome i{display:block;width:2.2cqw;height:1px;background:#c59a52}
+    .s5-title{position:absolute;left:5cqw;top:31.5cqh;margin:0;font-weight:500;font-size:5.6cqw;line-height:.98;letter-spacing:-.02em}
+    .s5-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s5-l{display:block;white-space:nowrap}
+    .s5-l em{font-style:italic;font-weight:500}
+    .s5-rule{position:absolute;left:5cqw;top:56.5cqh;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s5-kicker{position:absolute;left:5cqw;top:60.1cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.2cqw;letter-spacing:.2em;line-height:1.5;color:#5a3a68;white-space:nowrap}
+
+    .s5-edge,.s5-edge2{position:absolute;inset:0;pointer-events:none}
+    .s5-edge i{position:absolute;top:0;bottom:0;left:0;width:2px;background:#e0bd78;box-shadow:0 0 1.1cqw .12cqw rgba(214,176,106,.6)}
+    .s5-edge2 i{position:absolute;left:0;right:0;bottom:0;height:2px;background:#e0bd78;box-shadow:0 0 1.1cqw .12cqw rgba(214,176,106,.6)}
+
+    /* Fermeture : même fond et même signature que la première image du film */
+    .s5-close{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#41185a 0%,#321044 52%,#240a31 100%);color:#fbf7f0}
+    .s5-lockup{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .s5-mono{font-size:10.4cqw;font-weight:500;line-height:.8;letter-spacing:-.11em;margin-right:.11em;color:#fbf7f0}
+    .s5-mono b{font-weight:500;color:#d0ad66}
+    .s5-word{margin-top:4.2cqh;font-family:"Montserrat";font-weight:500;font-size:1.5cqw;letter-spacing:.46em;margin-right:-.46em;line-height:1;white-space:nowrap}
+    .s5-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#d0ad66;line-height:1;white-space:nowrap}
+    .s5-tag span{margin-right:-.5em}
+    .s5-tag i{display:block;width:3.4cqw;height:1px;background:#c59a52}
+
+    @container (max-aspect-ratio: 1/1){
+      .s5-card{top:40cqh;width:28.4cqw}
+      .s5-c1{left:5.4cqw}
+      .s5-c2{left:35.8cqw}
+      .s5-c3{left:66.2cqw}
+      .s5-ph{height:30.3cqh}
+      .s5-lab{margin-top:2.2cqh}
+      .s5-lab-n{font-size:3.5cqw;white-space:normal;text-wrap:balance}
+      .s5-lab-f{display:none}
+      .s5-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s5-chrome i{width:5cqw}
+      .s5-title{left:5.4cqw;top:12cqh;font-size:11cqw}
+      .s5-rule{left:5.4cqw;top:30.4cqh;width:12cqw}
+      .s5-kicker{left:5.4cqw;top:32.4cqh;font-size:2.75cqw;letter-spacing:.16em}
+      .s5-mono{font-size:21cqw}
+      .s5-word{font-size:3.3cqw;margin-top:3.4cqh}
+      .s5-tag{font-size:2.6cqw;gap:2.4cqw;margin-top:2.2cqh}
+      .s5-tag i{width:7cqw}
+    }
+    .s5-ch{display:inline-block;white-space:pre}
+  </style>
+  <div id="root" data-composition-id="05-collection" data-width="1920" data-height="1080" data-duration="4.3">
+    <div class="s5-stage">
+      <div id="s5-ground" class="clip s5-ground" data-start="0" data-duration="4.3" data-track-index="0"></div>
+      <div class="s5-world">
+        <div class="s5-chrome"><b>N° 05</b><i></i><span>The collection</span></div>
+        <h2 class="s5-title">
+          <span class="s5-m"><span class="s5-l">Three essentials,</span></span>
+          <span class="s5-m"><span class="s5-l"><em>one ritual.</em></span></span>
+        </h2>
+        <div class="s5-rule" aria-hidden="true"></div>
+        <p class="s5-kicker">THE SCULPT MOVE ESSENTIALS</p>
+
+        <div class="s5-card s5-c1">
+          <div class="s5-ph"><img data-layout-allow-overflow src="assets/v2/collagene.jpg" alt="Multi-Collagène Peptides"></div>
+          <p class="s5-lab"><span class="s5-m"><span class="s5-l s5-lab-n">Multi-Collagène</span></span><span class="s5-m"><span class="s5-l s5-lab-f">POWDER TO MIX</span></span></p>
+        </div>
+        <div class="s5-card s5-c2">
+          <div class="s5-ph"><img data-layout-allow-overflow src="assets/v2/gummies-femme.jpg" alt="Gummies Glutathion Glow Skin"></div>
+          <p class="s5-lab"><span class="s5-m"><span class="s5-l s5-lab-n">Glutathion Glow Skin</span></span><span class="s5-m"><span class="s5-l s5-lab-f">GUMMIES · BOTTLE OF 60</span></span></p>
+        </div>
+        <div class="s5-card s5-c3">
+          <div class="s5-ph"><img data-layout-allow-overflow src="assets/v2/pdrn-etui.jpg" alt="PDRN Repair Cream"></div>
+          <p class="s5-lab"><span class="s5-m"><span class="s5-l s5-lab-n">PDRN Repair Cream</span></span><span class="s5-m"><span class="s5-l s5-lab-f">GEL-CREAM · 50 G JAR</span></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="s5-edge" data-layout-allow-overflow aria-hidden="true"><i></i></div>
+
+    <div class="s5-close">
+      <div class="s5-lockup">
+        <div class="s5-mono"><b>S</b>M</div>
+        <div class="s5-word">SCULPT MOVE</div>
+        <div class="s5-tag"><i></i><span>WELLNESS PARTNER</span><i></i></div>
+      </div>
+    </div>
+    <div class="s5-edge2" data-layout-allow-overflow aria-hidden="true"><i></i></div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="05-collection"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,centered,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[...txt].map(c=>{const s=document.createElement('span');s.className='s5-ch';s.textContent=c;el.appendChild(s);return s;});
+        const px=em*parseFloat(getComputedStyle(el).fontSize), mid=(cs.length-1)/2;
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>(centered?i-mid:i)*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+
+      // Volet de droite à gauche
+      tl.fromTo(q('.s5-stage'),{clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s5-edge'),{xPercent:100,opacity:1},{xPercent:0,duration:.85,ease:'power4.inOut'},0);
+      tl.to(q('.s5-edge'),{opacity:0,duration:.3,ease:'power1.out'},.78);
+      tl.fromTo(q('.s5-world'),{xPercent:5},{xPercent:0,duration:1.25,ease:'power3.out'},0);
+
+      // Titre et cartes en cascade
+      tl.fromTo(qa('.s5-title .s5-l'),{yPercent:112},{yPercent:0,duration:1.1,ease:'power4.out',stagger:.13},.42);
+      tl.fromTo(q('.s5-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.8,ease:'power3.out'},.75);
+      tl.fromTo(qa('.s5-ph'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.0,ease:'power4.inOut',stagger:.17},.48);
+      tl.fromTo(qa('.s5-ph img'),{scale:1.3},{scale:1,duration:2.0,ease:'expo.out',stagger:.17},.48);
+      tl.fromTo(qa('.s5-c1 .s5-l'),{yPercent:115},{yPercent:0,duration:.9,ease:'power4.out',stagger:.08},1.12);
+      tl.fromTo(qa('.s5-c2 .s5-l'),{yPercent:115},{yPercent:0,duration:.9,ease:'power4.out',stagger:.08},1.29);
+      tl.fromTo(qa('.s5-c3 .s5-l'),{yPercent:115},{yPercent:0,duration:.9,ease:'power4.out',stagger:.08},1.46);
+      tl.fromTo(q('.s5-rule'),{scaleX:0},{scaleX:1,duration:.8,ease:'power3.inOut'},1.35);
+      track(q('.s5-kicker'),.34,false,1.55,1.2);
+
+      // Fermeture : volet prune descendant, la signature se recompose et se pose (= première image)
+      tl.fromTo(q('.s5-close'),{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},2.85);
+      tl.fromTo(q('.s5-edge2'),{yPercent:-100,opacity:1},{yPercent:0,duration:.85,ease:'power4.inOut'},2.85);
+      tl.to(q('.s5-edge2'),{opacity:0,duration:.3,ease:'power1.out'},3.62);
+      tl.fromTo(q('.s5-mono'),{opacity:0,scale:.9,filter:'blur(8px)'},{opacity:1,scale:1,filter:'blur(0px)',duration:.85,ease:'expo.out'},3.18);
+      track(q('.s5-word'),.6,true,3.3,.85);
+      tl.fromTo(q('.s5-tag span'),{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},3.48);
+      tl.fromTo(qa('.s5-tag i'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.out'},3.45);
+
+      window.__timelines['05-collection']=tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,5 @@
+.render-temp/
+.hyperframes/
+renders/
+mobile/.hyperframes/
+mobile/renders/

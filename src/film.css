@@ -1,0 +1,17 @@
+.hero-film{background:#321044;color:#fff;padding:28px 36px 0}
+.hero-film-stage{max-width:1440px;margin:auto;position:relative;background:#321044;aspect-ratio:16/9;overflow:hidden;border:1px solid #c59a5238}
+.hero-film-video{display:block;width:100%;height:100%;object-fit:cover}
+.film-controls{position:absolute;bottom:18px;left:25px;right:22px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.film-controls>span{display:flex;align-items:center;gap:10px;font-size:8px;letter-spacing:1.5px;color:#f3dfb9;background:#321044c9;padding:10px 12px;border-radius:2px}
+.film-controls i{display:block;width:3px;height:3px;background:#d7b571;border-radius:50%}
+.film-controls button{display:flex;align-items:center;gap:9px;pointer-events:auto;background:#321044d9;color:#fff;border:1px solid #ffffff50;border-radius:2px;padding:10px 14px;font-size:10px;min-height:38px}
+.film-controls button:hover{background:#54236b}
+.hero-film-bar{max-width:1440px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:25px;padding:27px 0 30px}
+.hero-film-bar .eyebrow{font-size:8px;letter-spacing:1.5px}
+.hero-film-bar h1{font-family:var(--serif);font-size:30px;line-height:1.3;font-weight:500;letter-spacing:-.6px;margin:7px 0 0}
+.hero-film-bar h1 em{color:#d7b571;font-weight:500}
+.hero-film-actions{display:flex;gap:11px;flex-wrap:wrap}
+.hero-film-actions .button span{font-size:17px;margin-left:10px}
+@media(min-width:1600px){.hero-film{padding-left:calc((100vw - 1440px)/2);padding-right:calc((100vw - 1440px)/2)}}
+@media(max-width:1000px){.hero-film{padding:20px 24px 0}.hero-film-bar h1{font-size:25px}.hero-film-actions{gap:8px}.hero-film-actions .button{padding:0 12px;font-size:10px}.hero-film-actions .button span{margin-left:0}}
+@media(max-width:760px){.hero-film{padding:0}.hero-film-stage{aspect-ratio:4/5;border:0}.hero-film-bar{padding:23px 20px 26px;display:block}.hero-film-bar h1{font-size:30px}.hero-film-actions{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.hero-film-actions .button{font-size:9px;padding:0 8px;gap:6px}.hero-film-actions .button span{font-size:15px}.film-controls{bottom:14px;left:16px;right:16px}.film-controls>span{font-size:6px;letter-spacing:1px;padding:9px}.film-controls button{padding:9px 12px;font-size:9px}.hero-film-bar .eyebrow{font-size:7px}}

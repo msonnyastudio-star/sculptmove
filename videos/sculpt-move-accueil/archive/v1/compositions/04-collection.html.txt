@@ -1,0 +1,98 @@
+﻿<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";font-weight:400 700;font-style:normal;font-display:block;src:url("assets/fonts/CormorantGaramond.ttf") format("truetype")}
+    @font-face{font-family:"Cormorant Garamond";font-weight:400 700;font-style:italic;font-display:block;src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype")}
+    @font-face{font-family:"Montserrat";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Montserrat.ttf") format("truetype")}
+    #root{width:100%;height:100%;position:relative;overflow:hidden;container-type:size;color:#fbf7f0}
+    .s04-ground{position:absolute;inset:0;background:#321044}
+    .s04-wordmark{position:absolute;left:5%;top:6%;margin:0;color:#fbf7f0;font-family:"Cormorant Garamond";font-size:2cqw;font-weight:500;line-height:1;letter-spacing:.025em}
+    .s04-content{position:absolute;inset:0}
+    .s04-title{position:absolute;left:5%;top:23%;width:36%;margin:0;font-family:"Cormorant Garamond";font-weight:500;font-size:7.3cqw;line-height:.92;letter-spacing:-.02em}
+    .s04-title span{display:block}
+    .s04-signature{position:absolute;left:5%;top:55%;width:37%;margin:0;color:#c59a52;font-family:"Cormorant Garamond";font-weight:500;font-size:4.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s04-line{display:block}
+    .s04-triptych{position:absolute;left:44%;top:21%;width:51%;height:54%}
+    .s04-product{position:absolute;width:30%;margin:0;transform-origin:50% 50%}
+    .s04-product-a{left:0;top:15%;height:77%}
+    .s04-product-b{left:34%;top:0;height:85%}
+    .s04-product-c{left:68%;top:24%;height:75%}
+    .s04-photo{position:relative;width:100%;height:79%;overflow:hidden;border-radius:6px;background:#fbf7f0;border:2px solid #c59a52;box-sizing:border-box}
+    .s04-photo img{display:block;width:100%;height:100%;object-fit:contain}
+    .s04-cream-crop{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;width:100%;aspect-ratio:955/540;overflow:hidden}
+    .s04-cream-crop img{position:absolute;left:0;top:0;width:134.031414%;height:157.962963%;max-width:none;object-fit:fill}
+    .s04-label{margin:1.1cqw 0 0;color:#fbf7f0;font-family:"Montserrat";font-size:1.35cqw;line-height:1.25;font-weight:500;letter-spacing:.05em;text-align:left}
+    .s04-label span{display:block}
+    .s04-cta{position:absolute;left:5%;top:76%;height:5.3%;padding:0 1.7cqw;display:flex;align-items:center;border:2px solid #c59a52;border-radius:6px;color:#fbf7f0;font-family:"Montserrat";font-size:1.35cqw;font-weight:500;letter-spacing:.14em;box-sizing:border-box}
+    .s04-rule{position:absolute;left:44%;top:79%;width:51%;height:2px;background:#c59a52}
+    @container(max-aspect-ratio:1/1){
+      .s04-title{left:5%;top:15%;width:90%;font-size:10cqw;line-height:.96;text-align:center}
+      .s04-title span{display:inline}
+      .s04-title span+span:before{content:" "}
+      .s04-triptych{left:5%;top:31%;width:90%;height:29%}
+      .s04-product{width:30%}
+      .s04-product-a{left:0;top:10%;height:89%}
+      .s04-product-b{left:35%;top:0;height:93%}
+      .s04-product-c{left:70%;top:14%;height:85%}
+      .s04-photo{height:77%}
+      .s04-label{font-size:2.1cqw;line-height:1.28;margin-top:1.6cqw;letter-spacing:.035em}
+      .s04-signature{left:5%;top:64%;width:90%;font-size:7.3cqw;line-height:.98;text-align:center}
+      .s04-cta{left:17%;top:77%;width:66%;height:4.5%;padding:0;justify-content:center;font-size:2cqw;letter-spacing:.12em}
+      .s04-rule{left:5%;top:27%;width:90%}
+    }
+  /* release readability */
+.s04-label,.s04-cta{font-size:1.5cqw}@container(max-aspect-ratio:1/1){.s04-wordmark{font-size:3cqw}.s04-label,.s04-cta{font-size:2.8cqw}}
+/* end release readability */
+</style>
+  <div data-hf-id="hf-jpxu" id="root" data-composition-id="04-collection" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-e3cd" id="s04-ground" class="clip s04-ground" data-start="0" data-duration="5" data-track-index="0"></div>
+    <div data-hf-id="hf-6omx" class="s04-wordmark">SCULPT MOVE</div>
+    <div data-hf-id="hf-uvj3" class="s04-content">
+      <h1 data-hf-id="hf-m374" class="s04-title"><span data-hf-id="hf-jh9s">Trois</span><span data-hf-id="hf-puve">essentiels.</span></h1>
+      <div data-hf-id="hf-2745" class="s04-triptych">
+        <figure data-hf-id="hf-8bwh" class="s04-product s04-product-a">
+          <div data-hf-id="hf-pjkk" class="s04-photo"><img data-hf-id="hf-neyb" src="assets/multi-collagene.jpg" alt="Multi Collagène"></div>
+          <figcaption data-hf-id="hf-0bfd" class="s04-label"><span data-hf-id="hf-c0xy">MULTI</span><span data-hf-id="hf-a7y8">COLLAGÈNE</span></figcaption>
+        </figure>
+        <figure data-hf-id="hf-ca0i" class="s04-product s04-product-b">
+          <div data-hf-id="hf-e1rg" class="s04-photo"><img data-hf-id="hf-6qc9" src="assets/glutathion-glow-skin.jpg" alt="Glutathion Glow Skin"></div>
+          <figcaption data-hf-id="hf-v2y5" class="s04-label"><span data-hf-id="hf-6gak">GLUTATHION</span><span data-hf-id="hf-u7ht">GLOW SKIN</span></figcaption>
+        </figure>
+        <figure data-hf-id="hf-g84j" class="s04-product s04-product-c">
+          <div data-hf-id="hf-cuud" class="s04-photo"><div data-hf-id="hf-mds9" class="s04-cream-crop"><img data-hf-id="hf-uk4f" data-layout-ignore="Intentional upper-left panel crop" src="assets/pdrn-repair-cream.jpg" alt="PDRN Repair Cream, pot et boîte"></div></div>
+          <figcaption data-hf-id="hf-w9v8" class="s04-label"><span data-hf-id="hf-4pq9">PDRN</span><span data-hf-id="hf-tkuu">REPAIR CREAM</span></figcaption>
+        </figure>
+      </div>
+      <p data-hf-id="hf-2ugz" class="s04-signature"><span data-hf-id="hf-x8qi" class="s04-line">Une routine qui</span><span data-hf-id="hf-jhq8" class="s04-line">vous ressemble.</span></p>
+      <div data-hf-id="hf-8x3p" class="s04-cta">DÉCOUVRIR SCULPT MOVE</div>
+      <div data-hf-id="hf-rwiy" class="s04-rule"></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="04-collection"]');
+      const q=s=>root.querySelector(s);
+      const qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      tl.fromTo(q('.s04-title'),{opacity:0,x:-36,y:18},{opacity:1,x:0,y:0,duration:.65,ease:'power3.out'},0);
+      const products=qa('.s04-product');
+      tl.set(products,{opacity:0},0);
+      [0.12,0.52,0.88].forEach((start,i)=>{
+        tl.set(products[i],{opacity:1,y:80-i*14,rotation:i===1?4:-4},start);
+        tl.to(products[i],{y:0,rotation:0,duration:.50-i*.045,ease:'power4.out'},start);
+      });
+      tl.fromTo(qa('.s04-line'),{opacity:0,x:-36,y:18},{opacity:1,x:0,y:0,duration:.65,stagger:.17,ease:'power3.out'},1.5);
+      tl.set(qa('.s04-label'),{opacity:0},0);
+      [2.48,2.68,2.86].forEach((start,i)=>{
+        const label=qa('.s04-label')[i];
+        tl.set(label,{opacity:1,y:50-i*7},start);
+        tl.to(label,{y:0,duration:.18-i*.02,ease:'power4.out'},start);
+      });
+      tl.fromTo(q('.s04-cta'),{opacity:0,y:18},{opacity:1,y:0,duration:.4,ease:'power3.out'},2.8);
+      tl.fromTo(q('.s04-rule'),{scaleX:0,transformOrigin:'0% 50%'},{scaleX:1,duration:.55,ease:'power3.out'},3.0);
+      tl.to(q('.s04-content'),{opacity:0,duration:.55,ease:'power2.inOut'},4.3);
+      tl.set(q('.s04-wordmark'),{opacity:1},5);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['04-collection']=tl;
+    })();
+  </script>
+</template>

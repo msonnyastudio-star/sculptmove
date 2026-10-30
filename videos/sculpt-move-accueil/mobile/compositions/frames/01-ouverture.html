@@ -1,0 +1,105 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#fbf7f0}
+    .s1-ground{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#41185a 0%,#321044 52%,#240a31 100%)}
+
+    /* Lockup — identique à la dernière image du film (05-collection) pour une boucle sans couture */
+    .s1-lockup{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform-origin:50% 50%}
+    .s1-mono{font-size:10.4cqw;font-weight:500;line-height:.8;letter-spacing:-.11em;margin-right:.11em;color:#fbf7f0}
+    .s1-mono b{font-weight:500;color:#d0ad66}
+    .s1-word{margin-top:4.2cqh;font-family:"Montserrat";font-weight:500;font-size:1.5cqw;letter-spacing:.46em;margin-right:-.46em;line-height:1;white-space:nowrap}
+    .s1-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#d0ad66;line-height:1;white-space:nowrap}
+    .s1-tag span{margin-right:-.5em}
+    .s1-tag i{display:block;width:3.4cqw;height:1px;background:#c59a52}
+
+    /* Portrait */
+    .s1-photo{position:absolute;top:0;right:0;bottom:0;width:45.8cqw;overflow:hidden;background:#2a0d39}
+    .s1-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;transform-origin:52% 32%}
+    .s1-key{position:absolute;top:0;bottom:0;left:54.2cqw;width:2px;background:#d0ad66}
+
+    /* Texte */
+    .s1-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s1-chrome b{font-weight:600;color:#d0ad66}
+    .s1-chrome i{display:block;width:2.2cqw;height:1px;background:#c59a52}
+    .s1-title{position:absolute;left:5cqw;top:29cqh;margin:0;font-weight:500;font-size:8cqw;line-height:.98;letter-spacing:-.022em}
+    .s1-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s1-l{display:block;white-space:nowrap}
+    .s1-l em{font-style:italic;font-weight:500;color:#d6b06a}
+    .s1-rule{position:absolute;left:5cqw;top:66cqh;width:21cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s1-kicker{position:absolute;left:5cqw;top:70.5cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.2cqw;letter-spacing:.3em;line-height:1.4;color:#efe4ea;white-space:nowrap}
+
+    @container (max-aspect-ratio: 1/1){
+      .s1-mono{font-size:21cqw}
+      .s1-word{font-size:3.3cqw;margin-top:3.4cqh}
+      .s1-tag{font-size:2.6cqw;gap:2.4cqw;margin-top:2.2cqh}
+      .s1-tag i{width:7cqw}
+      .s1-photo{top:47cqh;left:0;width:auto}
+      .s1-photo img{object-position:50% 20%;transform-origin:50% 24%}
+      .s1-key{top:47cqh;bottom:auto;left:0;right:0;width:auto;height:2px}
+      .s1-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s1-chrome i{width:5cqw}
+      .s1-title{left:5.4cqw;top:14cqh;font-size:12.6cqw}
+      .s1-rule{left:5.4cqw;top:36cqh;width:30cqw}
+      .s1-kicker{left:5.4cqw;top:38.6cqh;font-size:2.75cqw;letter-spacing:.2em}
+    }
+    .s1-ch{display:inline-block;white-space:pre}
+  </style>
+  <div id="root" data-composition-id="01-ouverture" data-width="1080" data-height="1350" data-duration="4.7">
+    <div id="s1-ground" class="clip s1-ground" data-start="0" data-duration="4.7" data-track-index="0"></div>
+
+    <div class="s1-photo"><img data-layout-allow-overflow src="assets/v2/portrait.jpg" alt="La femme Sculpt Move, sourire serein"></div>
+    <div class="s1-key" aria-hidden="true"></div>
+
+    <div class="s1-chrome"><b>N° 01</b><i></i><span>Le rituel</span></div>
+    <h1 class="s1-title">
+      <span class="s1-m"><span class="s1-l">Votre beauté,</span></span>
+      <span class="s1-m"><span class="s1-l"><em>votre rituel.</em></span></span>
+    </h1>
+    <div class="s1-rule" aria-hidden="true"></div>
+    <p class="s1-kicker">DE L’INTÉRIEUR À L’EXTÉRIEUR</p>
+
+    <div class="s1-lockup">
+      <div class="s1-mono"><b>S</b>M</div>
+      <div class="s1-word">SCULPT MOVE</div>
+      <div class="s1-tag"><i></i><span>WELLNESS PARTNER</span><i></i></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="01-ouverture"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,centered,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[...txt].map(c=>{const s=document.createElement('span');s.className='s1-ch';s.textContent=c;el.appendChild(s);return s;});
+        const px=em*parseFloat(getComputedStyle(el).fontSize), mid=(cs.length-1)/2;
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>(centered?i-mid:i)*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+
+      // 0 → 1.05 : la signature respire puis traverse l'écran vers le spectateur (zoom-through)
+      tl.fromTo(q('.s1-lockup'),{scale:1,filter:'blur(0px)'},{scale:1.05,duration:.8,ease:'power1.in'},0);
+      tl.to(q('.s1-lockup'),{scale:1.24,filter:'blur(10px)',duration:.26,ease:'power3.in'},.8);
+      tl.fromTo(q('.s1-lockup'),{opacity:1},{opacity:0,duration:.24,ease:'none'},.8);
+
+      // Le portrait s'ouvre depuis une fente centrale, l'image se pose en douceur
+      tl.fromTo(q('.s1-photo'),{clipPath:'inset(0% 50% 0% 50%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.15,ease:'power4.inOut'},.78);
+      tl.fromTo(q('.s1-photo img'),{scale:1.36},{scale:1,duration:2.7,ease:'expo.out'},.78);
+      tl.fromTo(q('.s1-key'),{clipPath:'inset(0% 100% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.95,ease:'power3.inOut'},1.55);
+
+      // Titre ligne par ligne dans ses masques
+      tl.fromTo(qa('.s1-l'),{yPercent:112},{yPercent:0,duration:1.15,ease:'power4.out',stagger:.13},1.12);
+      tl.fromTo(q('.s1-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.8,ease:'power3.out'},1.5);
+
+      // Filet doré puis accroche qui se resserre
+      tl.fromTo(q('.s1-rule'),{scaleX:0},{scaleX:1,duration:.95,ease:'power3.inOut'},2.0);
+      track(q('.s1-kicker'),.4,false,2.25,1.35);
+
+      window.__timelines['01-ouverture']=tl;
+    })();
+  </script>
+</template>

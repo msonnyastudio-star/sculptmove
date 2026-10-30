@@ -1,0 +1,66 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:400 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:400 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;color:#fbf7f0;font-family:"Cormorant Garamond"}
+    .s01-ground{position:absolute;inset:0;background:#321044}
+    .s01-wordmark{position:absolute;left:5%;top:6%;font-size:2cqw;font-weight:500;line-height:1;letter-spacing:.055em;white-space:nowrap}
+    .s01-title{position:absolute;left:5%;top:25%;margin:0;width:63%;font-size:8.4cqw;font-weight:500;line-height:.96;letter-spacing:-.025em}
+    .s01-mask{overflow:hidden;padding:0 .05em .10em 0;margin-bottom:-.07em}
+    .s01-line{display:block;white-space:nowrap}
+    .s01-line-gold{color:#c59a52}
+    .s01-photo{position:absolute;right:5%;top:10%;width:26.25cqw;height:70cqh;box-sizing:border-box;padding:.38cqw;background:#fbf7f0;transform-origin:50% 70%}
+    .s01-photo img{display:block;width:100%;height:100%;object-fit:contain}
+    .s01-rule{position:absolute;left:5%;top:58%;width:51%;height:4cqh;overflow:visible}
+    .s01-rule path{fill:none;stroke:#c59a52;stroke-width:2;stroke-linecap:round;vector-effect:non-scaling-stroke}
+    .s01-subline{position:absolute;left:5%;top:65%;margin:0;font-family:"Montserrat";font-size:1.5cqw;line-height:1.4;font-weight:400;color:#fbf7f0}
+    .s01-label{position:absolute;left:5%;top:75%;margin:0;padding-top:1.35cqh;border-top:2px solid #c59a52;font-family:"Montserrat";font-size:1.15cqw;line-height:1.35;font-weight:500;letter-spacing:.18em;color:#f2dce3}
+    .s01-monogram{display:none;position:absolute;border:2px solid #c59a52;border-radius:50%;align-items:center;justify-content:center;color:#c59a52;font-size:6cqw;font-weight:500;letter-spacing:-.07em}
+    @container(max-aspect-ratio:1/1){
+      .s01-title{top:16%;width:90%;font-size:10.9cqw;line-height:.96}
+      .s01-photo{top:38%;right:5%;width:36.7cqw;height:44cqh;padding:.55cqw}
+      .s01-rule{top:33%;width:82%;height:3cqh}
+      .s01-subline{top:41%;width:41%;font-size:2.25cqw;line-height:1.5}
+      .s01-label{top:74%;width:39%;font-size:1.8cqw;line-height:1.6;padding-top:1.2cqh;letter-spacing:.16em}
+      .s01-monogram{display:flex;left:12%;top:55%;width:15cqw;height:15cqw}
+    }
+  /* release readability */
+.s01-label{font-size:1.5cqw}@container(max-aspect-ratio:1/1){.s01-wordmark{font-size:3cqw}.s01-subline{font-size:3cqw}.s01-label{font-size:2.8cqw}}
+/* end release readability */
+</style>
+  <div data-hf-id="hf-fapx" id="root" data-composition-id="01-signature" data-width="1920" data-height="1080" data-duration="5.65">
+    <div data-hf-id="hf-f29q" id="s01-ground" class="clip s01-ground" data-start="0" data-duration="5.65" data-track-index="0"></div>
+    <div data-hf-id="hf-6k4s" class="s01-wordmark">SCULPT MOVE</div>
+    <h1 data-hf-id="hf-4t0t" class="s01-title">
+      <div data-hf-id="hf-d70n" class="s01-mask"><span data-hf-id="hf-wfwy" class="s01-line">Votre beauté.</span></div>
+      <div data-hf-id="hf-nx7r" class="s01-mask"><span data-hf-id="hf-qpev" class="s01-line s01-line-gold">Votre rituel.</span></div>
+    </h1>
+    <div data-hf-id="hf-a9dx" class="s01-photo"><img data-hf-id="hf-wixv" src="assets/sculpt-move-duo.jpg" alt="La femme SCULPT MOVE et son duo beauté"></div>
+    <svg data-hf-id="hf-2o93" class="s01-rule" viewBox="0 0 980 40" preserveAspectRatio="none" aria-hidden="true"><path data-hf-id="hf-ttai" d="M 2 30 C 250 5 700 4 976 24" /></svg>
+    <p data-hf-id="hf-0bk9" class="s01-subline">De l’intérieur à l’extérieur.</p>
+    <p data-hf-id="hf-kvbi" class="s01-label">BEAUTÉ &amp; BIEN-ÊTRE</p>
+    <div data-hf-id="hf-yexe" class="s01-monogram" aria-hidden="true">SM</div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="01-signature"]');
+      const q=(selector)=>root.querySelector(selector);
+      const lines=root.querySelectorAll('.s01-line');
+      const path=q('.s01-rule path');
+      const length=path.getTotalLength();
+      path.style.strokeDasharray=String(length);
+      path.style.strokeDashoffset=String(length);
+      const tl=gsap.timeline({paused:true});
+      tl.fromTo(lines,{opacity:0,x:-36,y:18},{opacity:1,x:0,y:0,duration:.65,stagger:.17,ease:'power3.out'},.12);
+      tl.fromTo(q('.s01-photo'),{opacity:.2,x:74,rotation:3},{opacity:1,x:0,rotation:0,duration:1.35,ease:'power3.out'},1.2);
+      tl.to(path,{strokeDashoffset:0,duration:.8,ease:'power2.out'},1.7);
+      tl.fromTo(q('.s01-subline'),{opacity:0,y:14},{opacity:1,y:0,duration:.65,ease:'power1.out'},2.4);
+      tl.fromTo(q('.s01-monogram'),{opacity:0,rotation:-12},{opacity:1,rotation:0,duration:.8,ease:'power2.out'},2.8);
+      tl.fromTo(q('.s01-label'),{opacity:0,y:16},{opacity:1,y:0,duration:.7,ease:'power3.out'},3.2);
+      tl.to({hold:0},{hold:1,duration:1.1,ease:'none'},3.9);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['01-signature']=tl;
+    })();
+  </script>
+</template>
