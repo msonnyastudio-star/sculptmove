@@ -1,0 +1,82 @@
+/* Kimi : bouton d'ouverture et fenêtre de discussion. */
+.kimi-launcher{position:fixed;right:20px;bottom:20px;z-index:30;display:flex;align-items:center;gap:10px;padding:5px 18px 5px 5px;background:#321044;color:#fff;border:1px solid #d7b571;border-radius:32px;font-size:12px;font-weight:600;box-shadow:0 8px 26px #17091e55;cursor:pointer;transition:transform .25s var(--ease-out),background .2s}
+.kimi-launcher:hover{transform:translateY(-2px);background:#54236b}
+.kimi-launcher img{width:46px;height:46px;border-radius:50%;object-fit:cover;display:block;border:2px solid #d7b571}
+
+.kimi-panel{position:fixed;right:20px;bottom:20px;z-index:35;display:flex;flex-direction:column;width:390px;height:min(620px,calc(100dvh - 40px));background:var(--ivory);color:var(--ink);border:1px solid #d7b57166;border-radius:14px;overflow:hidden;box-shadow:0 18px 55px #17091e66;animation:kimi-in .4s var(--ease-out) both}
+@keyframes kimi-in{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.kimi-head{display:flex;align-items:center;gap:11px;padding:11px 12px 11px 14px;background:#321044;color:#fff;flex:none}
+.kimi-head img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #d7b571;flex:none}
+.kimi-head div{flex:1;min-width:0}
+.kimi-head b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.15}
+.kimi-head small{display:block;font-size:10.5px;color:#e6d6ea;margin-top:2px}
+.kimi-head .icon-button{color:#fff;background:none;border:0;flex:none}
+
+.kimi-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 14px;display:flex;flex-direction:column;gap:12px}
+.kimi-row{display:flex;flex-direction:column;align-items:flex-start;gap:8px;animation:kimi-msg .3s var(--ease-out) both}
+@keyframes kimi-msg{from{opacity:0;transform:translateY(7px)}}
+.kimi-row.is-user{align-items:flex-end}
+.kimi-bubble{margin:0;max-width:88%;padding:10px 13px;font-size:14px;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere;background:#fff;color:var(--ink);border:1px solid #e9dfee;border-radius:3px 13px 13px 13px}
+.is-user .kimi-bubble{background:#321044;color:#fff;border-color:#321044;border-radius:13px 3px 13px 13px}
+
+.kimi-notice{margin:0;font-size:11px;line-height:1.5;color:var(--muted);text-align:center}
+.kimi-human{display:flex;align-items:center;justify-content:center;gap:6px;flex:none;padding:0 12px 10px;font-size:11.5px;color:#54236b;text-decoration:underline;text-underline-offset:3px;background:var(--ivory)}
+.kimi-actions{display:flex;flex-wrap:wrap;gap:7px}
+.kimi-chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:7px 12px;font-size:12.5px;line-height:1.2;background:transparent;color:#54236b;border:1px solid #b89cc4;border-radius:18px;cursor:pointer;transition:background .2s,color .2s}
+.kimi-chip:hover{background:#eee5f3}
+.kimi-chip.is-order{background:#321044;color:#fff;border-color:#321044}
+.kimi-chip.is-order:hover{background:#54236b}
+
+.kimi-card{width:100%;display:flex;flex-direction:column;gap:9px;padding:12px;background:#fff;border:1px solid #e9dfee;border-radius:10px}
+.kimi-pick{display:flex;align-items:center;gap:9px}
+.kimi-pick img{width:42px;height:42px;object-fit:cover;border-radius:6px;flex:none;background:#f2dce3}
+.kimi-pick>span{flex:1;min-width:0;font-size:12.5px;font-weight:600;line-height:1.25}
+.kimi-pick small{display:block;font-weight:400;color:var(--muted);margin-top:2px}
+.kimi-qty{flex:none;display:flex;align-items:center;gap:2px}
+.kimi-qty button{display:grid;place-items:center;width:32px;height:32px;padding:0;background:none;color:inherit;border:1px solid #d9cce0;border-radius:50%;cursor:pointer}
+.kimi-qty button:disabled{opacity:.35;cursor:default}
+.kimi-qty span{min-width:22px;text-align:center;font-size:13px;font-weight:600}
+.kimi-line{display:flex;justify-content:space-between;gap:12px;font-size:13px;line-height:1.35}
+.kimi-line b{font-weight:600;text-align:right;overflow-wrap:anywhere}
+.kimi-total{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:9px;border-top:1px solid #e9dfee;font-size:13px}
+.kimi-total small{color:var(--muted);font-size:11px}
+.kimi-total b{font-size:15px;color:var(--purple)}
+.kimi-continue,.kimi-send{width:100%;justify-content:center;gap:8px;font-size:12.5px;text-align:center}
+.kimi-continue:disabled{opacity:.45;cursor:default}
+.kimi-edit{align-self:center;padding:6px 10px;background:none;border:0;color:#54236b;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.kimi-note{margin:0;font-size:11px;line-height:1.5;color:var(--muted)}
+
+.kimi-typing{display:flex;gap:4px;padding:13px}
+.kimi-typing i{width:6px;height:6px;border-radius:50%;background:#9a82a8;animation:kimi-dot 1s infinite}
+.kimi-typing i:nth-child(2){animation-delay:.15s}
+.kimi-typing i:nth-child(3){animation-delay:.3s}
+@keyframes kimi-dot{0%,60%,100%{opacity:.35}30%{opacity:1}}
+
+.kimi-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line);background:var(--ivory);flex:none}
+.kimi-form input{flex:1;min-width:0;height:44px;padding:0 14px;font-size:16px;background:#fff;color:var(--ink);border:1px solid #cdbcd6;border-radius:22px;outline-offset:1px}
+.kimi-form button{display:grid;place-items:center;width:44px;height:44px;flex:none;padding:0;background:#321044;color:#fff;border:0;border-radius:50%;cursor:pointer}
+.kimi-form button:disabled{opacity:.4;cursor:default}
+
+[data-theme=dark] .kimi-panel{background:#1a0d21;border-color:#4b3757}
+[data-theme=dark] .kimi-bubble,[data-theme=dark] .kimi-card{background:#241430;border-color:#3a2944}
+[data-theme=dark] .is-user .kimi-bubble{background:#54236b;border-color:#54236b}
+[data-theme=dark] .kimi-chip{color:#e2c27f;border-color:#6b5478}
+[data-theme=dark] .kimi-chip:hover{background:#2b1935}
+[data-theme=dark] .kimi-chip.is-order{background:#e2c27f;color:#321044;border-color:#e2c27f}
+[data-theme=dark] .kimi-chip.is-order:hover{background:#efd59b}
+[data-theme=dark] .kimi-edit{color:#e2c27f}
+[data-theme=dark] .kimi-qty button{border-color:#4b3757}
+[data-theme=dark] .kimi-total{border-color:#3a2944}
+[data-theme=dark] .kimi-form,[data-theme=dark] .kimi-human{background:#1a0d21}
+[data-theme=dark] .kimi-human{color:#e2c27f}
+[data-theme=dark] .kimi-form input{background:#241430;border-color:#4b3757}
+[data-theme=dark] .kimi-form button{background:#e2c27f;color:#321044}
+
+@media(max-width:760px){
+  .kimi-launcher{right:14px;bottom:14px;padding:4px}
+  .kimi-launcher span{display:none}
+  .kimi-launcher img{width:52px;height:52px}
+  .kimi-panel{inset:0;width:auto;height:auto;border:0;border-radius:0}
+  .kimi-log{padding:14px 12px}
+}
+@media(prefers-reduced-motion:reduce){.kimi-typing i{animation:none}}

@@ -3,3 +3,8 @@ dist/
 *.tsbuildinfo
 .local-*.log
 .thumbnails/
+
+.env
+.env.*
+!.env.example
+.vercel/

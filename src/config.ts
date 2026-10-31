@@ -18,6 +18,10 @@ export const siteConfig = {
   },
 }
 
+export type CartLine = { slug: string; quantity: number }
+
+export const wa = (text: string) => `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(text)}`
+
 export type Product = {
   slug: string
   name: string
@@ -35,6 +39,11 @@ export type Product = {
   highlights: string[]
   usage: string
   category?: 'skincare'
+  // Facultatifs : renseignés ici, ils sont aussitôt connus de l'assistante Kimi.
+  ingredients?: string
+  skinTypes?: string
+  precautions?: string
+  inStock?: boolean
 }
 
 export const products: Product[] = [
