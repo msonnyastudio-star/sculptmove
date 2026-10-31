@@ -25,6 +25,7 @@
 /* Fonds prune conservés. */
 [data-theme=dark] .site-header,[data-theme=dark] .hero,[data-theme=dark] .brand-section,[data-theme=dark] .photo-label{background:#321044}
 [data-theme=dark] .cart-trigger b,[data-theme=dark] .button-gold,[data-theme=dark] .lang-switch button[aria-pressed=true]{color:#321044}
+[data-theme=dark] .cart-trigger b{box-shadow:0 0 0 2px #321044}
 [data-theme=dark] .site-footer{background:#0d0610}
 [data-theme=dark] .marquee{background:#1d0b24}
 [data-theme=dark] .contact-section{background:#2d1238}
@@ -70,6 +71,7 @@
 [data-theme=dark] .drawer-checkout input::placeholder{color:#8f7f95}
 [data-theme=dark] .toast{background:#efe4ec;color:#321044;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 [data-theme=dark] .toast svg{color:#876a38}
+[data-theme=dark] .toast button{color:#654915}
 
 /* Fiche produit. */
 [data-theme=dark] .breadcrumbs{color:#8f7f95}

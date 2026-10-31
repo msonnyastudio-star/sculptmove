@@ -48,3 +48,11 @@ Décisions v2 :
 ## Révision v2.1 — 30 octobre 2026 : version anglaise
 Demande utilisateur : le site passe en bilingue (français / anglais).
 Le film v2 reçoit une version anglaise identique en tout point sauf les textes : mêmes scènes, mêmes durées, mêmes formats (1920 × 1080 et 1080 × 1350), muet, en boucle. Les noms de produits restent ceux des emballages (Multi-Collagène Peptides, Glutathion Glow Skin, PDRN Repair Cream). Le site charge la version de la langue choisie.
+
+## Révision v3 — 30 octobre 2026 : demande de film 3D (en attente)
+Demande utilisateur : film d'accueil en 3D, en 16:9 : boîtes des produits qui s'ouvrent et pivotent à 360°, contenus qui en sortent, une femme en train de boire, titres 3D très colorés, mélange 3D / 2D, les trois produits mis en valeur.
+Trois pistes proposées dans `STORYLINES.md` (recommandation : A). Rien n'est construit avant le choix de la piste, de la source pour la femme qui boit et des photos de dos des emballages. Le film v2 reste en ligne sur le site jusque-là.
+
+## Révision v2.2 — 31 octobre 2026 : vrai logo
+Demande utilisateur : « ce n'est pas le vrai logo du site, il y a déjà le vrai logo, donc il faut ça dans le motion design ».
+Le monogramme « SM » composé en Cormorant est remplacé par le vrai logo (`public/images/sculpt-move-logo.jpg`, détouré dans `assets/logo/sculpt-move-logo.png`) à l'ouverture et à la fermeture, dans les quatre versions. Le logo est violet : il serait illisible sur le fond prune, la signature passe donc sur fond ivoire, en gardant ses couleurs d'origine. Durées et scènes inchangées, la boucle reste parfaite.

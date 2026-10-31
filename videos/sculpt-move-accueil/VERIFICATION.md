@@ -1,3 +1,11 @@
+# Vérification v2.2 (vrai logo) — 31 octobre 2026
+
+- `hyperframes check` : 0 erreur. Avertissements : film muet (choix demandé), petites capitales, et contraste signalé à t = 1,11 s sur le titre encore masqué derrière le volet ivoire.
+- Boucle : images 0 et 19,967 s comparées sans perte, écart maximal de 1 sur 255.
+- Masters et MP4 web des quatre versions rendus : 20,0 s, 600 images, sans audio. Affiches inchangées (la scène à 3,4 s ne change pas).
+
+---
+
 # Vérification v2.1 (version anglaise) — 30 octobre 2026
 
 - `hyperframes check` sur `en/` et `en-mobile/` : 0 erreur ; contraste WCAG AA 92/92 (paysage) et 89/89 (portrait). Avertissements identiques à la version française (film muet, petites capitales, ligne d'ouverture).

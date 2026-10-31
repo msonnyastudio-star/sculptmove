@@ -37,12 +37,11 @@
     .s5-edge2 i{position:absolute;left:0;right:0;bottom:0;height:2px;background:#e0bd78;box-shadow:0 0 1.1cqw .12cqw rgba(214,176,106,.6)}
 
     /* Fermeture : même fond et même signature que la première image du film */
-    .s5-close{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#41185a 0%,#321044 52%,#240a31 100%);color:#fbf7f0}
+    .s5-close{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#ffffff 0%,#fbf7f0 60%,#f1e7da 100%);color:#321044}
     .s5-lockup{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .s5-mono{font-size:10.4cqw;font-weight:500;line-height:.8;letter-spacing:-.11em;margin-right:.11em;color:#fbf7f0}
-    .s5-mono b{font-weight:500;color:#d0ad66}
+    .s5-logo{display:block;width:30cqw;height:auto}
     .s5-word{margin-top:4.2cqh;font-family:"Montserrat";font-weight:500;font-size:1.5cqw;letter-spacing:.46em;margin-right:-.46em;line-height:1;white-space:nowrap}
-    .s5-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#d0ad66;line-height:1;white-space:nowrap}
+    .s5-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#835a22;line-height:1;white-space:nowrap}
     .s5-tag span{margin-right:-.5em}
     .s5-tag i{display:block;width:3.4cqw;height:1px;background:#c59a52}
 
@@ -60,7 +59,7 @@
       .s5-title{left:5.4cqw;top:12cqh;font-size:11cqw}
       .s5-rule{left:5.4cqw;top:30.4cqh;width:12cqw}
       .s5-kicker{left:5.4cqw;top:32.4cqh;font-size:2.75cqw;letter-spacing:.16em}
-      .s5-mono{font-size:21cqw}
+      .s5-logo{width:62cqw}
       .s5-word{font-size:3.3cqw;margin-top:3.4cqh}
       .s5-tag{font-size:2.6cqw;gap:2.4cqw;margin-top:2.2cqh}
       .s5-tag i{width:7cqw}
@@ -97,7 +96,7 @@
 
     <div class="s5-close">
       <div class="s5-lockup">
-        <div class="s5-mono"><b>S</b>M</div>
+        <img class="s5-logo" src="assets/logo/sculpt-move-logo.png" width="1215" height="796" alt="Logo Sculpt Move">
         <div class="s5-word">SCULPT MOVE</div>
         <div class="s5-tag"><i></i><span>WELLNESS PARTNER</span><i></i></div>
       </div>
@@ -135,11 +134,11 @@
       tl.fromTo(q('.s5-rule'),{scaleX:0},{scaleX:1,duration:.8,ease:'power3.inOut'},1.35);
       track(q('.s5-kicker'),.34,false,1.55,1.2);
 
-      // Fermeture : volet prune descendant, la signature se recompose et se pose (= première image)
+      // Fermeture : volet ivoire descendant, le logo se recompose et se pose (= première image)
       tl.fromTo(q('.s5-close'),{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},2.85);
       tl.fromTo(q('.s5-edge2'),{yPercent:-100,opacity:1},{yPercent:0,duration:.85,ease:'power4.inOut'},2.85);
       tl.to(q('.s5-edge2'),{opacity:0,duration:.3,ease:'power1.out'},3.62);
-      tl.fromTo(q('.s5-mono'),{opacity:0,scale:.9,filter:'blur(8px)'},{opacity:1,scale:1,filter:'blur(0px)',duration:.85,ease:'expo.out'},3.18);
+      tl.fromTo(q('.s5-logo'),{opacity:0,scale:.9,filter:'blur(8px)'},{opacity:1,scale:1,filter:'blur(0px)',duration:.85,ease:'expo.out'},3.18);
       track(q('.s5-word'),.6,true,3.3,.85);
       tl.fromTo(q('.s5-tag span'),{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},3.48);
       tl.fromTo(qa('.s5-tag i'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.out'},3.45);

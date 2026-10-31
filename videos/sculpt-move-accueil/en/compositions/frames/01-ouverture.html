@@ -7,13 +7,15 @@
     .s1-ground{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#41185a 0%,#321044 52%,#240a31 100%)}
 
     /* Lockup — identique à la dernière image du film (05-collection) pour une boucle sans couture */
+    .s1-open{position:absolute;inset:0;background:radial-gradient(95% 85% at 50% 50%,#ffffff 0%,#fbf7f0 60%,#f1e7da 100%);color:#321044}
     .s1-lockup{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform-origin:50% 50%}
-    .s1-mono{font-size:10.4cqw;font-weight:500;line-height:.8;letter-spacing:-.11em;margin-right:.11em;color:#fbf7f0}
-    .s1-mono b{font-weight:500;color:#d0ad66}
+    .s1-logo{display:block;width:30cqw;height:auto}
     .s1-word{margin-top:4.2cqh;font-family:"Montserrat";font-weight:500;font-size:1.5cqw;letter-spacing:.46em;margin-right:-.46em;line-height:1;white-space:nowrap}
-    .s1-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#d0ad66;line-height:1;white-space:nowrap}
+    .s1-tag{margin-top:2.6cqh;display:flex;align-items:center;gap:1.1cqw;font-family:"Montserrat";font-weight:500;font-size:.9cqw;letter-spacing:.5em;color:#835a22;line-height:1;white-space:nowrap}
     .s1-tag span{margin-right:-.5em}
     .s1-tag i{display:block;width:3.4cqw;height:1px;background:#c59a52}
+    .s1-edge{position:absolute;inset:0;pointer-events:none}
+    .s1-edge i{position:absolute;left:0;right:0;bottom:0;height:2px;background:#e0bd78;box-shadow:0 0 1.1cqw .12cqw rgba(214,176,106,.6)}
 
     /* Portrait */
     .s1-photo{position:absolute;top:0;right:0;bottom:0;width:45.8cqw;overflow:hidden;background:#2a0d39}
@@ -32,7 +34,7 @@
     .s1-kicker{position:absolute;left:5cqw;top:70.5cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.2cqw;letter-spacing:.3em;line-height:1.4;color:#efe4ea;white-space:nowrap}
 
     @container (max-aspect-ratio: 1/1){
-      .s1-mono{font-size:21cqw}
+      .s1-logo{width:62cqw}
       .s1-word{font-size:3.3cqw;margin-top:3.4cqh}
       .s1-tag{font-size:2.6cqw;gap:2.4cqw;margin-top:2.2cqh}
       .s1-tag i{width:7cqw}
@@ -61,11 +63,14 @@
     <div class="s1-rule" aria-hidden="true"></div>
     <p class="s1-kicker">FROM THE INSIDE OUT</p>
 
-    <div class="s1-lockup">
-      <div class="s1-mono"><b>S</b>M</div>
-      <div class="s1-word">SCULPT MOVE</div>
-      <div class="s1-tag"><i></i><span>WELLNESS PARTNER</span><i></i></div>
+    <div class="s1-open">
+      <div class="s1-lockup">
+        <img class="s1-logo" src="assets/logo/sculpt-move-logo.png" width="1215" height="796" alt="Logo Sculpt Move">
+        <div class="s1-word">SCULPT MOVE</div>
+        <div class="s1-tag"><i></i><span>WELLNESS PARTNER</span><i></i></div>
+      </div>
     </div>
+    <div class="s1-edge" data-layout-allow-overflow aria-hidden="true"><i></i></div>
   </div>
   <script>
     (function(){
@@ -81,10 +86,20 @@
         tl.fromTo(cs,{x:i=>(centered?i-mid:i)*px},{x:0,duration:dur,ease:'power3.out'},at);
       };
 
-      // 0 → 1.05 : la signature respire puis traverse l'écran vers le spectateur (zoom-through)
+      // Mêmes lettres séparées qu'à la fermeture (05-collection) : l'espacement reste identique à la boucle
+      const word=q('.s1-word'), letters=[...word.textContent]; word.textContent='';
+      letters.forEach(c=>{const s=document.createElement('span');s.className='s1-ch';s.textContent=c;word.appendChild(s);});
+
+      // 0 → 1.05 : le logo respire puis traverse l'écran vers le spectateur (zoom-through)
       tl.fromTo(q('.s1-lockup'),{scale:1,filter:'blur(0px)'},{scale:1.05,duration:.8,ease:'power1.in'},0);
       tl.to(q('.s1-lockup'),{scale:1.24,filter:'blur(10px)',duration:.26,ease:'power3.in'},.8);
       tl.fromTo(q('.s1-lockup'),{opacity:1},{opacity:0,duration:.24,ease:'none'},.8);
+
+      // Le fond ivoire s'efface en volet descendant, dans le prolongement de la fermeture du film
+      tl.fromTo(q('.s1-open'),{clipPath:'inset(0% 0% 0% 0%)'},{clipPath:'inset(100% 0% 0% 0%)',duration:.75,ease:'power4.inOut'},.78);
+      tl.fromTo(q('.s1-edge'),{yPercent:-100},{yPercent:0,duration:.75,ease:'power4.inOut'},.78);
+      tl.fromTo(q('.s1-edge'),{opacity:0},{opacity:1,duration:.02,ease:'none'},.78);
+      tl.to(q('.s1-edge'),{opacity:0,duration:.3,ease:'power1.out'},1.45);
 
       // Le portrait s'ouvre depuis une fente centrale, l'image se pose en douceur
       tl.fromTo(q('.s1-photo'),{clipPath:'inset(0% 50% 0% 50%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.15,ease:'power4.inOut'},.78);

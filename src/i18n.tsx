@@ -11,9 +11,8 @@ const fr = {
   brandHome: 'SCULPT MOVE, accueil',
   nav: { label: 'Navigation principale', home: 'Accueil', products: 'Nos produits', duo: 'Le duo beauté', tips: 'Conseils', delivery: 'Livraison', contact: 'Contact', open: 'Ouvrir le menu', close: 'Fermer le menu' },
   prefs: { language: 'Langue', toDark: 'Activer le mode nuit', toLight: 'Activer le mode jour' },
-  header: { order: 'Commander sur WhatsApp', selection: 'Ma sélection', cartLabel: (n: number) => `Ouvrir la sélection, ${n} article${n === 1 ? '' : 's'}` },
+  header: { selection: 'Ma sélection', cartLabel: (n: number) => `Ouvrir la sélection, ${n} article${n === 1 ? '' : 's'}` },
   wa: {
-    header: 'Bonjour Sculpt Move, pouvez-vous me renseigner sur vos produits ?',
     hero: 'Bonjour Sculpt Move, je souhaite découvrir vos produits.',
     guidance: 'Bonjour Sculpt Move, je souhaite une information sur les conseils d’utilisation de vos produits.',
     delivery: 'Bonjour Sculpt Move, je souhaite connaître les frais et délais de livraison pour ma ville : ',
@@ -25,6 +24,7 @@ const fr = {
   },
   card: { view: 'Voir le produit', add: 'Ajouter à ma sélection' },
   toast: 'Ajouté à votre sélection',
+  cartReminder: { text: (n: number) => `Votre sélection contient déjà ${n} article${n === 1 ? '' : 's'}`, view: 'Voir' },
   cart: {
     eyebrow: 'Votre sélection', title: 'Ma routine', close: 'Fermer le panier',
     emptyTitle: 'Votre sélection est vide', emptyText: 'Ajoutez un essentiel pour préparer votre demande sur WhatsApp.', discover: 'Découvrir les produits',
@@ -98,8 +98,19 @@ const fr = {
   },
   footer: {
     tagline: 'La beauté commence aussi de l’intérieur.', explore: 'Explorer', info: 'Informations',
-    legal: 'Mentions légales : à compléter', legalNote: 'Informations légales à renseigner avant publication.',
+    legal: 'Mentions légales',
     shipping: 'Expédition partout au Cameroun et dans la sous-région.',
+  },
+  legal: {
+    eyebrow: 'INFORMATIONS', title: 'Mentions légales', updated: 'Dernière mise à jour : 31 octobre 2026',
+    publisher: 'Éditeur du site', host: 'Hébergement',
+    labels: { brand: 'Marque', company: 'Dénomination sociale', form: 'Forme juridique', rccm: 'RCCM', niu: 'NIU', director: 'Responsable de la publication', address: 'Adresse', email: 'E-mail', whatsapp: 'WhatsApp', site: 'Site' },
+    sections: [
+      { title: 'Produits', text: ['Les informations présentées sur ce site reprennent celles des conditionnements. Elles ne remplacent ni les indications figurant sur l’emballage ni l’avis d’un professionnel de santé.', 'Si vous avez un problème de santé, suivez un traitement médical, êtes enceinte ou allaitez, veuillez consulter votre médecin avant de consommer ou d’utiliser nos produits.', 'Les compléments alimentaires ne remplacent pas une alimentation variée et un mode de vie sain. Les soins cosmétiques sont réservés à l’usage externe.'] },
+      { title: 'Commandes et prix', text: ['Les prix sont indiqués en francs CFA (FCFA), hors frais de livraison. Les frais et les délais de livraison sont confirmés sur WhatsApp selon votre ville.', 'Le site ne propose pas de paiement en ligne. Le message préparé depuis votre sélection est une demande : il ne vaut pas confirmation de commande. La commande est confirmée par Sculpt Move, après vérification de la disponibilité.'] },
+      { title: 'Données personnelles', text: ['Le site n’utilise ni compte client, ni formulaire envoyé à un serveur, ni outil publicitaire ou de mesure d’audience. Votre sélection, votre langue et votre thème sont enregistrés uniquement dans votre navigateur ; vous pouvez les effacer depuis ses réglages.', 'Lorsque vous nous écrivez sur WhatsApp ou par e-mail, nous recevons les informations que vous transmettez (numéro ou adresse, ville, produits demandés). Elles servent uniquement à vous répondre et à traiter votre demande. WhatsApp applique sa propre politique de confidentialité.', 'Les polices de caractères sont chargées depuis Google Fonts : votre adresse IP est donc transmise à Google lors de l’affichage du site.', 'Pour consulter, corriger ou supprimer vos données, écrivez-nous à l’adresse e-mail indiquée ci-dessus.'] },
+      { title: 'Propriété intellectuelle', text: ['La marque Sculpt Move, son logo, les textes, les photos et les vidéos de ce site sont protégés. Toute reproduction ou réutilisation sans l’accord préalable de Sculpt Move est interdite.'] },
+    ],
   },
 }
 
@@ -111,9 +122,8 @@ const en: Copy = {
   brandHome: 'SCULPT MOVE, home',
   nav: { label: 'Main navigation', home: 'Home', products: 'Our products', duo: 'The beauty duo', tips: 'Advice', delivery: 'Delivery', contact: 'Contact', open: 'Open menu', close: 'Close menu' },
   prefs: { language: 'Language', toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
-  header: { order: 'Order on WhatsApp', selection: 'My selection', cartLabel: (n: number) => `Open selection, ${n} item${n === 1 ? '' : 's'}` },
+  header: { selection: 'My selection', cartLabel: (n: number) => `Open selection, ${n} item${n === 1 ? '' : 's'}` },
   wa: {
-    header: 'Hello Sculpt Move, could you tell me more about your products?',
     hero: 'Hello Sculpt Move, I would like to discover your products.',
     guidance: 'Hello Sculpt Move, I would like some information on how to use your products.',
     delivery: 'Hello Sculpt Move, I would like to know the delivery fees and times for my city: ',
@@ -125,6 +135,7 @@ const en: Copy = {
   },
   card: { view: 'View product', add: 'Add to my selection' },
   toast: 'Added to your selection',
+  cartReminder: { text: (n: number) => `You already have ${n} item${n === 1 ? '' : 's'} in your selection`, view: 'View' },
   cart: {
     eyebrow: 'Your selection', title: 'My routine', close: 'Close cart',
     emptyTitle: 'Your selection is empty', emptyText: 'Add an essential to prepare your WhatsApp request.', discover: 'Discover the products',
@@ -198,8 +209,19 @@ const en: Copy = {
   },
   footer: {
     tagline: 'Beauty also starts from within.', explore: 'Explore', info: 'Information',
-    legal: 'Legal notice: to be completed', legalNote: 'Legal information to be added before publication.',
+    legal: 'Legal notice',
     shipping: 'Shipping across Cameroon and the sub-region.',
+  },
+  legal: {
+    eyebrow: 'INFORMATION', title: 'Legal notice', updated: 'Last updated: October 31, 2026',
+    publisher: 'Site publisher', host: 'Hosting',
+    labels: { brand: 'Brand', company: 'Company name', form: 'Legal form', rccm: 'RCCM', niu: 'NIU', director: 'Publication manager', address: 'Address', email: 'Email', whatsapp: 'WhatsApp', site: 'Website' },
+    sections: [
+      { title: 'Products', text: ['The information on this site is taken from the packaging. It does not replace the directions on the packaging or the advice of a healthcare professional.', 'If you have a health condition, are undergoing medical treatment, are pregnant or are breastfeeding, please consult your doctor before consuming or using our products.', 'Food supplements do not replace a varied diet and a healthy lifestyle. Skincare products are for external use only.'] },
+      { title: 'Orders and prices', text: ['Prices are shown in CFA francs (FCFA), excluding delivery. Delivery fees and times are confirmed on WhatsApp according to your city.', 'The site does not offer online payment. The message prepared from your selection is a request and is not an order confirmation. Sculpt Move confirms the order after checking availability.'] },
+      { title: 'Personal data', text: ['The site has no customer account, no form sent to a server, and no advertising or audience measurement tool. Your selection, language and theme are stored only in your browser; you can clear them in its settings.', 'When you contact us on WhatsApp or by email, we receive the information you send (number or address, city, requested products). It is used only to reply to you and handle your request. WhatsApp applies its own privacy policy.', 'Fonts are loaded from Google Fonts, so your IP address is sent to Google when the site is displayed.', 'To access, correct or delete your data, write to us at the email address shown above.'] },
+      { title: 'Intellectual property', text: ['The Sculpt Move brand, its logo and the texts, photos and videos on this site are protected. Any reproduction or reuse without the prior consent of Sculpt Move is prohibited.'] },
+    ],
   },
 }
 

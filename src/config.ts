@@ -7,6 +7,15 @@ export const siteConfig = {
   domain: 'sculptmove.online',
   email: 'contact@sculptmove.online',
   address: { fr: 'Akwa, Douala — Cameroun', en: 'Akwa, Douala — Cameroon' },
+  // Identité légale affichée sur /mentions-legales. Une valeur vide masque sa ligne.
+  legal: {
+    company: '',
+    form: '',
+    rccm: '',
+    niu: '',
+    director: '',
+    host: '',
+  },
 }
 
 export type Product = {

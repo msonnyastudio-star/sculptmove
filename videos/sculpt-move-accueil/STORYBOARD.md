@@ -100,11 +100,11 @@ Format 1920 × 1080 (portrait 1080 × 1350 par container queries), 20 s, 30 i/s,
 ## Plans
 | # | Fichier | Début | Durée hôte | Fond | Contenu |
 |---|---|---|---|---|---|
-| 1 | compositions/frames/01-ouverture.html | 0,0 | 4,7 | prune | Signature SM qui traverse l'écran (zoom-through), portrait ouvert depuis une fente centrale, « Votre beauté, / votre rituel. », « DE L'INTÉRIEUR À L'EXTÉRIEUR » |
+| 1 | compositions/frames/01-ouverture.html | 0,0 | 4,7 | ivoire → prune | Vrai logo Sculpt Move sur ivoire, qui traverse l'écran (zoom-through) ; volet ivoire descendant, portrait ouvert depuis une fente centrale, « Votre beauté, / votre rituel. », « DE L'INTÉRIEUR À L'EXTÉRIEUR » |
 | 2 | compositions/frames/02-collagene.html | 3,8 | 4,8 | ivoire + bloc rose | Volet montant ; « De / l'intérieur. », Multi-Collagène Peptides, pot en panneau, geste en incrustation, reflet |
 | 3 | compositions/frames/03-gummies.html | 7,7 | 4,8 | lilas | Volet latéral ; photo plein cadre, « Le duo / beauté. », Glutathion Glow Skin, vignette du Beauty Duo |
 | 4 | compositions/frames/04-creme.html | 11,6 | 5,0 | prune | Volet montant ; badge NOUVEAU, « … à / l'extérieur. », PDRN Repair Cream, mosaïque pot / étui / gélules / texture, ingrédients du conditionnement |
-| 5 | compositions/frames/05-collection.html | 15,7 | 4,3 | ivoire → prune | Volet latéral ; « Trois essentiels, / un seul rituel. », trois cartes produit ; volet prune descendant et signature SM recomposée (= image 0) |
+| 5 | compositions/frames/05-collection.html | 15,7 | 4,3 | ivoire | Volet latéral ; « Trois essentiels, / un seul rituel. », trois cartes produit ; volet ivoire descendant et vrai logo recomposé (= image 0) |
 
 ## Révision v2.1 — 30 octobre 2026 : version anglaise
 Générée par `node prepare-release.mjs` dans `en/` (paysage) et `en-mobile/` (portrait) à partir des scènes françaises, par la table `ENGLISH` du script. Aucune scène n'est éditée à la main dans ces dossiers.

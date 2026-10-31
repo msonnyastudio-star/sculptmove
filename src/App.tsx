@@ -8,6 +8,7 @@ import { useTheme, type Theme } from './theme'
 
 type CartLine = { slug: string; quantity: number }
 const CART_KEY = 'sculpt-move-cart-v1'
+const CART_REMINDER_KEY = 'sculpt-move-cart-reminded'
 const WA_BASE = `https://wa.me/${siteConfig.whatsappNumber}`
 const wa = (text: string) => `${WA_BASE}?text=${encodeURIComponent(text)}`
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties
@@ -115,8 +116,7 @@ function Header({ onNavigate, cartCount, onCart, theme, onTheme }: { onNavigate:
     </nav>
     <div className="header-actions">
       <Prefs className="header-prefs" theme={theme} onTheme={onTheme}/>
-      <a className="header-whatsapp" href={wa(t.wa.header)} target="_blank" rel="noreferrer"><Icon name="whatsapp" size={17}/> {t.header.order}</a>
-      <button className="cart-trigger" onClick={onCart} aria-label={t.header.cartLabel(cartCount)}><Icon name="bag"/><span>{t.header.selection}</span><b key={cartCount}>{cartCount}</b></button>
+      <button className="cart-trigger" onClick={onCart} aria-label={t.header.cartLabel(cartCount)}><i className="cart-icon"><Icon name="bag"/>{cartCount > 0 && <b key={cartCount}>{cartCount > 99 ? '99+' : cartCount}</b>}</i><span>{t.header.selection}</span></button>
     </div>
   </div><span className="scroll-progress" aria-hidden="true"/></header>
 }
@@ -239,12 +239,30 @@ function ProductPage({ product, onNavigate, onAdd }: { product: Product; onNavig
   </main>
 }
 
+function LegalPage({ onNavigate }: { onNavigate: (to: string) => void }) {
+  const { t, lang } = useI18n()
+  const { labels } = t.legal
+  const { company, form, rccm, niu, director, host } = siteConfig.legal
+  const publisher = [[labels.brand, siteConfig.brand], [labels.company, company], [labels.form, form], [labels.rccm, rccm], [labels.niu, niu], [labels.director, director], [labels.address, siteConfig.address[lang]], [labels.email, siteConfig.email], [labels.whatsapp, siteConfig.whatsappDisplay], [labels.site, siteConfig.domain]].filter(([, value]) => value)
+  return <main className="legal-page">
+    <div className="breadcrumbs"><button onClick={() => onNavigate('/')}>{t.product.home}</button><span>/</span><span>{t.legal.title}</span></div>
+    <div className="legal-body">
+      <div className="eyebrow">{t.legal.eyebrow}</div>
+      <h1>{t.legal.title}</h1>
+      <p className="legal-updated">{t.legal.updated}</p>
+      <section><h2>{t.legal.publisher}</h2><dl>{publisher.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></section>
+      {host && <section><h2>{t.legal.host}</h2><p>{host}</p></section>}
+      {t.legal.sections.map((section) => <section key={section.title}><h2>{section.title}</h2>{section.text.map((text) => <p key={text}>{text}</p>)}</section>)}
+    </div>
+  </main>
+}
+
 function Footer({ onNavigate }: { onNavigate: (to: string) => void }) {
   const { t, lang } = useI18n()
   return <footer className="site-footer"><div className="footer-main">
     <div className="footer-brand"><Brand onClick={() => onNavigate('/')}/><p>{t.footer.tagline}</p><a href={wa(t.wa.footer)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {siteConfig.whatsappDisplay}</a></div>
     <div className="footer-nav"><b>{t.footer.explore}</b><button onClick={() => onNavigate('/')}>{t.nav.home}</button><button onClick={() => onNavigate('/#produits')}>{t.nav.products}</button><button onClick={() => onNavigate('/produit/beauty-duo')}>{t.nav.duo}</button><button onClick={() => onNavigate('/#livraison')}>{t.nav.delivery}</button><button onClick={() => onNavigate('/#conseils')}>{t.nav.tips}</button></div>
-    <div className="footer-legal"><b>{t.footer.info}</b><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><span>{siteConfig.address[lang]}</span><span>{t.footer.shipping}</span><span>{t.footer.legal}</span><small>{t.footer.legalNote}</small></div>
+    <div className="footer-legal"><b>{t.footer.info}</b><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><span>{siteConfig.address[lang]}</span><span>{t.footer.shipping}</span><a href="/mentions-legales" onClick={(event) => { event.preventDefault(); onNavigate('/mentions-legales') }}>{t.footer.legal}</a></div>
   </div><div className="footer-bottom"><span>© {new Date().getFullYear()} SCULPT MOVE · WELLNESS PARTNER</span><span>{t.product.supplementNote}</span></div></footer>
 }
 
@@ -255,29 +273,39 @@ function Site() {
   const { theme, toggle } = useTheme()
   const [cart, setCart] = useState<CartLine[]>(readCart)
   const [cartOpen, setCartOpen] = useState(false)
-  const [toast, setToast] = useState({ id: 0, text: '' })
+  const [toast, setToast] = useState({ id: 0, text: '', reminder: false })
   useReveal(path)
   useScrollEffects(path)
   useEffect(() => { localStorage.setItem(CART_KEY, JSON.stringify(cart)) }, [cart])
   const productMatch = path.match(/^\/produit\/([^/]+)/)
   const product = productMatch ? i18n.products.find((item) => item.slug === productMatch[1]) : undefined
-  useEffect(() => { document.title = product ? `${product.name} | SCULPT MOVE` : t.htmlTitle }, [product, t])
+  const isLegal = path === '/mentions-legales'
+  useEffect(() => { document.title = product ? `${product.name} | SCULPT MOVE` : isLegal ? `${t.legal.title} | SCULPT MOVE` : t.htmlTitle }, [product, isLegal, t])
   useEffect(() => {
     if (!toast.text) return
-    const timer = window.setTimeout(() => setToast((current) => ({ ...current, text: '' })), 2400)
+    const timer = window.setTimeout(() => setToast((current) => ({ ...current, text: '' })), toast.reminder ? 7000 : 2400)
     return () => window.clearTimeout(timer)
   }, [toast])
   const count = useMemo(() => cart.reduce((sum, line) => sum + line.quantity, 0), [cart])
+  // Au retour sur le site, signale une fois par session qu'une sélection attend déjà.
+  useEffect(() => {
+    if (count === 0) return
+    try {
+      if (sessionStorage.getItem(CART_REMINDER_KEY)) return
+      sessionStorage.setItem(CART_REMINDER_KEY, '1')
+    } catch {}
+    setToast((current) => ({ id: current.id + 1, text: t.cartReminder.text(count), reminder: true }))
+  }, [])
   const add = (slug: string, quantity = 1) => {
     setCart((current) => current.some((line) => line.slug === slug) ? current.map((line) => line.slug === slug ? { ...line, quantity: line.quantity + quantity } : line) : [...current, { slug, quantity }])
-    setToast((current) => ({ id: current.id + 1, text: t.toast }))
+    setToast((current) => ({ id: current.id + 1, text: t.toast, reminder: false }))
   }
   return <div className="app-shell"><a className="skip-link" href="#contenu">{t.skip}</a>
     <Header onNavigate={navigate} cartCount={count} onCart={() => setCartOpen(true)} theme={theme} onTheme={toggle}/>
-    <div id="contenu">{product ? <ProductPage key={product.slug} product={product} onNavigate={navigate} onAdd={add}/> : path.startsWith('/produit/') ? <main className="not-found"><div className="eyebrow">SCULPT MOVE</div><h1>{t.product.notFound}</h1><button className="button button-primary" onClick={() => navigate('/')}>{t.product.backHome} <Icon name="arrow"/></button></main> : <Home onNavigate={navigate} onAdd={add}/>}</div>
+    <div id="contenu">{isLegal ? <LegalPage onNavigate={navigate}/> : product ? <ProductPage key={product.slug} product={product} onNavigate={navigate} onAdd={add}/> : path.startsWith('/produit/') ? <main className="not-found"><div className="eyebrow">SCULPT MOVE</div><h1>{t.product.notFound}</h1><button className="button button-primary" onClick={() => navigate('/')}>{t.product.backHome} <Icon name="arrow"/></button></main> : <Home onNavigate={navigate} onAdd={add}/>}</div>
     <Footer onNavigate={navigate}/>
     {cartOpen && <CartDrawer cart={cart} setCart={setCart} onClose={() => setCartOpen(false)}/>}
-    {toast.text && <div className="toast" role="status" key={toast.id}><Icon name="bag" size={16}/> {toast.text}</div>}
+    {toast.text && <div className="toast" role="status" key={toast.id}><Icon name="bag" size={16}/> {toast.text}{toast.reminder && <button type="button" onClick={() => { setCartOpen(true); setToast((current) => ({ ...current, text: '' })) }}>{t.cartReminder.view}</button>}</div>}
     <a className="mobile-wa" href={wa(t.wa.contact)} target="_blank" rel="noreferrer" aria-label={t.wa.floating} lang={lang}><Icon name="whatsapp"/></a>
   </div>
 }
