@@ -1,0 +1,113 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s12-stage{position:absolute;inset:0;overflow:hidden}
+    .s12-ground{position:absolute;inset:0}
+    .s12-world{position:absolute;inset:0}
+    .s12-ph{position:absolute;overflow:hidden}
+    .s12-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s12-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s12-chrome b{font-weight:600}
+    .s12-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s12-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s12-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s12-l{display:block;white-space:nowrap}
+    .s12-l em{font-style:italic;font-weight:500}
+    .s12-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s12-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s12-ch{display:inline-block;white-space:pre}
+    .s12-svg{position:absolute;overflow:visible;fill:none}
+    .s12-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s12-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s12-chrome i{width:5cqw}
+      .s12-title{left:5.4cqw;font-size:11.4cqw}
+      .s12-rule{left:5.4cqw;width:12cqw}
+      .s12-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s12-ground{background:radial-gradient(90% 90% at 30% 20%,#fff9f2 0%,#f4e6d8 80%)}
+    #root{color:#2b1140}
+    .s12-chrome b{color:#835a22}
+    .s12-title{top:17cqh;font-size:5.2cqw}
+    .s12-title em{color:#8a6423}
+    .s12-rule{top:37.6cqh}
+    .s12-kicker{top:41cqh;color:#4a2a5e;font-size:1.05cqw;letter-spacing:.18em}
+    .s12-kicker2{top:45cqh}
+    .s12-femme{left:62cqw;top:0;bottom:0;width:38cqw}
+    .s12-femme img{object-position:50% 20%;transform-origin:50% 30%}
+    .s12-produits{left:33cqw;top:50cqh;width:26cqw;height:48cqh;border-radius:6px;box-shadow:0 1cqw 3cqw rgba(60,30,70,.25)}
+    .s12-produits img{object-position:50% 40%}
+    .s12-lotus{left:5cqw;top:55cqh;width:22cqw;height:22cqh}
+    .s12-lotus path{stroke:#8a6423;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .s12-name{position:absolute;left:5cqw;top:79cqh;margin:0;font-style:italic;font-weight:500;font-size:2.6cqw;line-height:1.05;color:#2b1140}
+    @container (max-aspect-ratio: 1/1){
+      .s12-title{top:9.4cqh;font-size:9.8cqw}
+      .s12-rule{top:27cqh}
+      .s12-kicker{top:29cqh;font-size:2.2cqw;letter-spacing:.1em;width:90cqw}
+      .s12-kicker2{top:32cqh}
+      .s12-femme{left:0;top:37cqh;bottom:0;width:56cqw}
+      .s12-produits{left:58cqw;top:42cqh;width:38cqw;height:32cqh}
+      .s12-lotus{left:60cqw;top:77cqh;width:34cqw;height:12cqh}
+      .s12-name{left:60cqw;top:90cqh;font-size:5cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="12-harmonie-jour" data-width="1080" data-height="1350" data-duration="4.05">
+    <div class="s12-stage">
+      <div id="s12-ground" class="clip s12-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s12-world">
+        <div class="s12-ph s12-femme"><img data-layout-allow-overflow src="assets/v3/harmonie-jour-femme.jpg" alt="Femme souriante savourant une gummy au réveil"></div>
+        <div class="s12-chrome"><b>N° 12</b><i></i><span>The ritual</span></div>
+        <h2 class="s12-title"><span class="s12-m"><span class="s12-l">Take care of yourself,</span></span><span class="s12-m"><span class="s12-l"><em>from within.</em></span></span></h2>
+        <div class="s12-rule" aria-hidden="true"></div>
+        <p class="s12-kicker">AVAILABLE IN DOUALA</p>
+        <p class="s12-kicker s12-kicker2">DELIVERY ACROSS CAMEROON</p>
+        <div class="s12-ph s12-produits"><img data-layout-allow-overflow src="assets/v3/harmonie-jour-produits.jpg" alt="Ashwagandha Gummies et Magnésium Threonate"></div>
+        <svg class="s12-svg s12-lotus" viewBox="0 0 220 110" aria-hidden="true"><path pathLength="1" d="M110 100C80 70 80 40 110 10c30 30 30 60 0 90z"/><path pathLength="1" d="M110 100C70 92 48 66 50 28c26 8 44 26 52 46"/><path pathLength="1" d="M110 100c40-8 62-34 60-72-26 8-44 26-52 46"/><path pathLength="1" d="M110 100C72 104 34 92 8 58c20-6 38-2 52 8"/><path pathLength="1" d="M110 100c38 4 76-8 102-42-20-6-38-2-52 8"/></svg>
+        <p class="s12-name"><span class="s12-m"><span class="s12-l">Body &amp; Mind</span></span></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="12-harmonie-jour"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s12-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s12-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s12-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s12-stage'),{clipPath:'circle(0% at 50% 100%)'},{clipPath:'circle(125% at 50% 100%)',duration:.95,ease:'power3.inOut'},0);
+      tl.fromTo(q('.s12-femme'),{xPercent:12},{xPercent:0,duration:1.4,ease:'expo.out'},.2);
+      settle('.s12-femme img',.2,1.22,2.6);
+      lines('.s12-title .s12-l',.5);
+      chrome(.8); rule(1.15);
+      track(q('.s12-kicker:not(.s12-kicker2)'),.3,1.25,1);
+      track(q('.s12-kicker2'),.3,1.45,1);
+      tl.fromTo(q('.s12-produits'),{yPercent:22,opacity:0},{yPercent:0,opacity:1,duration:1.2,ease:'expo.out'},.85);
+      draw('.s12-lotus path',1.05,1.2,.1);
+      lines('.s12-name .s12-l',1.6);
+
+      window.__timelines['12-harmonie-jour']=tl;
+    })();
+  </script>
+</template>

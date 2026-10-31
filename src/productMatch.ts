@@ -26,13 +26,22 @@ const PRODUCT_WORDS: Record<string, string[]> = {
   'pdrn-repair-cream': ['pdrn', 'creme', 'cremes', 'cream', 'creams', 'repair', 'capsule', 'capsules', 'gel'],
   'multi-collagene': ['collagene', 'collagen', 'poudre', 'powder', 'peptides', 'multi'],
   'glutathion-glow-skin': ['glutathion', 'glutathione', 'gummies', 'gummy', 'gomme', 'gommes', 'bonbon', 'bonbons', 'ourson', 'oursons', 'glow'],
-  'beauty-duo': ['duo', 'pack', 'lot', 'ensemble'],
+  'beauty-duo': ['duo'],
+  'shilajit-resin': ['shilajit', 'resine', 'resin'],
+  'flat-tummy-tea': ['tea', 'moringa', 'tisane', 'infusion', 'tummy', 'ventre'],
+  'pack-3-actions': ['fitgum', 'chia'],
+  'pack-pilates': ['pilates', 'tapis', 'barre'],
+  'gamme-nouvelle-semaine': ['detox', 'burn', 'semaine'],
+  'pack-harmonie': ['harmonie', 'harmony', 'ashwagandha', 'magnesium', 'threonate'],
+  'pack-menopause': ['menopause', 'perimenopause', 'primrose', 'onagre'],
+  'duo-flat-tummy-keto': ['keto', 'acv', 'garcinia'],
 }
 
 const NUMBER_WORDS: Record<string, number> = { un: 1, une: 1, one: 1, a: 1, deux: 2, two: 2, trois: 3, three: 3, quatre: 4, four: 4, cinq: 5, five: 5, six: 6, sept: 7, seven: 7, huit: 8, eight: 8, neuf: 9, nine: 9, dix: 10, ten: 10 }
 
 export function mentionedProducts(text: string): CartLine[] {
-  const tokens = normalize(text).split(' ')
+  // « thé » perd son accent en normalisant et se confondrait avec l'anglais « the ».
+  const tokens = normalize(text.replace(/(?<!\p{L})thé(?!\p{L})/giu, 'tea')).split(' ')
   const found: CartLine[] = []
   tokens.forEach((token, index) => {
     const slug = Object.keys(PRODUCT_WORDS).find((key) => PRODUCT_WORDS[key].some((word) => sameWord(token, word)))

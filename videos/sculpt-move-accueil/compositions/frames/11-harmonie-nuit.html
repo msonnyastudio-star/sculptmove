@@ -1,0 +1,130 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s11-stage{position:absolute;inset:0;overflow:hidden}
+    .s11-ground{position:absolute;inset:0}
+    .s11-world{position:absolute;inset:0}
+    .s11-ph{position:absolute;overflow:hidden}
+    .s11-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s11-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s11-chrome b{font-weight:600}
+    .s11-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s11-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s11-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s11-l{display:block;white-space:nowrap}
+    .s11-l em{font-style:italic;font-weight:500}
+    .s11-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s11-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s11-ch{display:inline-block;white-space:pre}
+    .s11-svg{position:absolute;overflow:visible;fill:none}
+    .s11-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s11-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s11-chrome i{width:5cqw}
+      .s11-title{left:5.4cqw;font-size:11.4cqw}
+      .s11-rule{left:5.4cqw;width:12cqw}
+      .s11-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s11-ground{background:radial-gradient(80% 90% at 70% 30%,#3b1a55 0%,#1b0a29 75%)}
+    #root{color:#fbf1dc}
+    .s11-chrome{left:42cqw}
+    .s11-chrome b{color:#e3c48a}
+    .s11-title{left:42cqw;top:17cqh}
+    .s11-title em{color:#e3c48a}
+    .s11-rule{left:42cqw;top:42cqh}
+    .s11-kicker{left:42cqw;top:45.6cqh;color:#efe3cf}
+    .s11-femme{left:0;top:0;bottom:0;width:36cqw}
+    .s11-femme img{object-position:50% 30%}
+    .s11-key{position:absolute;left:36cqw;top:0;bottom:0;width:2px;background:#c59a52;transform-origin:50% 0}
+    .s11-produits{left:42cqw;top:53cqh;width:24cqw;height:40cqh;border-radius:6px;box-shadow:0 1cqw 3cqw rgba(0,0,0,.5)}
+    .s11-sky{left:68cqw;top:8cqh;width:28cqw;height:80cqh}
+    .s11-sky path{fill:#e3c48a}
+    .s11-sky .s11-crescent{fill:#e3c48a}
+    .s11-drop{position:absolute;left:12cqw;top:50cqh;width:.55cqw;height:.9cqw;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:#e9b860}
+    @container (max-aspect-ratio: 1/1){
+      .s11-femme{left:0;top:0;bottom:auto;width:52cqw;height:58cqh}
+      .s11-key{left:52cqw;top:0;bottom:auto;height:58cqh}
+      .s11-chrome{left:5.4cqw;top:61cqh}
+      .s11-title{left:5.4cqw;top:65cqh;font-size:11cqw}
+      .s11-rule{left:5.4cqw;top:84.6cqh}
+      .s11-kicker{left:5.4cqw;top:86.6cqh;width:50cqw;font-size:2.3cqw}
+      .s11-produits{left:57cqw;top:30cqh;width:38cqw;height:29cqh}
+      .s11-sky{left:56cqw;top:3cqh;width:40cqw;height:25cqh}
+      .s11-drop{left:17cqw;top:33cqh;width:1cqw;height:1.6cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="11-harmonie-nuit" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s11-stage">
+      <div id="s11-ground" class="clip s11-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s11-world">
+        <div class="s11-ph s11-femme"><img data-layout-allow-overflow src="assets/v3/harmonie-nuit-femme.jpg" alt="Femme versant des gouttes de magnésium dans un verre d’eau"></div>
+        <div class="s11-drop s11-d1" aria-hidden="true"></div><div class="s11-drop s11-d2" aria-hidden="true"></div><div class="s11-drop s11-d3" aria-hidden="true"></div>
+        <div class="s11-key" aria-hidden="true"></div>
+        <svg class="s11-svg s11-sky" viewBox="0 0 280 400" aria-hidden="true">
+          <path class="s11-crescent" d="M196 40a56 56 0 1 0 40 90 48 48 0 0 1-40-90z"/>
+          <path class="s11-star" d="M60 60l4 14 14 4-14 4-4 14-4-14-14-4 14-4z"/>
+          <path class="s11-star" d="M120 170l3 10 10 3-10 3-3 10-3-10-10-3 10-3z"/>
+          <path class="s11-star" d="M240 220l3 10 10 3-10 3-3 10-3-10-10-3 10-3z"/>
+          <path class="s11-star" d="M40 290l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+          <path class="s11-star" d="M180 330l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/>
+        </svg>
+        <div class="s11-chrome"><b>N° 11</b><i></i><span>Le soir</span></div>
+        <h2 class="s11-title"><span class="s11-m"><span class="s11-l">Pack</span></span><span class="s11-m"><span class="s11-l"><em>Harmonie.</em></span></span></h2>
+        <div class="s11-rule" aria-hidden="true"></div>
+        <p class="s11-kicker">ASHWAGANDHA · MAGNÉSIUM THRÉONATE</p>
+        <div class="s11-ph s11-produits"><img data-layout-allow-overflow src="assets/v3/harmonie-nuit-produits.jpg" alt="Ashwagandha Gummies et Magnesium Threonate"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="11-harmonie-nuit"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s11-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s11-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s11-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s11-stage'),{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s11-world'),{yPercent:-6},{yPercent:0,duration:1.25,ease:'power3.out'},0);
+      settle('.s11-femme img',.1,1.25,2.8);
+      tl.fromTo(q('.s11-key'),{scaleY:0},{scaleY:1,duration:.9,ease:'power3.inOut'},.7);
+      tl.fromTo(q('.s11-crescent'),{scale:.3,opacity:0,rotation:-30,transformOrigin:'50% 50%'},{scale:1,opacity:1,rotation:0,duration:1.2,ease:'expo.out'},.55);
+      tl.fromTo(qa('.s11-star'),{scale:0,opacity:0,transformOrigin:'50% 50%'},{scale:1,opacity:1,duration:.6,ease:'back.out(3)',stagger:.14},.8);
+      lines('.s11-title .s11-l',.5);
+      chrome(.8); rule(1.2);
+      track(q('.s11-kicker'),.3,1.3,1.1);
+      tl.fromTo(q('.s11-produits'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.95,ease:'power4.inOut'},1);
+      settle('.s11-produits img',1,1.25,1.8);
+      // Trois gouttes tombent l'une après l'autre : une seule fois chacune
+      ['.s11-d1','.s11-d2','.s11-d3'].forEach((d,i)=>{
+        const at=1.3+i*.55;
+        tl.fromTo(q(d),{y:0,opacity:0},{opacity:1,duration:.08,ease:'none'},at);
+        tl.to(q(d),{y:cqh(14),duration:.55,ease:'power2.in'},at);
+        tl.to(q(d),{opacity:0,duration:.06,ease:'none'},at+.52);
+      });
+
+      window.__timelines['11-harmonie-nuit']=tl;
+    })();
+  </script>
+</template>

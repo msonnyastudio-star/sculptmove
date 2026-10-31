@@ -32,7 +32,7 @@ function tidy(text: string) {
   return cut.slice(0, Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('\n'), 200) + 1).trim()
 }
 
-export async function answerChat({ message, history, lang }: ChatInput, env: Env): Promise<ChatResult> {
+export async function answerChat({ message, history, lang, page }: ChatInput, env: Env): Promise<ChatResult> {
   const text = MESSAGES[lang]
   if (isInjection(message)) return { kind: 'refusal', text: text.refusal, products: [] }
 
@@ -45,7 +45,7 @@ export async function answerChat({ message, history, lang }: ChatInput, env: Env
 
   const turns = historyForProvider(history)
   const recent = turns.map((turn) => turn.content).join(' ')
-  const result = await generateWithFailover({ system: buildSystemPrompt(lang, message, recent), turns: [...turns, { role: 'user', content: message }] }, env)
+  const result = await generateWithFailover({ system: buildSystemPrompt(lang, message, recent, page), turns: [...turns, { role: 'user', content: message }] }, env)
   if (!result) return { kind: 'fallback', text: text.fallback, products: relevantProducts(message, lang).map((product) => product.slug) }
 
   const reply = tidy(result.text)

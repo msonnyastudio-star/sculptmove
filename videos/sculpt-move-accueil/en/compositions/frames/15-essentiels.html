@@ -1,0 +1,117 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s15-stage{position:absolute;inset:0;overflow:hidden}
+    .s15-ground{position:absolute;inset:0}
+    .s15-world{position:absolute;inset:0}
+    .s15-ph{position:absolute;overflow:hidden}
+    .s15-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s15-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s15-chrome b{font-weight:600}
+    .s15-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s15-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s15-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s15-l{display:block;white-space:nowrap}
+    .s15-l em{font-style:italic;font-weight:500}
+    .s15-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s15-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s15-ch{display:inline-block;white-space:pre}
+    .s15-svg{position:absolute;overflow:visible;fill:none}
+    .s15-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s15-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s15-chrome i{width:5cqw}
+      .s15-title{left:5.4cqw;font-size:11.4cqw}
+      .s15-rule{left:5.4cqw;width:12cqw}
+      .s15-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s15-ground{background:#f8f1e7}
+    #root{color:#2e1239}
+    .s15-chrome b{color:#835a22}
+    .s15-title{top:13cqh;font-size:4.9cqw}
+    .s15-title em{color:#6d2c55}
+    .s15-rule{top:31.6cqh}
+    .s15-kicker{top:34.6cqh;color:#4d2c5c;font-size:1.05cqw;letter-spacing:.18em}
+    .s15-pic{left:43cqw;top:19cqh;width:53cqw;height:61cqh;border-radius:6px}
+    .s15-pic img{object-fit:cover;object-position:50% 50%}
+    .s15-bar3{position:absolute;top:0;bottom:0;background:#f8f1e7}
+    .s15-b1{left:0;width:34%}
+    .s15-b2{left:34%;width:33%}
+    .s15-b3{left:67%;width:33%}
+    .s15-list{position:absolute;left:5cqw;top:44cqh;display:grid;gap:3cqh}
+    .s15-ess{display:flex;align-items:center;gap:1.2cqw;font-weight:500;font-size:2.2cqw;line-height:1.05;white-space:nowrap}
+    .s15-ic{position:relative;flex:none;width:4.6cqw;height:4.6cqw}
+    .s15-ic circle,.s15-ic path{stroke:#6d2c55;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    @container (max-aspect-ratio: 1/1){
+      .s15-title{top:9.4cqh;font-size:9.8cqw}
+      .s15-rule{top:27cqh}
+      .s15-kicker{top:29cqh;font-size:2.4cqw;letter-spacing:.12em}
+      .s15-pic{left:5.4cqw;top:33.4cqh;width:89.2cqw;height:39cqh}
+      .s15-list{left:5.4cqw;top:74.4cqh;gap:1.6cqh}
+      .s15-ess{font-size:5cqw;gap:2.4cqw}
+      .s15-ic{width:7.4cqw;height:7.4cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="15-essentiels" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s15-stage">
+      <div id="s15-ground" class="clip s15-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s15-world">
+        <div class="s15-chrome"><b>N° 15</b><i></i><span>The essentials</span></div>
+        <h2 class="s15-title"><span class="s15-m"><span class="s15-l">Menopause &amp;</span></span><span class="s15-m"><span class="s15-l"><em>perimenopause.</em></span></span></h2>
+        <div class="s15-rule" aria-hidden="true"></div>
+        <p class="s15-kicker">3 ESSENTIALS · ONE ROUTINE</p>
+        <div class="s15-ph s15-pic"><img data-layout-allow-overflow src="assets/v3/meno-trio.jpg" alt="Flacons Evening Primrose Oil, Ashwagandha et Magnésium L-Thréonate"><div class="s15-bar3 s15-b1"></div><div class="s15-bar3 s15-b2"></div><div class="s15-bar3 s15-b3"></div></div>
+        <div class="s15-list">
+          <div class="s15-ess s15-e1"><svg class="s15-svg s15-ic" viewBox="0 0 100 100" aria-hidden="true"><circle pathLength="1" cx="50" cy="50" r="46"/><path pathLength="1" d="M50 24C36 40 32 56 40 68a13 13 0 0 0 20 0c8-12 4-28-10-44z"/></svg><span class="s15-m"><span class="s15-l">Evening Primrose Oil</span></span></div>
+          <div class="s15-ess s15-e2"><svg class="s15-svg s15-ic" viewBox="0 0 100 100" aria-hidden="true"><circle pathLength="1" cx="50" cy="50" r="46"/><path pathLength="1" d="M50 78C34 66 30 46 50 22c20 24 16 44 0 56zM50 78C36 80 24 72 20 54c12-2 20 2 26 10M50 78c14 2 26-6 30-24-12-2-20 2-26 10"/></svg><span class="s15-m"><span class="s15-l">Ashwagandha</span></span></div>
+          <div class="s15-ess s15-e3"><svg class="s15-svg s15-ic" viewBox="0 0 100 100" aria-hidden="true"><circle pathLength="1" cx="50" cy="50" r="46"/><path pathLength="1" d="M60 24a28 28 0 1 0 18 40 24 24 0 0 1-18-40z"/></svg><span class="s15-m"><span class="s15-l">Magnesium L-Threonate</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="15-essentiels"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s15-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s15-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s15-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s15-stage'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s15-world'),{yPercent:6},{yPercent:0,duration:1.25,ease:'power3.out'},0);
+      lines('.s15-title .s15-l',.42);
+      chrome(.7); rule(1.05);
+      track(q('.s15-kicker'),.3,1.1,1);
+      settle('.s15-pic img',.45,1.14,2.6);
+      [1,2,3].forEach((n,i)=>{
+        const at=.75+i*.36;
+        tl.fromTo(q('.s15-b'+n),{yPercent:0},{yPercent:-101,duration:.75,ease:'power4.inOut'},at);
+        draw('.s15-e'+n+' .s15-ic circle,.s15-e'+n+' .s15-ic path',at+.2,.8,.1);
+        tl.fromTo(q('.s15-e'+n+' .s15-l'),{yPercent:115},{yPercent:0,duration:.85,ease:'power4.out'},at+.25);
+      });
+
+      window.__timelines['15-essentiels']=tl;
+    })();
+  </script>
+</template>

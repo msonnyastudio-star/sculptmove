@@ -1,6 +1,8 @@
 import { useEffect, useId, useMemo, useState, type CSSProperties } from 'react'
-import { products, siteConfig, wa, type CartLine, type Product } from './config'
+import { formatTotal, products, siteConfig, wa, type CartLine, type Product } from './config'
 import { Assistant } from './Assistant'
+import { KIMI_PHOTO, openKimi } from './kimi'
+import { BeforeAfter } from './BeforeAfter'
 import { CreamHero } from './CreamHero'
 import { HeroFilm } from './HeroFilm'
 import { Icon } from './Icon'
@@ -72,7 +74,7 @@ function Brand({ onClick }: { onClick: () => void }) {
 function Header({ onNavigate, cartCount, onCart, theme, onTheme }: { onNavigate: (to: string) => void; cartCount: number; onCart: () => void; theme: Theme; onTheme: (origin: HTMLElement) => void }) {
   const { t } = useI18n()
   const [menuOpen, setMenuOpen] = useState(false)
-  const links = [[t.nav.home, '/'], [t.nav.products, '/#produits'], [t.nav.duo, '/produit/beauty-duo'], [t.nav.tips, '/#conseils'], [t.nav.contact, '/#contact']]
+  const links = [[t.nav.home, '/'], [t.nav.products, '/#produits'], [t.nav.duo, '/produit/beauty-duo'], [t.nav.tips, '/#conseils'], [t.nav.shop, '/#boutique'], [t.nav.contact, '/#contact']]
   useEffect(() => {
     if (!menuOpen) return
     const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setMenuOpen(false) }
@@ -125,13 +127,14 @@ function CartDrawer({ cart, setCart, onClose }: { cart: CartLine[]; setCart: Rea
   }, [])
   const lines = cart.map((line) => ({ ...line, product: localized.find((product) => product.slug === line.slug)! }))
   const total = lines.reduce((sum, { product, quantity }) => sum + (product.price ?? 0) * quantity, 0)
-  const message = t.wa.order(lines.map(({ product, quantity }) => ({ name: product.name, quantity, price: price(product.price == null ? null : product.price * quantity) })), price(total), city.trim())
+  const totalLabel = formatTotal(total, lines.some(({ product }) => product.price == null), lang)
+  const message = t.wa.order(lines.map(({ product, quantity }) => ({ name: product.name, quantity, price: price(product.price == null ? null : product.price * quantity) })), totalLabel, city.trim())
   const update = (slug: string, change: number) => setCart((current) => current.map((line) => line.slug === slug ? { ...line, quantity: Math.max(1, line.quantity + change) } : line))
   return <div className={`drawer-backdrop ${closing ? 'is-closing' : ''}`} onMouseDown={(event) => { if (event.target === event.currentTarget) close() }}><section className="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
     <div className="drawer-head"><div><div className="eyebrow">{t.cart.eyebrow}</div><h2 id="cart-title">{t.cart.title}</h2></div><button className="icon-button" aria-label={t.cart.close} onClick={close}><Icon name="close"/></button></div>
     {lines.length === 0 ? <div className="empty-cart"><span className="empty-icon"><Icon name="bag" size={25}/></span><h3>{t.cart.emptyTitle}</h3><p>{t.cart.emptyText}</p><button className="button button-primary" onClick={close}>{t.cart.discover} <Icon name="arrow"/></button></div> : <>
       <div className="cart-lines">{lines.map(({ product, quantity }, index) => <article className="cart-line" key={product.slug} style={{ '--i': index } as CSSProperties}><img src={product.image} alt=""/><div className="cart-line-copy"><h3>{product.name}</h3><span>{price(product.price)}</span><div className="quantity"><button aria-label={t.cart.less(product.name)} onClick={() => update(product.slug, -1)}><Icon name="minus" size={15}/></button><span key={quantity}>{quantity}</span><button aria-label={t.cart.more(product.name)} onClick={() => update(product.slug, 1)}><Icon name="plus" size={15}/></button></div></div><button className="remove-item" aria-label={t.cart.remove(product.name)} onClick={() => setCart((current) => current.filter((line) => line.slug !== product.slug))}><Icon name="trash" size={18}/></button></article>)}</div>
-      <div className="drawer-checkout"><div className="cart-total"><span>{t.cart.total} <small>{t.cart.excl}</small></span><b key={`${total}-${lang}`}>{price(total)}</b></div><label htmlFor="city">{t.cart.city} <span>{t.cart.cityHint}</span></label><input id="city" value={city} onChange={(event) => setCity(event.target.value)} placeholder={t.cart.cityPlaceholder} autoComplete="address-level2"/><p>{t.cart.note}</p><a className="button button-primary checkout-button" href={wa(message)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.cart.checkout} <Icon name="arrow" size={17}/></a></div>
+      <div className="drawer-checkout"><div className="cart-total"><span>{t.cart.total} <small>{t.cart.excl}</small></span><b key={`${total}-${lang}`}>{totalLabel}</b></div><label htmlFor="city">{t.cart.city} <span>{t.cart.cityHint}</span></label><input id="city" value={city} onChange={(event) => setCity(event.target.value)} placeholder={t.cart.cityPlaceholder} autoComplete="address-level2"/><p>{t.cart.note}</p><a className="button button-primary checkout-button" href={wa(message)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.cart.checkout} <Icon name="arrow" size={17}/></a><button type="button" className="cart-kimi" onClick={() => { close(); openKimi() }}>{t.cart.askKimi}</button></div>
     </>}
   </section></div>
 }
@@ -160,18 +163,59 @@ function Delivery() {
   </div></section>
 }
 
+function KimiBand() {
+  const { t } = useI18n()
+  return <section className="kimi-band" id="kimi"><div className="kimi-band-inner" data-reveal="up">
+    <img className="kimi-band-photo" src={KIMI_PHOTO} alt="" width="256" height="256" loading="lazy"/>
+    <div>
+      <div className="eyebrow">{t.kimiBand.eyebrow}</div>
+      <Title lead={t.kimiBand.title[0]} accent={t.kimiBand.title[1]}/>
+      <p>{t.kimiBand.text}</p>
+      <div className="kimi-band-actions">
+        <button type="button" className="button button-primary" onClick={() => openKimi()}>{t.kimiBand.cta} <Icon name="arrow" size={17}/></button>
+        {t.kimiBand.questions.map((question) => <button type="button" className="kimi-band-question" key={question} onClick={() => openKimi({ ask: question })}>{question}</button>)}
+      </div>
+    </div>
+  </div></section>
+}
+
+function Shop() {
+  const { t, lang } = useI18n()
+  return <section className="shop-section" id="boutique">
+    <div className="shop-head">
+      <div className="shop-copy">
+        <div className="eyebrow" data-reveal="up">{t.shop.eyebrow}</div>
+        <Title lead={t.shop.title[0]} accent={t.shop.title[1]}/>
+        <p data-reveal="up" style={delay(200)}>{t.shop.text}</p>
+      </div>
+      <div className="shop-visit" data-reveal="up" style={delay(280)}>
+        <span className="shop-address"><Icon name="pin" size={17}/> {siteConfig.address[lang]}</span>
+        <a className="button button-primary" href={wa(t.wa.shop)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.shop.cta} <Icon name="arrow" size={17}/></a>
+        <small>{t.shop.note}</small>
+      </div>
+    </div>
+    <div className="shop-photos">
+      <div className="shop-photo" data-reveal="image"><img src="/images/boutique-facade.jpg" alt={t.shop.altFront} width="1280" height="853" loading="lazy"/></div>
+      <div className="shop-photo" data-reveal="image" style={delay(140)}><img src="/images/boutique-accueil.jpg" alt={t.shop.altCounter} width="1280" height="853" loading="lazy"/></div>
+    </div>
+  </section>
+}
+
 function Home({ onNavigate, onAdd }: { onNavigate: (to: string) => void; onAdd: (slug: string, quantity?: number) => void }) {
   const { t, products: localized } = useI18n()
   return <main>
-    <HeroFilm onDiscover={() => scrollToId('produits')} whatsappUrl={wa(t.wa.hero)}/>
+    <HeroFilm onDiscover={() => scrollToId('produits')} onTalk={() => openKimi()}/>
     <CreamHero onDiscover={() => onNavigate('/produit/pdrn-repair-cream')} onCollection={() => scrollToId('produits')}/>
     <Marquee/>
     <section className="intro-band"><div className="intro-inner" data-reveal="up"><span className="intro-logo"><img src="/images/sculpt-move-logo.jpg" alt="" width="1280" height="960" loading="lazy"/></span><p>{t.intro.text}</p><a href="#univers" onClick={(event) => { event.preventDefault(); scrollToId('univers') }}>{t.intro.link} <Icon name="arrow" size={16}/></a></div></section>
-    <section className="products-section section-shell" id="produits"><div className="section-heading"><div><div className="eyebrow" data-reveal="up">{t.productsSection.eyebrow}</div><Title lead={t.productsSection.title[0]} accent={t.productsSection.title[1]}/></div><p data-reveal="up" style={delay(250)}>{t.productsSection.text}</p></div><div className="products-grid">{localized.map((product, index) => <ProductCard key={product.slug} index={index} product={product} onNavigate={onNavigate} onAdd={onAdd}/>)}</div></section>
+    <section className="products-section section-shell" id="produits"><div className="section-heading"><div><div className="eyebrow" data-reveal="up">{t.productsSection.eyebrow}</div><Title lead={t.productsSection.title[0]} accent={t.productsSection.title[1]}/></div><p data-reveal="up" style={delay(250)}>{t.productsSection.text}</p></div><div className="products-grid">{localized.map((product, index) => <ProductCard key={product.slug} index={index % 3} product={product} onNavigate={onNavigate} onAdd={onAdd}/>)}</div></section>
+    <KimiBand/>
     <Delivery/>
-    <section className="duo-section" id="duo"><div className="duo-inner"><div className="duo-photo" data-reveal="image" data-parallax="26"><img src="/images/multi-collagene.jpg" alt={t.duo.alt} loading="lazy"/><span className="photo-label">{t.duo.label}</span></div><div className="duo-content"><div className="eyebrow" data-reveal="up">{t.duo.eyebrow}</div><Title lead={t.duo.title[0]} accent={t.duo.title[1]} br/><p data-reveal="up" style={delay(200)}>{t.duo.text}</p><div className="duo-pair">{t.duo.items.map(([title, text], index) => <div className="duo-item" key={index} data-reveal="up" style={delay(280 + index * 120)}><span className="duo-number">0{index + 1}</span><div><b>{title}</b><small>{text}</small></div></div>)}</div><div data-reveal="up" style={delay(500)}><button className="button button-dark" onClick={() => onNavigate('/produit/beauty-duo')}>{t.duo.cta} <Icon name="arrow"/></button></div></div></div></section>
+    <Shop/>
+    <section className="duo-section" id="duo"><div className="duo-inner"><div className="duo-photo" data-reveal="image"><img src="/images/sculpt-move-duo.jpg" alt={t.duo.alt} loading="lazy"/></div><div className="duo-content"><div className="eyebrow" data-reveal="up">{t.duo.eyebrow}</div><Title lead={t.duo.title[0]} accent={t.duo.title[1]} br/><p data-reveal="up" style={delay(200)}>{t.duo.text}</p><div className="duo-pair">{t.duo.items.map(([title, text], index) => <div className="duo-item" key={index} data-reveal="up" style={delay(280 + index * 120)}><span className="duo-number">0{index + 1}</span><div><b>{title}</b><small>{text}</small></div></div>)}</div><div data-reveal="up" style={delay(500)}><button className="button button-dark" onClick={() => onNavigate('/produit/beauty-duo')}>{t.duo.cta} <Icon name="arrow"/></button></div></div></div></section>
+    <BeforeAfter/>
     <section className="brand-section" id="univers"><div className="brand-copy"><div className="eyebrow eyebrow-gold" data-reveal="up">{t.brand.eyebrow}</div><Title lead={t.brand.title[0]} accent={t.brand.title[1]} br/><p data-reveal="up" style={delay(200)}>{t.brand.text}</p><a href="#conseils" data-reveal="up" style={delay(300)} onClick={(event) => { event.preventDefault(); scrollToId('conseils') }}>{t.brand.link} <Icon name="arrow" size={17}/></a></div><div className="brand-image" data-reveal="image" data-parallax="30"><img src="/images/sculpt-move-duo.jpg" alt={t.brand.alt} loading="lazy"/><div className="brand-image-caption"><span>BEAUTY STARTS</span><em>from within</em></div></div><div className="brand-values" data-reveal="line">{t.brand.values.map(([title, text], index) => <div key={index} data-reveal="up" style={delay(index * 140)}><span>0{index + 1}</span><b>{title}</b><small>{text}</small></div>)}</div></section>
-    <section className="guidance-section" id="conseils"><div className="guidance-image" data-reveal="image" data-parallax="22"><img src="/images/conseils-gummies.jpg" alt={t.guidance.alt} loading="lazy"/></div><div className="guidance-copy"><div className="eyebrow" data-reveal="up">{t.guidance.eyebrow}</div><Title lead={t.guidance.title}/><p data-reveal="up" style={delay(200)}>{t.guidance.p1}</p><p data-reveal="up" style={delay(280)}>{t.guidance.p2}</p><a className="text-link" data-reveal="up" style={delay(360)} href={wa(t.wa.guidance)} target="_blank" rel="noreferrer">{t.guidance.link} <Icon name="arrow" size={17}/></a></div></section>
+    <section className="guidance-section" id="conseils"><div className="guidance-image" data-reveal="image" data-parallax="22"><img src="/images/conseils-gummies.jpg" alt={t.guidance.alt} loading="lazy"/></div><div className="guidance-copy"><div className="eyebrow" data-reveal="up">{t.guidance.eyebrow}</div><Title lead={t.guidance.title}/><p data-reveal="up" style={delay(200)}>{t.guidance.p1}</p><p data-reveal="up" style={delay(280)}>{t.guidance.p2}</p><button type="button" className="text-link" data-reveal="up" style={delay(360)} onClick={() => openKimi()}>{t.guidance.link} <Icon name="arrow" size={17}/></button></div></section>
     <Faq onNavigate={onNavigate}/><Contact/>
   </main>
 }
@@ -184,7 +228,7 @@ function Faq({ onNavigate }: { onNavigate: (to: string) => void }) {
 
 function Contact() {
   const { t, lang } = useI18n()
-  return <section className="contact-section" id="contact"><div className="contact-inner"><div><div className="eyebrow eyebrow-gold" data-reveal="up">{t.contact.eyebrow}</div><Title lead={t.contact.title[0]} accent={t.contact.title[1]}/><p data-reveal="up" style={delay(200)}>{t.contact.text}</p><div className="contact-details" data-reveal="up" style={delay(280)}><a href={`mailto:${siteConfig.email}`}><Icon name="mail" size={16}/> {siteConfig.email}</a><span><Icon name="pin" size={16}/> {siteConfig.address[lang]}</span></div></div><div data-reveal="up" style={delay(320)}><a className="button button-gold" href={wa(t.wa.contact)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.contact.cta} <Icon name="arrow"/></a></div></div></section>
+  return <section className="contact-section" id="contact"><div className="contact-inner"><div><div className="eyebrow eyebrow-gold" data-reveal="up">{t.contact.eyebrow}</div><Title lead={t.contact.title[0]} accent={t.contact.title[1]}/><p data-reveal="up" style={delay(200)}>{t.contact.text}</p><div className="contact-details" data-reveal="up" style={delay(280)}><a href={`mailto:${siteConfig.email}`}><Icon name="mail" size={16}/> {siteConfig.email}</a><span><Icon name="pin" size={16}/> {siteConfig.address[lang]}</span></div></div><div className="contact-actions" data-reveal="up" style={delay(320)}><button type="button" className="button button-gold" onClick={() => openKimi()}><img className="kimi-face" src={KIMI_PHOTO} alt=""/> {t.contact.cta} <Icon name="arrow"/></button><a className="contact-whatsapp" href={wa(t.wa.contact)} target="_blank" rel="noreferrer"><Icon name="whatsapp" size={15}/> {t.contact.whatsapp}</a></div></div></section>
 }
 
 function ProductPage({ product, onNavigate, onAdd }: { product: Product; onNavigate: (to: string) => void; onAdd: (slug: string, quantity?: number) => void }) {
@@ -209,12 +253,14 @@ function ProductPage({ product, onNavigate, onAdd }: { product: Product; onNavig
         <div className="detail-format" data-reveal="up" style={delay(300)}><span>{t.product.format}</span><b>{product.format}</b>{product.confirmationNote && <small>{product.confirmationNote}</small>}</div>
         <div className="detail-points" data-reveal="up" style={delay(360)}>{product.highlights.map((point) => <div key={point}><span className="check-mark">✓</span>{point}</div>)}</div>
         <div className="detail-quantity" data-reveal="up" style={delay(420)}><span>{t.product.quantity}</span><div className="quantity"><button aria-label={t.product.less} onClick={() => setQuantity((value) => Math.max(1, value - 1))}><Icon name="minus" size={15}/></button><span key={quantity}>{quantity}</span><button aria-label={t.product.more} onClick={() => setQuantity((value) => value + 1)}><Icon name="plus" size={15}/></button></div></div>
-        <div className="detail-actions" data-reveal="up" style={delay(480)}><button className="button button-primary" onClick={() => onAdd(product.slug, quantity)}><Icon name="bag"/> {t.card.add}</button><a className="button button-soft" href={wa(t.wa.product(product.name))} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.product.order}</a></div>
+        <div className="detail-actions" data-reveal="up" style={delay(480)}><button className="button button-primary" onClick={() => onAdd(product.slug, quantity)}><Icon name="bag"/> {t.card.add}</button><button type="button" className="button button-soft" onClick={() => openKimi({ slug: product.slug, quantity })}><img className="kimi-face" src={KIMI_PHOTO} alt=""/> {t.product.order}</button></div>
         <div className="usage-card" data-reveal="up" style={delay(540)}><div><b>{t.product.usage}</b><p>{product.usage}</p></div></div>
-        <p className="supplement-note">{product.category === 'skincare' ? t.product.skincareNote : t.product.supplementNote}</p>
+        {product.category !== 'equipment' && <p className="supplement-note">{product.category === 'skincare' ? t.product.skincareNote : t.product.supplementNote}</p>}
       </div>
     </section>
-    <section className="detail-more"><div><div className="eyebrow" data-reveal="up">{t.product.moreEyebrow}</div><Title lead={t.product.moreTitle[0]} accent={t.product.moreTitle[1]}/></div><div className="detail-more-products">{localized.filter((item) => item.slug !== product.slug).map((item, index) => <button key={item.slug} data-reveal="up" style={delay(index * 100)} onClick={() => onNavigate(`/produit/${item.slug}`)}><img src={item.image} alt=""/><span>{item.name}<small>{price(item.price)}</small></span><Icon name="arrow" size={18}/></button>)}</div></section>
+    {product.story && <section className="detail-story"><div className="eyebrow" data-reveal="up">{t.product.benefits}</div><div className="detail-story-grid">{product.story.map((section) => <div className="detail-story-block" key={section.title} data-reveal="up"><h2>{section.title}</h2>{section.paragraphs?.map((text) => <p key={text}>{text}</p>)}{section.points && <ul>{section.points.map((point) => typeof point === 'string' ? <li key={point}>{point}</li> : <li key={point.label}><b>{point.label}</b> : {point.text}</li>)}</ul>}</div>)}</div><p className="detail-story-note">{t.product.benefitsNote}</p></section>}
+    {product.slug === 'beauty-duo' && <BeforeAfter/>}
+    <section className="detail-more"><div><div className="eyebrow" data-reveal="up">{t.product.moreEyebrow}</div><Title lead={t.product.moreTitle[0]} accent={t.product.moreTitle[1]}/></div><div className="detail-more-products">{localized.filter((item) => item.slug !== product.slug).slice(0, 4).map((item, index) => <button key={item.slug} data-reveal="up" style={delay(index * 100)} onClick={() => onNavigate(`/produit/${item.slug}`)}><img src={item.image} alt=""/><span>{item.name}<small>{price(item.price)}</small></span><Icon name="arrow" size={18}/></button>)}</div></section>
     {zoomOpen && <div className="lightbox" role="dialog" aria-modal="true" aria-label={t.product.lightbox(product.name)} onClick={() => setZoomOpen(false)}><button className="icon-button" aria-label={t.product.closeImage} onClick={() => setZoomOpen(false)}><Icon name="close"/></button><img src={product.image} alt={product.imageAlt}/></div>}
   </main>
 }
@@ -241,7 +287,7 @@ function Footer({ onNavigate }: { onNavigate: (to: string) => void }) {
   const { t, lang } = useI18n()
   return <footer className="site-footer"><div className="footer-main">
     <div className="footer-brand"><Brand onClick={() => onNavigate('/')}/><p>{t.footer.tagline}</p><a href={wa(t.wa.footer)} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {siteConfig.whatsappDisplay}</a></div>
-    <div className="footer-nav"><b>{t.footer.explore}</b><button onClick={() => onNavigate('/')}>{t.nav.home}</button><button onClick={() => onNavigate('/#produits')}>{t.nav.products}</button><button onClick={() => onNavigate('/produit/beauty-duo')}>{t.nav.duo}</button><button onClick={() => onNavigate('/#livraison')}>{t.nav.delivery}</button><button onClick={() => onNavigate('/#conseils')}>{t.nav.tips}</button></div>
+    <div className="footer-nav"><b>{t.footer.explore}</b><button onClick={() => onNavigate('/')}>{t.nav.home}</button><button onClick={() => onNavigate('/#produits')}>{t.nav.products}</button><button onClick={() => onNavigate('/produit/beauty-duo')}>{t.nav.duo}</button><button onClick={() => onNavigate('/#livraison')}>{t.nav.delivery}</button><button onClick={() => onNavigate('/#boutique')}>{t.nav.shop}</button><button onClick={() => onNavigate('/#conseils')}>{t.nav.tips}</button></div>
     <div className="footer-legal"><b>{t.footer.info}</b><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><span>{siteConfig.address[lang]}</span><span>{t.footer.shipping}</span><a href="/mentions-legales" onClick={(event) => { event.preventDefault(); onNavigate('/mentions-legales') }}>{t.footer.legal}</a></div>
   </div><div className="footer-bottom"><span>© {new Date().getFullYear()} SCULPT MOVE · WELLNESS PARTNER</span><span>{t.product.supplementNote}</span></div></footer>
 }
@@ -285,7 +331,7 @@ function Site() {
     <div id="contenu">{isLegal ? <LegalPage onNavigate={navigate}/> : product ? <ProductPage key={product.slug} product={product} onNavigate={navigate} onAdd={add}/> : path.startsWith('/produit/') ? <main className="not-found"><div className="eyebrow">SCULPT MOVE</div><h1>{t.product.notFound}</h1><button className="button button-primary" onClick={() => navigate('/')}>{t.product.backHome} <Icon name="arrow"/></button></main> : <Home onNavigate={navigate} onAdd={add}/>}</div>
     <Footer onNavigate={navigate}/>
     {cartOpen && <CartDrawer cart={cart} setCart={setCart} onClose={() => setCartOpen(false)}/>}
-    <Assistant cart={cart} setCart={setCart} onNavigate={navigate}/>
+    <Assistant cart={cart} setCart={setCart} onNavigate={navigate} productSlug={product?.slug}/>
     {toast.text && <div className="toast" role="status" key={toast.id}><Icon name="bag" size={16}/> {toast.text}{toast.reminder && <button type="button" onClick={() => { setCartOpen(true); setToast((current) => ({ ...current, text: '' })) }}>{t.cartReminder.view}</button>}</div>}
   </div>
 }

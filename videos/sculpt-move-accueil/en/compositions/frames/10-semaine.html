@@ -1,0 +1,108 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s10-stage{position:absolute;inset:0;overflow:hidden}
+    .s10-ground{position:absolute;inset:0}
+    .s10-world{position:absolute;inset:0}
+    .s10-ph{position:absolute;overflow:hidden}
+    .s10-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s10-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s10-chrome b{font-weight:600}
+    .s10-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s10-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s10-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s10-l{display:block;white-space:nowrap}
+    .s10-l em{font-style:italic;font-weight:500}
+    .s10-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s10-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s10-ch{display:inline-block;white-space:pre}
+    .s10-svg{position:absolute;overflow:visible;fill:none}
+    .s10-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s10-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s10-chrome i{width:5cqw}
+      .s10-title{left:5.4cqw;font-size:11.4cqw}
+      .s10-rule{left:5.4cqw;width:12cqw}
+      .s10-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s10-ground{background:linear-gradient(120deg,#ece4f6,#d6c6ea)}
+    #root{color:#3a1c55}
+    .s10-chrome b{color:#6b2f8e}
+    .s10-title{top:16.6cqh;font-size:5.6cqw}
+    .s10-title em{color:#6b2f8e}
+    .s10-femme{left:66cqw;top:0;bottom:0;width:34cqw}
+    .s10-femme img{object-position:50% 12%;transform-origin:50% 25%}
+    .s10-bar{position:absolute;left:66cqw;top:0;bottom:0;width:2px;background:#6b2f8e;transform-origin:50% 0}
+    .s10-week{position:absolute;left:5cqw;top:40cqh;display:flex;gap:.9cqw}
+    .s10-week i{display:grid;place-items:center;width:3cqw;height:3cqw;border-radius:50%;background:#6b2f8e;color:#fff;font-family:"Montserrat";font-style:normal;font-weight:600;font-size:1cqw;line-height:1}
+    .s10-kicker{top:49.4cqh;color:#3a1c55;font-size:1cqw;letter-spacing:.16em}
+    .s10-produits{left:5cqw;top:56cqh;width:41cqw;height:37cqh;border-radius:6px;box-shadow:0 1cqw 2.6cqw rgba(58,28,85,.28)}
+    @container (max-aspect-ratio: 1/1){
+      .s10-title{top:10cqh;font-size:9.4cqw}
+      .s10-femme{left:48cqw;top:30cqh;bottom:0;width:52cqw}
+      .s10-bar{left:48cqw;top:30cqh}
+      .s10-week{left:5.4cqw;top:26.4cqh;gap:2cqw}
+      .s10-week i{width:6.6cqw;height:6.6cqw;font-size:2.4cqw}
+      .s10-kicker{top:34.4cqh;width:40cqw;font-size:2.2cqw;letter-spacing:.1em}
+      .s10-produits{left:5.4cqw;top:64cqh;width:66cqw;height:33cqh}
+    }
+  </style>
+  <div id="root" data-composition-id="10-semaine" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s10-stage">
+      <div id="s10-ground" class="clip s10-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s10-world">
+        <div class="s10-ph s10-femme"><img data-layout-allow-overflow src="assets/v3/semaine-femme.jpg" alt="Femme souriante avec tapis de yoga et gourde Sculpt Move"></div>
+        <div class="s10-bar" aria-hidden="true"></div>
+        <div class="s10-chrome"><b>N° 10</b><i></i><span>The week</span></div>
+        <h2 class="s10-title"><span class="s10-m"><span class="s10-l">New week,</span></span><span class="s10-m"><span class="s10-l"><em>new you.</em></span></span></h2>
+        <div class="s10-week" aria-hidden="true"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i></div>
+        <p class="s10-kicker">DETOX · GLUTATHIONE · COLLAGEN · KETO BURN</p>
+        <div class="s10-ph s10-produits"><img data-layout-allow-overflow src="assets/v3/semaine-produits.jpg" alt="Gamme Detox, Glutathione, Collagène et Keto Burn"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="10-semaine"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s10-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s10-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s10-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s10-stage'),{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s10-world'),{xPercent:-5},{xPercent:0,duration:1.25,ease:'power3.out'},0);
+      tl.fromTo(q('.s10-femme'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.05,ease:'power4.inOut'},.3);
+      settle('.s10-femme img',.3,1.28,2.6);
+      tl.fromTo(q('.s10-bar'),{scaleY:0},{scaleY:1,duration:1,ease:'power3.inOut'},.55);
+      lines('.s10-title .s10-l',.5);
+      chrome(.8);
+      tl.fromTo(qa('.s10-week i'),{scale:0,opacity:0},{scale:1,opacity:1,duration:.5,ease:'back.out(2.2)',stagger:.09},1.05);
+      track(q('.s10-kicker'),.26,1.55,1);
+      tl.fromTo(q('.s10-produits'),{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.95,ease:'power4.inOut'},1.2);
+      settle('.s10-produits img',1.2,1.25,1.8);
+
+      window.__timelines['10-semaine']=tl;
+    })();
+  </script>
+</template>

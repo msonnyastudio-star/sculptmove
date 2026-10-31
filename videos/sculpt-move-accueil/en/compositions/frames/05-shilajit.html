@@ -1,0 +1,106 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s5-stage{position:absolute;inset:0;overflow:hidden}
+    .s5-ground{position:absolute;inset:0}
+    .s5-world{position:absolute;inset:0}
+    .s5-ph{position:absolute;overflow:hidden}
+    .s5-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s5-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s5-chrome b{font-weight:600}
+    .s5-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s5-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s5-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s5-l{display:block;white-space:nowrap}
+    .s5-l em{font-style:italic;font-weight:500}
+    .s5-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s5-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s5-ch{display:inline-block;white-space:pre}
+    .s5-svg{position:absolute;overflow:visible;fill:none}
+    .s5-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s5-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s5-chrome i{width:5cqw}
+      .s5-title{left:5.4cqw;font-size:11.4cqw}
+      .s5-rule{left:5.4cqw;width:12cqw}
+      .s5-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s5-ground{background:radial-gradient(90% 90% at 66% 46%,#f0dba6 0%,#d7b36a 55%,#b58a3c 100%)}
+    #root{color:#14100a}
+    .s5-chrome b{color:#3f2c0b}
+    .s5-title{top:27cqh}
+    .s5-title em{color:#4d350c}
+    .s5-rule{top:52cqh;background:#14100a}
+    .s5-kicker{top:55.6cqh;color:#2a1e08}
+    .s5-origin{top:60.6cqh;font-size:.95cqw;letter-spacing:.28em}
+    .s5-pot{position:absolute;left:39cqw;top:19cqh;width:57cqw;height:62cqh;object-fit:contain}
+    .s5-ridge{left:0;right:0;bottom:0;width:100cqw;height:46cqh}
+    .s5-ridge path{stroke:#14100a;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+    .s5-moon{left:84cqw;top:6cqh;width:7cqw;height:7cqw;fill:#14100a}
+    @container (max-aspect-ratio: 1/1){
+      .s5-title{top:11cqh}
+      .s5-rule{top:32cqh}
+      .s5-kicker{top:34cqh}
+      .s5-origin{top:37.4cqh;font-size:2.2cqw}
+      .s5-pot{left:3cqw;top:43cqh;width:94cqw;height:46cqh}
+      .s5-moon{left:78cqw;top:4cqh;width:13cqw;height:13cqw}
+      .s5-ridge{height:34cqh}
+    }
+  </style>
+  <div id="root" data-composition-id="05-shilajit" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s5-stage">
+      <div id="s5-ground" class="clip s5-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s5-world">
+        <svg class="s5-svg s5-ridge" viewBox="0 0 1920 500" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-20 470 L240 250 L360 360 L620 90 L840 340 L1010 210 L1200 400 L1460 130 L1660 330 L1780 240 L1940 380"/><path pathLength="1" d="M120 500 L420 300 L560 400 L800 240 L1040 480 M1250 480 L1500 280 L1720 470"/></svg>
+        <svg class="s5-svg s5-moon" viewBox="0 0 100 100" aria-hidden="true"><path d="M62 6a46 46 0 1 0 32 74A40 40 0 0 1 62 6z"/></svg>
+        <img class="s5-pot" data-layout-allow-overflow src="assets/v3/shilajit.png" alt="Pot et étui de Shilajit Resin">
+        <div class="s5-chrome"><b>N° 05</b><i></i><span>Shilajit</span></div>
+        <h2 class="s5-title"><span class="s5-m"><span class="s5-l">Treasure</span></span><span class="s5-m"><span class="s5-l"><em>of the Himalayas.</em></span></span></h2>
+        <div class="s5-rule" aria-hidden="true"></div>
+        <p class="s5-kicker">SHILAJIT RESIN · 50 G JAR</p>
+        <p class="s5-kicker s5-origin">ORIGINAL HIMALAYAN</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="05-shilajit"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s5-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s5-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s5-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s5-stage'),{clipPath:'circle(0% at 87% 12%)'},{clipPath:'circle(150% at 87% 12%)',duration:.95,ease:'power3.inOut'},0);
+      tl.fromTo(q('.s5-moon'),{scale:.4,rotation:-40},{scale:1,rotation:0,duration:1.5,ease:'expo.out'},.05);
+      draw('.s5-ridge path',.45,1.5,.25);
+      tl.fromTo(q('.s5-pot'),{scale:1.22,yPercent:7,opacity:0},{scale:1,yPercent:0,opacity:1,duration:1.7,ease:'expo.out'},.55);
+      lines('.s5-title .s5-l',.6);
+      chrome(.85); rule(1.3);
+      track(q('.s5-kicker:not(.s5-origin)'),.34,1.4,1.1);
+      tl.fromTo(q('.s5-origin'),{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},1.85);
+
+      window.__timelines['05-shilajit']=tl;
+    })();
+  </script>
+</template>

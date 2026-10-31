@@ -1,0 +1,114 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s8-stage{position:absolute;inset:0;overflow:hidden}
+    .s8-ground{position:absolute;inset:0}
+    .s8-world{position:absolute;inset:0}
+    .s8-ph{position:absolute;overflow:hidden}
+    .s8-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s8-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s8-chrome b{font-weight:600}
+    .s8-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s8-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s8-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s8-l{display:block;white-space:nowrap}
+    .s8-l em{font-style:italic;font-weight:500}
+    .s8-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s8-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s8-ch{display:inline-block;white-space:pre}
+    .s8-svg{position:absolute;overflow:visible;fill:none}
+    .s8-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s8-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s8-chrome i{width:5cqw}
+      .s8-title{left:5.4cqw;font-size:11.4cqw}
+      .s8-rule{left:5.4cqw;width:12cqw}
+      .s8-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s8-ground{background:radial-gradient(70% 90% at 72% 50%,#3a2859 0%,#17111f 70%)}
+    #root{color:#fbf7f0}
+    .s8-chrome b{color:#f0b8d2}
+    .s8-title{top:21cqh}
+    .s8-title em{color:#d9a6f0}
+    .s8-rule{top:46cqh;background:#e0417f}
+    .s8-kicker{top:49.6cqh;color:#e9e1f2;font-size:1cqw;letter-spacing:.16em}
+    .s8-tapis{left:37cqw;top:31cqh;width:60cqw;height:54cqh;border-radius:6px;-webkit-mask-image:linear-gradient(to right,transparent,#000 10%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 14%,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 10%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 14%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+    .s8-tapis img{object-fit:cover}
+    .s8-femme{left:76cqw;top:5cqh;width:17cqw;height:32cqh;border-radius:6px;box-shadow:0 1cqw 3cqw rgba(0,0,0,.5)}
+    .s8-band{left:37cqw;top:10cqh;width:36cqw;height:18cqh}
+    .s8-band path{stroke:#e0417f;stroke-width:6;stroke-linecap:round}
+    .s8-band circle{fill:#d9a6f0}
+    .s8-price{left:5cqw;top:60cqh;width:19cqw;height:10cqh;font-size:2.3cqw;color:#fff;background:#e0417f;border-radius:4px}
+    @container (max-aspect-ratio: 1/1){
+      .s8-title{top:10cqh}
+      .s8-rule{top:29.6cqh}
+      .s8-kicker{top:31.4cqh;font-size:2.2cqw;letter-spacing:.1em}
+      .s8-tapis{left:0;top:45cqh;width:100cqw;height:40.6cqh}
+      .s8-femme{left:66cqw;top:8cqh;width:29cqw;height:21cqh}
+      .s8-band{left:5.4cqw;top:35cqh;width:89cqw;height:10cqh}
+      .s8-price{left:5.4cqw;top:88.4cqh;width:40cqw;height:7.4cqh;font-size:4.6cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="08-pilates" data-width="1080" data-height="1350" data-duration="4.05">
+    <div class="s8-stage">
+      <div id="s8-ground" class="clip s8-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s8-world">
+        <div class="s8-ph s8-tapis"><img data-layout-allow-overflow src="assets/v3/pilates-tapis.jpg" alt="Pack Pilates : tapis violet, bandes, barre, serviette et gourde"></div>
+        <div class="s8-ph s8-femme"><img data-layout-allow-overflow src="assets/v3/pilates-femme.jpg" alt="Femme en plein exercice avec la barre de Pilates"></div>
+        <svg class="s8-svg s8-band" viewBox="0 0 700 200" preserveAspectRatio="none" aria-hidden="true"><path class="s8-bandline" pathLength="1" d="M10 100C200 190 500 190 690 100"/><circle class="s8-dot1" cx="10" cy="100" r="12"/><circle class="s8-dot2" cx="690" cy="100" r="12"/></svg>
+        <div class="s8-chrome"><b>N° 08</b><i></i><span>Pilates</span></div>
+        <h2 class="s8-title"><span class="s8-m"><span class="s8-l">Complete</span></span><span class="s8-m"><span class="s8-l"><em>Pilates pack.</em></span></span></h2>
+        <div class="s8-rule" aria-hidden="true"></div>
+        <p class="s8-kicker">MAT · BANDS · BAR · TOWEL · BOTTLE</p>
+        <div class="s8-price">25 000 F</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="08-pilates"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s8-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s8-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s8-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s8-stage'),{clipPath:'polygon(100% 0%,130% 0%,130% 100%,120% 100%)'},{clipPath:'polygon(-30% 0%,130% 0%,130% 100%,-20% 100%)',duration:.9,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s8-tapis'),{xPercent:9,opacity:0},{xPercent:0,opacity:1,duration:1.4,ease:'expo.out'},.4);
+      settle('.s8-tapis img',.4,1.15,2.2);
+      tl.fromTo(q('.s8-femme'),{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.9,ease:'power4.inOut'},.85);
+      settle('.s8-femme img',.85,1.3,1.8);
+      draw('.s8-bandline',.9,.8);
+      tl.fromTo(qa('.s8-dot1,.s8-dot2'),{scale:0,transformOrigin:'50% 50%'},{scale:1,duration:.5,ease:'back.out(2)',stagger:.5},.85);
+      // La bande se tend : la courbe s'aplatit, avec un léger rebond
+      const band={k:1}, line=q('.s8-bandline');
+      tl.fromTo(band,{k:1},{k:0,duration:1,ease:'elastic.out(1,.55)',onUpdate:()=>{const y=100+90*band.k;line.setAttribute('d','M10 100C200 '+y+' 500 '+y+' 690 100');}},1.75);
+      lines('.s8-title .s8-l',.45);
+      chrome(.75); rule(1.2);
+      track(q('.s8-kicker'),.26,1.3,1.1);
+      tl.fromTo(q('.s8-price'),{xPercent:-30,opacity:0},{xPercent:0,opacity:1,duration:.8,ease:'expo.out'},1.75);
+
+      window.__timelines['08-pilates']=tl;
+    })();
+  </script>
+</template>

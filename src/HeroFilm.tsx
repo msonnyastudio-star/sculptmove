@@ -3,7 +3,7 @@ import { useI18n } from './i18n'
 import { Title } from './motion'
 import './film.css'
 
-export function HeroFilm({ onDiscover, whatsappUrl }: { onDiscover: () => void; whatsappUrl: string }) {
+export function HeroFilm({ onDiscover, onTalk }: { onDiscover: () => void; onTalk: () => void }) {
   const { t, lang } = useI18n()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [mobile, setMobile] = useState(() => window.matchMedia('(max-width: 760px)').matches)
@@ -64,7 +64,7 @@ export function HeroFilm({ onDiscover, whatsappUrl }: { onDiscover: () => void; 
     </div>
     <div className="hero-film-bar">
       <div><span className="eyebrow eyebrow-gold" data-reveal="up">{t.hero.eyebrow}</span><Title as="h1" id="hero-title" lead={t.hero.title[0]} accent={t.hero.title[1]}/></div>
-      <div className="hero-film-actions" data-reveal="up" style={{ '--d': '350ms' } as React.CSSProperties}><button className="button button-gold" onClick={onDiscover}>{t.hero.discover} <span aria-hidden="true">↗</span></button><a className="button button-glass" href={whatsappUrl} target="_blank" rel="noreferrer">{t.hero.talk} <span aria-hidden="true">↗</span></a></div>
+      <div className="hero-film-actions" data-reveal="up" style={{ '--d': '350ms' } as React.CSSProperties}><button className="button button-gold" onClick={onDiscover}>{t.hero.discover} <span aria-hidden="true">↗</span></button><button type="button" className="button button-glass" onClick={onTalk}>{t.hero.talk} <span aria-hidden="true">↗</span></button></div>
     </div>
   </section>
 }

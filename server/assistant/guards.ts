@@ -7,13 +7,13 @@ export const MAX_BODY_BYTES = 12_000
 export const MAX_MESSAGE_CHARS = 500
 const MAX_HISTORY_TURNS = 6
 
-export type ChatInput = { message: string; history: Turn[]; lang: Lang }
+export type ChatInput = { message: string; history: Turn[]; lang: Lang; page?: string }
 
 const clean = (value: string) => value.replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, ' ').trim()
 
 export function parseChatInput(body: unknown): ChatInput | null {
   if (typeof body !== 'object' || body === null) return null
-  const { message, history, lang } = body as Record<string, unknown>
+  const { message, history, lang, page } = body as Record<string, unknown>
   if (typeof message !== 'string') return null
   const text = clean(message)
   if (!text || text.length > MAX_MESSAGE_CHARS) return null
@@ -23,7 +23,7 @@ export function parseChatInput(body: unknown): ChatInput | null {
     const content = clean(turn.content).slice(0, MAX_MESSAGE_CHARS)
     return content ? [{ role: turn.role, content }] : []
   })
-  return { message: text, history: turns.slice(-MAX_HISTORY_TURNS), lang: lang === 'en' ? 'en' : 'fr' }
+  return { message: text, history: turns.slice(-MAX_HISTORY_TURNS), lang: lang === 'en' ? 'en' : 'fr', page: typeof page === 'string' ? page : undefined }
 }
 
 const MEDICAL = ['maladie', 'malade', 'enceinte', 'grossesse', 'allaite', 'allaitante', 'allaitement', 'diabete', 'diabetique', 'hypertension', 'cancer', 'medicament', 'medicaments', 'sous traitement', 'traitement medical', 'ordonnance', 'allergie', 'allergies', 'allergique', 'infection', 'infecte', 'brulure', 'brulures', 'eczema', 'psoriasis', 'mycose', 'plaie', 'plaies', 'saignement', 'lupus', 'medecin', 'docteur', 'effet secondaire', 'effets secondaires', 'sante', 'pregnant', 'pregnancy', 'breastfeeding', 'illness', 'disease', 'diabetes', 'medication', 'allergy', 'allergic', 'burn', 'burns', 'eczema', 'doctor', 'side effect', 'side effects', 'health condition']

@@ -1,0 +1,131 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s9-stage{position:absolute;inset:0;overflow:hidden}
+    .s9-ground{position:absolute;inset:0}
+    .s9-world{position:absolute;inset:0}
+    .s9-ph{position:absolute;overflow:hidden}
+    .s9-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s9-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s9-chrome b{font-weight:600}
+    .s9-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s9-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s9-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s9-l{display:block;white-space:nowrap}
+    .s9-l em{font-style:italic;font-weight:500}
+    .s9-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s9-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s9-ch{display:inline-block;white-space:pre}
+    .s9-svg{position:absolute;overflow:visible;fill:none}
+    .s9-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s9-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s9-chrome i{width:5cqw}
+      .s9-title{left:5.4cqw;font-size:11.4cqw}
+      .s9-rule{left:5.4cqw;width:12cqw}
+      .s9-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    #root{color:#4a2257}
+    .s9-half{position:absolute;top:0;bottom:0;width:50cqw;overflow:hidden}
+    .s9-day{left:0;background:linear-gradient(180deg,#fbdcd9,#fdeeea);color:#7a1f47}
+    .s9-night{left:50cqw;background:linear-gradient(180deg,#2c1b5c,#4e2f86);color:#fbf1dc}
+    .s9-time{position:absolute;left:5cqw;top:18cqh;margin:0;font-weight:500;font-size:5.8cqw;line-height:1;letter-spacing:-.02em}
+    .s9-time em{font-style:italic}
+    .s9-what{position:absolute;left:5cqw;top:32cqh;margin:0;font-weight:500;font-size:2.5cqw;line-height:1.1}
+    .s9-hint{position:absolute;left:5cqw;top:40cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s9-pic{left:20cqw;top:39cqh;width:27cqw;height:58cqh;-webkit-mask-image:radial-gradient(closest-side,#000 74%,transparent 100%);mask-image:radial-gradient(closest-side,#000 74%,transparent 100%)}
+    .s9-pic img{object-fit:contain}
+    .s9-sun{left:36cqw;top:7cqh;width:9cqw;height:9cqw}
+    .s9-sun circle{fill:#f0a94a}
+    .s9-sun path{stroke:#f0a94a;stroke-width:5;stroke-linecap:round}
+    .s9-moon{left:36cqw;top:7cqh;width:8cqw;height:8cqw;fill:#f2d48a}
+    .s9-star{fill:#f2d48a}
+    .s9-chrome{color:#7a1f47}
+    .s9-chrome b{color:#7a1f47}
+    @container (max-aspect-ratio: 1/1){
+      .s9-half{left:0;width:100cqw;bottom:auto;height:50cqh}
+      .s9-night{top:50cqh}
+      .s9-time{left:5.4cqw;top:12cqh;font-size:12cqw}
+      .s9-night .s9-time{top:6cqh}
+      .s9-what{left:5.4cqw;top:24cqh;font-size:5.2cqw;width:50cqw}
+      .s9-night .s9-what{top:18cqh}
+      .s9-hint{left:5.4cqw;top:36cqh;font-size:2.1cqw;letter-spacing:.12em;white-space:normal;width:44cqw}
+      .s9-night .s9-hint{top:30cqh}
+      .s9-pic{left:50cqw;top:9cqh;width:48cqw;height:40cqh}
+      .s9-night .s9-pic{top:7cqh}
+      .s9-sun{left:74cqw;top:1.4cqh;width:14cqw;height:14cqw}
+      .s9-moon{left:6cqw;top:37cqh;width:10cqw;height:10cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="09-routine" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s9-stage">
+      <div id="s9-ground" class="clip s9-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s9-world">
+        <div class="s9-half s9-day">
+          <svg class="s9-svg s9-sun" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="22"/><path pathLength="1" d="M50 6v12M50 82v12M6 50h12M82 50h12M19 19l8 8M73 73l8 8M81 19l-8 8M27 73l-8 8"/></svg>
+          <h2 class="s9-time"><span class="s9-m"><span class="s9-l"><em>Le matin</em></span></span></h2>
+          <p class="s9-what"><span class="s9-m"><span class="s9-l">Glutathione Gummies</span></span></p>
+          <p class="s9-hint">AVEC UN GRAND VERRE D’EAU</p>
+          <div class="s9-ph s9-pic"><img data-layout-allow-overflow src="assets/v3/routine-matin.jpg" alt="Gummies au glutathion et verre d’eau"></div>
+        </div>
+        <div class="s9-half s9-night">
+          <svg class="s9-svg s9-moon" viewBox="0 0 100 100" aria-hidden="true"><path d="M62 6a46 46 0 1 0 32 74A40 40 0 0 1 62 6z"/></svg>
+          <h2 class="s9-time"><span class="s9-m"><span class="s9-l"><em>Le soir</em></span></span></h2>
+          <p class="s9-what"><span class="s9-m"><span class="s9-l">Multi Collagène</span></span></p>
+          <p class="s9-hint">AVEC UN GRAND VERRE D’EAU</p>
+          <div class="s9-ph s9-pic"><img data-layout-allow-overflow src="assets/v3/routine-soir.jpg" alt="Flacon Multi Collagène et verre d’eau"></div>
+        </div>
+        <div class="s9-chrome"><b>N° 09</b><i></i><span>La routine</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="09-routine"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s9-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s9-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s9-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      // Les deux moitiés se rejoignent : de côté en paysage, de haut en bas en portrait
+      const axis=root.clientWidth<root.clientHeight?'yPercent':'xPercent';
+      tl.fromTo(q('.s9-day'),{[axis]:-100},{[axis]:0,duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s9-night'),{[axis]:100},{[axis]:0,duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s9-sun'),{y:cqh(24),scale:.6},{y:0,scale:1,duration:1.6,ease:'expo.out'},.35);
+      tl.fromTo(q('.s9-sun'),{rotation:-50},{rotation:0,duration:2.2,ease:'power2.out'},.35);
+      draw('.s9-sun path',.7,.9);
+      tl.fromTo(q('.s9-moon'),{y:cqh(24),rotation:40,scale:.6},{y:0,rotation:0,scale:1,duration:1.6,ease:'expo.out'},.65);
+      lines('.s9-day .s9-time .s9-l',.45);
+      lines('.s9-day .s9-what .s9-l',.65);
+      lines('.s9-night .s9-time .s9-l',.8);
+      lines('.s9-night .s9-what .s9-l',1);
+      tl.fromTo(qa('.s9-pic'),{yPercent:14,opacity:0},{yPercent:0,opacity:1,duration:1.3,ease:'expo.out',stagger:.35},.6);
+      track(q('.s9-day .s9-hint'),.3,1.15,1);
+      track(q('.s9-night .s9-hint'),.3,1.45,1);
+      chrome(.8);
+
+      window.__timelines['09-routine']=tl;
+    })();
+  </script>
+</template>

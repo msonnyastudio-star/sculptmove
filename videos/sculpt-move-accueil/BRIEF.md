@@ -53,6 +53,16 @@ Le film v2 reçoit une version anglaise identique en tout point sauf les textes 
 Demande utilisateur : film d'accueil en 3D, en 16:9 : boîtes des produits qui s'ouvrent et pivotent à 360°, contenus qui en sortent, une femme en train de boire, titres 3D très colorés, mélange 3D / 2D, les trois produits mis en valeur.
 Trois pistes proposées dans `STORYLINES.md` (recommandation : A). Rien n'est construit avant le choix de la piste, de la source pour la femme qui boit et des photos de dos des emballages. Le film v2 reste en ligne sur le site jusque-là.
 
+## Révision v4 — 31 octobre 2026 : un produit par scène
+Demande utilisateur : « ces photos doivent communiquer séparément, ne doivent pas être regroupées comme un bloc, car ce sont des produits différents que Sculpt Move propose ; crée du motion design HyperFrames en 2D dans l'accueil et anime bien les éléments ».
+Onze scènes de 3,2 s ajoutées avant la collection (la citation de la scène 14 reste 1,4 s de plus), film de 56,6 s, boucle conservée. Chaque visuel a son univers de couleurs, sa transition et son geste 2D dessiné : montagnes et lune (shilajit), vapeur et feuilles (thé), trois volets (pack), bande élastique (Pilates), soleil et lune (routine), jours de la semaine, étoiles et gouttes (Harmonie nuit), lotus (Harmonie jour), rayons (duo), citation mot à mot et lavande (ménopause), trois flacons révélés tour à tour (essentiels).
+Décisions :
+- Les affiches sont recadrées sur les produits, comme en v2 ; tous les textes sont recomposés et animés.
+- Ne sont pas repris : les silhouettes avant / après, « Perte de poids rapide », « Supprime l'appétit », « Réduit les graisses », « Équilibre hormonal » et les autres promesses d'effet. Les textes s'en tiennent aux noms, formats, prix fournis (8 000 F et 25 000 F) et aux phrases sans promesse des visuels.
+- Le visuel Pack Harmonie et le visuel Ménopause fournis en double gardent chacun leur propre scène.
+- « Trois essentiels » devient « Tout un univers » à la scène de collection, qui suit maintenant onze autres produits.
+- Les produits montrés ont aussi leur fiche dans « Nos produits » (`src/config.ts`), sauf le visuel de routine matin / soir, qui concerne les gummies et le collagène déjà au catalogue.
+
 ## Révision v2.2 — 31 octobre 2026 : vrai logo
 Demande utilisateur : « ce n'est pas le vrai logo du site, il y a déjà le vrai logo, donc il faut ça dans le motion design ».
 Le monogramme « SM » composé en Cormorant est remplacé par le vrai logo (`public/images/sculpt-move-logo.jpg`, détouré dans `assets/logo/sculpt-move-logo.png`) à l'ouverture et à la fermeture, dans les quatre versions. Le logo est violet : il serait illisible sur le fond prune, la signature passe donc sur fond ivoire, en gardant ses couleurs d'origine. Durées et scènes inchangées, la boucle reste parfaite.

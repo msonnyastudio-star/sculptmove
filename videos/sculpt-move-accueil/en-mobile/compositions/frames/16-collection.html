@@ -66,13 +66,13 @@
     }
     .s5-ch{display:inline-block;white-space:pre}
   </style>
-  <div id="root" data-composition-id="05-collection" data-width="1920" data-height="1080" data-duration="4.3">
+  <div id="root" data-composition-id="16-collection" data-width="1080" data-height="1350" data-duration="4.3">
     <div class="s5-stage">
       <div id="s5-ground" class="clip s5-ground" data-start="0" data-duration="4.3" data-track-index="0"></div>
       <div class="s5-world">
-        <div class="s5-chrome"><b>N° 05</b><i></i><span>The collection</span></div>
+        <div class="s5-chrome"><b>N° 16</b><i></i><span>The collection</span></div>
         <h2 class="s5-title">
-          <span class="s5-m"><span class="s5-l">Three essentials,</span></span>
+          <span class="s5-m"><span class="s5-l">A whole world,</span></span>
           <span class="s5-m"><span class="s5-l"><em>one ritual.</em></span></span>
         </h2>
         <div class="s5-rule" aria-hidden="true"></div>
@@ -105,7 +105,7 @@
   </div>
   <script>
     (function(){
-      const root=document.querySelector('[data-composition-id="05-collection"]');
+      const root=document.querySelector('[data-composition-id="16-collection"]');
       const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
       const tl=gsap.timeline({paused:true});
       // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
@@ -143,7 +143,7 @@
       tl.fromTo(q('.s5-tag span'),{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},3.48);
       tl.fromTo(qa('.s5-tag i'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.out'},3.45);
 
-      window.__timelines['05-collection']=tl;
+      window.__timelines['16-collection']=tl;
     })();
   </script>
 </template>

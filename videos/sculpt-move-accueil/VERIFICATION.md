@@ -1,3 +1,13 @@
+# Vérification v4 (un produit par scène) — 31 octobre 2026
+
+- `hyperframes check` : 0 erreur. Avertissements : film muet (choix demandé), petites capitales et lecture : citation de la scène 14 à 3,9 s pour 4,2 s conseillées, derniers noms de la scène 15 entre 1,3 et 1,7 s.
+- Boucle : images 0 et 56,567 s comparées sans perte, écart maximal de 1 sur 255 (ordinateur français, mobile anglais).
+- Masters des quatre versions : 56,6 s, 1 698 images, sans audio. MP4 web : crf 24 ordinateur, crf 25 mobile. Affiches inchangées.
+- Images clés inspectées aux onze nouvelles scènes et à leurs transitions, en paysage et en portrait ; planches tirées des MP4 livrés.
+- Site dans Chrome headless : les quatre MP4 se lisent en boucle, muets, durée 56,6 s, aucune erreur console.
+
+---
+
 # Vérification v2.2 (vrai logo) — 31 octobre 2026
 
 - `hyperframes check` : 0 erreur. Avertissements : film muet (choix demandé), petites capitales, et contraste signalé à t = 1,11 s sur le titre encore masqué derrière le volet ivoire.

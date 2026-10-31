@@ -1,0 +1,115 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s14-stage{position:absolute;inset:0;overflow:hidden}
+    .s14-ground{position:absolute;inset:0}
+    .s14-world{position:absolute;inset:0}
+    .s14-ph{position:absolute;overflow:hidden}
+    .s14-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s14-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s14-chrome b{font-weight:600}
+    .s14-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s14-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s14-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s14-l{display:block;white-space:nowrap}
+    .s14-l em{font-style:italic;font-weight:500}
+    .s14-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s14-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s14-ch{display:inline-block;white-space:pre}
+    .s14-svg{position:absolute;overflow:visible;fill:none}
+    .s14-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s14-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s14-chrome i{width:5cqw}
+      .s14-title{left:5.4cqw;font-size:11.4cqw}
+      .s14-rule{left:5.4cqw;width:12cqw}
+      .s14-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s14-ground{background:radial-gradient(90% 90% at 70% 30%,#f7ecdf 0%,#e9d5be 90%)}
+    #root{color:#2e1239}
+    .s14-chrome{left:40cqw}
+    .s14-chrome b{color:#835a22}
+    .s14-femme{left:0;top:0;bottom:0;width:35cqw}
+    .s14-femme img{object-position:50% 12%;transform-origin:45% 20%}
+    .s14-key{position:absolute;left:35cqw;top:0;bottom:0;width:2px;background:#c59a52;transform-origin:50% 100%}
+    .s14-qmark{position:absolute;left:39.4cqw;top:9cqh;margin:0;font-style:italic;font-weight:600;font-size:10cqw;line-height:1;color:#8a6423}
+    .s14-quote{position:absolute;left:40cqw;top:20cqh;width:39cqw;margin:0;font-weight:500;font-size:3.2cqw;line-height:1.14;letter-spacing:-.01em}
+    .s14-w{display:inline-block}
+    .s14-strong{font-style:italic;font-weight:600}
+    .s14-kicker{left:40cqw;top:57cqh;color:#4d2c5c;font-size:1cqw}
+    .s14-produits{left:63cqw;top:60cqh;width:32cqw;height:37cqh;border-radius:6px;box-shadow:0 1cqw 2.6cqw rgba(70,40,60,.25)}
+    .s14-produits img{object-position:50% 40%}
+    .s14-lav{left:81cqw;top:6cqh;width:14cqw;height:48cqh}
+    .s14-lav path{stroke:#6b4a8e;stroke-width:3;stroke-linecap:round}
+    .s14-lav circle{fill:#8a6db0}
+    @container (max-aspect-ratio: 1/1){
+      .s14-chrome{left:5.4cqw;top:4.6cqh}
+      .s14-femme{left:0;top:49cqh;bottom:0;width:50cqw}
+      .s14-key{left:50cqw;top:49cqh}
+      .s14-qmark{left:5cqw;top:6.6cqh;font-size:20cqw}
+      .s14-quote{left:5.4cqw;top:15cqh;width:89cqw;font-size:7cqw}
+      .s14-kicker{left:5.4cqw;top:44.6cqh;font-size:2.4cqw}
+      .s14-produits{left:53cqw;top:60cqh;width:43cqw;height:33cqh}
+      .s14-lav{left:66cqw;top:49.6cqh;width:22cqw;height:11cqh}
+    }
+  </style>
+  <div id="root" data-composition-id="14-menopause" data-width="1920" data-height="1080" data-duration="5.45">
+    <div class="s14-stage">
+      <div id="s14-ground" class="clip s14-ground" data-start="0" data-duration="5.45" data-track-index="0"></div>
+      <div class="s14-world">
+        <div class="s14-ph s14-femme"><img data-layout-allow-overflow src="assets/v3/meno-femme.jpg" alt="Femme souriante, assise, sereine"></div>
+        <div class="s14-key" aria-hidden="true"></div>
+        <div class="s14-chrome"><b>N° 14</b><i></i><span>Ménopause</span></div>
+        <div class="s14-qmark" aria-hidden="true">“</div>
+        <p class="s14-quote"><span class="s14-w ">Oui,</span> <span class="s14-w ">mon</span> <span class="s14-w ">corps</span> <span class="s14-w ">change…</span> <span class="s14-w ">Je</span> <span class="s14-w ">traverse</span> <span class="s14-w ">une</span> <span class="s14-w ">nouvelle</span> <span class="s14-w ">étape.</span> <span class="s14-w s14-strong">Et</span> <span class="s14-w s14-strong">je</span> <span class="s14-w s14-strong">choisis</span> <span class="s14-w s14-strong">de</span> <span class="s14-w s14-strong">prendre</span> <span class="s14-w s14-strong">soin</span> <span class="s14-w s14-strong">de</span> <span class="s14-w s14-strong">moi.</span></p>
+        <p class="s14-kicker">3 ESSENTIELS · UNE SEULE ROUTINE</p>
+        <svg class="s14-svg s14-lav" viewBox="0 0 140 320" aria-hidden="true"><path pathLength="1" d="M40 320C44 220 40 120 30 40"/><path pathLength="1" d="M90 320C90 240 96 160 112 70"/><circle cx="30" cy="30" r="7"/><circle cx="18" cy="52" r="6"/><circle cx="42" cy="56" r="6"/><circle cx="20" cy="76" r="5"/><circle cx="40" cy="82" r="5"/><circle cx="114" cy="58" r="7"/><circle cx="100" cy="82" r="6"/><circle cx="124" cy="86" r="6"/><circle cx="102" cy="108" r="5"/><circle cx="120" cy="112" r="5"/></svg>
+        <div class="s14-ph s14-produits"><img data-layout-allow-overflow src="assets/v3/meno-produits.jpg" alt="Ashwagandha, Evening Primrose Oil et Magnésium L-Thréonate"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="14-menopause"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s14-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s14-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s14-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s14-stage'),{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      settle('.s14-femme img',.1,1.22,2.8);
+      tl.fromTo(q('.s14-key'),{scaleY:0},{scaleY:1,duration:.9,ease:'power3.inOut'},.5);
+      chrome(.7);
+      tl.fromTo(q('.s14-qmark'),{opacity:0,yPercent:30},{opacity:1,yPercent:0,duration:.8,ease:'expo.out'},.5);
+      tl.fromTo(qa('.s14-w'),{opacity:0,filter:'blur(6px)'},{opacity:1,filter:'blur(0px)',duration:.22,ease:'power2.out',stagger:.075},.65);
+      track(q('.s14-kicker'),.3,1.95,.9);
+      draw('.s14-lav path',.7,1.1,.15);
+      tl.fromTo(qa('.s14-lav circle'),{scale:0,transformOrigin:'50% 50%'},{scale:1,duration:.4,ease:'back.out(2.4)',stagger:.05},1.4);
+      tl.fromTo(q('.s14-produits'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.95,ease:'power4.inOut'},1.65);
+      settle('.s14-produits img',1.65,1.25,1.6);
+
+      window.__timelines['14-menopause']=tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,114 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s6-stage{position:absolute;inset:0;overflow:hidden}
+    .s6-ground{position:absolute;inset:0}
+    .s6-world{position:absolute;inset:0}
+    .s6-ph{position:absolute;overflow:hidden}
+    .s6-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s6-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s6-chrome b{font-weight:600}
+    .s6-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s6-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s6-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s6-l{display:block;white-space:nowrap}
+    .s6-l em{font-style:italic;font-weight:500}
+    .s6-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s6-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s6-ch{display:inline-block;white-space:pre}
+    .s6-svg{position:absolute;overflow:visible;fill:none}
+    .s6-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s6-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s6-chrome i{width:5cqw}
+      .s6-title{left:5.4cqw;font-size:11.4cqw}
+      .s6-rule{left:5.4cqw;width:12cqw}
+      .s6-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s6-ground{background:radial-gradient(80% 100% at 70% 40%,#2a3d28 0%,#16241a 70%)}
+    #root{color:#f5efdf}
+    .s6-chrome b{color:#dcbc78}
+    .s6-title{top:24cqh}
+    .s6-title em{color:#dcbc78}
+    .s6-rule{top:49cqh}
+    .s6-kicker{top:52.6cqh;color:#e6dcc4}
+    .s6-sachet{left:58cqw;top:12cqh;width:37cqw;height:66cqh;border-radius:6px}
+    .s6-sachet img{transform-origin:50% 40%}
+    .s6-tasse{left:36cqw;top:44cqh;width:20.5cqw;height:46cqh;border-radius:6px;box-shadow:0 1.4cqw 3cqw rgba(5,15,7,.55)}
+    .s6-steam{left:41.5cqw;top:18cqh;width:10cqw;height:26cqh}
+    .s6-steam path{stroke:#e9dcbb;stroke-width:3;stroke-linecap:round;opacity:.85}
+    .s6-leaf{left:1cqw;bottom:-2cqh;width:24cqw;height:36cqh}
+    .s6-leaf path{stroke:#7fa05f;stroke-width:3;stroke-linecap:round}
+    .s6-price{left:5cqw;top:63cqh;width:15cqw;height:9.4cqh;font-size:1.9cqw;color:#2b1d05;background:linear-gradient(120deg,#f3dda4,#c99c4d);border-radius:999px}
+    @container (max-aspect-ratio: 1/1){
+      .s6-sachet{left:38cqw;top:9cqh;width:57cqw;height:44cqh}
+      .s6-tasse{left:5.4cqw;top:24cqh;width:30cqw;height:29cqh}
+      .s6-steam{left:11cqw;top:8cqh;width:18cqw;height:16cqh}
+      .s6-title{top:57cqh}
+      .s6-rule{top:77.6cqh}
+      .s6-kicker{top:79.4cqh}
+      .s6-price{left:5.4cqw;top:84.6cqh;width:30cqw;height:7.6cqh;font-size:4cqw}
+      .s6-leaf{left:auto;right:-5cqw;bottom:-3cqh;width:44cqw;height:28cqh}
+    }
+  </style>
+  <div id="root" data-composition-id="06-the" data-width="1920" data-height="1080" data-duration="4.05">
+    <div class="s6-stage">
+      <div id="s6-ground" class="clip s6-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s6-world">
+        <svg class="s6-svg s6-leaf" viewBox="0 0 300 300" aria-hidden="true"><path pathLength="1" d="M20 300C70 220 120 170 280 40"/><path pathLength="1" d="M70 232c-30-6-44-22-50-48 28 2 44 18 50 48zM70 232c20 22 44 26 70 16-14-24-40-30-70-16z"/><path pathLength="1" d="M136 170c-30-8-42-24-46-50 28 4 42 20 46 50zM136 170c22 20 46 22 70 10-16-22-42-26-70-10z"/><path pathLength="1" d="M204 108c-26-10-36-26-38-50 26 6 38 22 38 50zM204 108c22 16 44 16 64 2-16-20-38-22-64-2z"/></svg>
+        <div class="s6-ph s6-sachet"><img data-layout-allow-overflow src="assets/v3/the-sachet.jpg" alt="Sachet Flat Tummy Tea au moringa, Sculpt Move"></div>
+        <div class="s6-ph s6-tasse"><img data-layout-allow-overflow src="assets/v3/the-tasse.jpg" alt="Tasse de thé au moringa"></div>
+        <svg class="s6-svg s6-steam" viewBox="0 0 100 200" aria-hidden="true"><path pathLength="1" d="M26 200c-18-34 18-52 0-90s18-58 0-100"/><path pathLength="1" d="M56 200c-18-34 18-52 0-90s18-58 0-90"/><path pathLength="1" d="M84 200c-16-30 16-46 0-80s16-44 0-70"/></svg>
+        <div class="s6-chrome"><b>N° 06</b><i></i><span>Le thé</span></div>
+        <h2 class="s6-title"><span class="s6-m"><span class="s6-l">Le rituel</span></span><span class="s6-m"><span class="s6-l"><em>du soir.</em></span></span></h2>
+        <div class="s6-rule" aria-hidden="true"></div>
+        <p class="s6-kicker">FLAT TUMMY TEA · AU MORINGA</p>
+        <div class="s6-price">8 000 F</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="06-the"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s6-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s6-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s6-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s6-stage'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.85,ease:'power4.inOut'},0);
+      tl.fromTo(q('.s6-world'),{yPercent:6},{yPercent:0,duration:1.25,ease:'power3.out'},0);
+      tl.fromTo(q('.s6-sachet'),{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1,ease:'power4.inOut'},.35);
+      settle('.s6-sachet img',.35,1.25);
+      tl.fromTo(q('.s6-tasse'),{yPercent:30,opacity:0},{yPercent:0,opacity:1,duration:1.1,ease:'expo.out'},.85);
+      draw('.s6-steam path',1.35,1.6,.16);
+      draw('.s6-leaf path',.5,1.5,.12);
+      lines('.s6-title .s6-l',.5);
+      chrome(.8); rule(1.25);
+      track(q('.s6-kicker'),.34,1.35,1.1);
+      tl.fromTo(q('.s6-price'),{scale:.4,opacity:0},{scale:1,opacity:1,duration:.8,ease:'back.out(1.5)'},1.7);
+
+      window.__timelines['06-the']=tl;
+    })();
+  </script>
+</template>

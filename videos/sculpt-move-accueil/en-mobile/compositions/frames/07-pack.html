@@ -1,0 +1,118 @@
+<template>
+  <style>
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond.ttf") format("truetype");font-style:normal;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");font-style:italic;font-weight:300 700;font-display:block}
+    @font-face{font-family:"Montserrat";src:url("assets/fonts/Montserrat.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;font-family:"Cormorant Garamond";color:#321044}
+    .s7-stage{position:absolute;inset:0;overflow:hidden}
+    .s7-ground{position:absolute;inset:0}
+    .s7-world{position:absolute;inset:0}
+    .s7-ph{position:absolute;overflow:hidden}
+    .s7-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .s7-chrome{position:absolute;left:5cqw;top:5.6cqh;display:flex;align-items:center;gap:.9cqw;font-family:"Montserrat";font-weight:500;font-size:.92cqw;letter-spacing:.32em;text-transform:uppercase;line-height:1;white-space:nowrap}
+    .s7-chrome b{font-weight:600}
+    .s7-chrome i{display:block;width:2.2cqw;height:1px;background:currentColor}
+    .s7-title{position:absolute;left:5cqw;margin:0;font-weight:500;font-size:6.4cqw;line-height:.98;letter-spacing:-.02em}
+    .s7-m{display:block;overflow:hidden;padding:.1em .16em .12em 0;margin:-.1em -.16em -.12em 0}
+    .s7-l{display:block;white-space:nowrap}
+    .s7-l em{font-style:italic;font-weight:500}
+    .s7-rule{position:absolute;left:5cqw;width:6cqw;height:2px;background:#c59a52;transform-origin:0 50%}
+    .s7-kicker{position:absolute;left:5cqw;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.15cqw;letter-spacing:.2em;line-height:1.5;white-space:nowrap}
+    .s7-ch{display:inline-block;white-space:pre}
+    .s7-svg{position:absolute;overflow:visible;fill:none}
+    .s7-price{position:absolute;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;line-height:1;white-space:nowrap}
+    @container (max-aspect-ratio: 1/1){
+      .s7-chrome{left:5.4cqw;top:4.6cqh;font-size:2.75cqw;gap:2.2cqw}
+      .s7-chrome i{width:5cqw}
+      .s7-title{left:5.4cqw;font-size:11.4cqw}
+      .s7-rule{left:5.4cqw;width:12cqw}
+      .s7-kicker{left:5.4cqw;font-size:2.6cqw;letter-spacing:.14em;white-space:normal;width:89cqw}
+    }
+    .s7-ground{background:#fbf7f0}
+    #root{color:#16312e}
+    .s7-chrome b{color:#835a22}
+    .s7-head{position:absolute;left:5cqw;top:10.4cqh;margin:0;font-weight:500;font-size:4cqw;line-height:1;letter-spacing:-.015em;white-space:nowrap}
+    .s7-head em{font-style:italic}
+    .s7-head .s7-l{display:inline-block}
+    .s7-head .s7-m{display:inline-block;vertical-align:top}
+    .s7-kicker{left:auto;right:5cqw;top:5.6cqh;font-size:.92cqw;letter-spacing:.24em;color:#3f5a55}
+    .s7-col{position:absolute;top:22cqh;bottom:0;width:33.34cqw;color:#fff}
+    .s7-c1{left:0;background:#1d6a6e}
+    .s7-c2{left:33.33cqw;background:#2b7a4e}
+    .s7-c3{left:66.66cqw;background:#0c0b0a}
+    .s7-when{position:absolute;left:3cqw;top:4cqh;display:flex;align-items:center;gap:.8cqw;font-size:2.9cqw;font-weight:500;line-height:1}
+    .s7-when svg{width:2.9cqw;height:2.9cqw;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round}
+    .s7-shot{left:3cqw;right:3cqw;top:14cqh;height:46cqh;border-radius:4px}
+    .s7-pname{position:absolute;left:3cqw;right:2cqw;top:64cqh;margin:0;font-family:"Montserrat";font-weight:500;font-size:1.25cqw;letter-spacing:.1em;line-height:1.3}
+    .s7-pname .s7-l{white-space:normal}
+    @container (max-aspect-ratio: 1/1){
+      .s7-head{left:5.4cqw;top:8.4cqh;font-size:6.6cqw;white-space:normal;width:90cqw}
+      .s7-head .s7-m{display:block}
+      .s7-kicker{display:none}
+      .s7-col{left:0;width:100cqw;bottom:auto;height:26.7cqh}
+      .s7-c1{top:20cqh}
+      .s7-c2{top:46.7cqh}
+      .s7-c3{top:73.4cqh}
+      .s7-when{left:5.4cqw;top:3.2cqh;font-size:6.4cqw;gap:2cqw}
+      .s7-when svg{width:6.4cqw;height:6.4cqw}
+      .s7-shot{left:auto;right:5.4cqw;top:2.2cqh;width:38cqw;height:22.3cqh}
+      .s7-pname{left:5.4cqw;right:48cqw;top:13cqh;font-size:2.7cqw}
+    }
+  </style>
+  <div id="root" data-composition-id="07-pack" data-width="1080" data-height="1350" data-duration="4.05">
+    <div class="s7-stage">
+      <div id="s7-ground" class="clip s7-ground" data-start="0" data-duration="4.05" data-track-index="0"></div>
+      <div class="s7-world">
+        <div class="s7-chrome"><b>N° 07</b><i></i><span>The pack</span></div>
+        <p class="s7-kicker">SCULPT MOVE PACK · 3 ACTIONS</p>
+        <h2 class="s7-head"><span class="s7-m"><span class="s7-l">It’s not a diet,&nbsp;</span></span><span class="s7-m"><span class="s7-l"><em>it’s a way of life.</em></span></span></h2>
+        <div class="s7-col s7-c1"><div class="s7-when"><svg viewBox="0 0 100 100" aria-hidden="true"><circle pathLength="1" cx="50" cy="50" r="20"/><path pathLength="1" d="M50 8v14M50 78v14M8 50h14M78 50h14M20 20l10 10M70 70l10 10M80 20L70 30M30 70L20 80"/></svg><span>Morning</span></div><div class="s7-ph s7-shot"><img data-layout-allow-overflow src="assets/v3/pack-matin.jpg" alt="20X Collagène · Café au chia"></div><p class="s7-pname"><span class="s7-m"><span class="s7-l">20X Collagen · Chia coffee</span></span></p></div>
+        <div class="s7-col s7-c2"><div class="s7-when"><svg viewBox="0 0 100 100" aria-hidden="true"><circle pathLength="1" cx="50" cy="50" r="36"/><path pathLength="1" d="M50 14v36l24 14"/></svg><span>Daytime</span></div><div class="s7-ph s7-shot"><img data-layout-allow-overflow src="assets/v3/pack-journee.jpg" alt="Keto + ACV gélifiés"></div><p class="s7-pname"><span class="s7-m"><span class="s7-l">Keto + ACV gummies</span></span></p></div>
+        <div class="s7-col s7-c3"><div class="s7-when"><svg viewBox="0 0 100 100" aria-hidden="true"><path pathLength="1" d="M66 10a42 42 0 1 0 26 58A36 36 0 0 1 66 10z"/></svg><span>Evening</span></div><div class="s7-ph s7-shot"><img data-layout-allow-overflow src="assets/v3/pack-soir.jpg" alt="Thé ventre plat au moringa"></div><p class="s7-pname"><span class="s7-m"><span class="s7-l">Flat tummy tea with moringa</span></span></p></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="07-pack"]');
+      const q=s=>root.querySelector(s), qa=s=>root.querySelectorAll(s);
+      const tl=gsap.timeline({paused:true});
+      const cqh=n=>n*root.clientHeight/100;
+      // Resserrement de l'interlettrage par translation de chaque lettre (mesuré une fois, à la construction)
+      const track=(el,em,at,dur)=>{
+        const txt=el.textContent; el.textContent='';
+        const cs=[];
+        txt.split(' ').forEach((word,index,all)=>{
+          const w=document.createElement('span');w.style.cssText='display:inline-block;white-space:nowrap';
+          [...word].forEach(c=>{const s=document.createElement('span');s.className='s7-ch';s.textContent=c;w.appendChild(s);cs.push(s);});
+          el.appendChild(w);
+          if(index<all.length-1) el.appendChild(document.createTextNode(' '));
+        });
+        const px=em*parseFloat(getComputedStyle(el).fontSize);
+        tl.fromTo(el,{opacity:0},{opacity:1,duration:dur*.75,ease:'power2.out'},at);
+        tl.fromTo(cs,{x:i=>i*px},{x:0,duration:dur,ease:'power3.out'},at);
+      };
+      // Trait dessiné : chaque tracé porte pathLength="1"
+      const draw=(sel,at,dur,stagger=0)=>tl.fromTo(qa(sel),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:'power2.inOut',stagger},at);
+      const lines=(sel,at,dur=1.05,stagger=.13)=>tl.fromTo(qa(sel),{yPercent:112},{yPercent:0,duration:dur,ease:'power4.out',stagger},at);
+      const settle=(sel,at,from=1.28,dur=2.4)=>tl.fromTo(qa(sel),{scale:from},{scale:1,duration:dur,ease:'expo.out'},at);
+      const chrome=at=>tl.fromTo(q('.s7-chrome'),{opacity:0,x:-14},{opacity:1,x:0,duration:.7,ease:'power3.out'},at);
+      const rule=at=>tl.fromTo(q('.s7-rule'),{scaleX:0},{scaleX:1,duration:.7,ease:'power3.inOut'},at);
+      tl.fromTo(q('.s7-stage'),{clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.7,ease:'power4.inOut'},0);
+      [1,2,3].forEach((n,i)=>{
+        const at=.3+i*.34, c='.s7-c'+n;
+        tl.fromTo(q(c),{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.8,ease:'power4.inOut'},at);
+        tl.fromTo(q(c+' .s7-when'),{opacity:0,x:-16},{opacity:1,x:0,duration:.7,ease:'power3.out'},at+.45);
+        draw(c+' .s7-when svg *',at+.45,.8,.08);
+        tl.fromTo(q(c+' .s7-shot'),{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.9,ease:'power4.inOut'},at+.25);
+        settle(c+' .s7-shot img',at+.25,1.3,2);
+        tl.fromTo(q(c+' .s7-pname .s7-l'),{yPercent:115},{yPercent:0,duration:.85,ease:'power4.out'},at+.7);
+      });
+      lines('.s7-head .s7-l',.35,1,.22);
+      chrome(.7);
+      track(q('.s7-kicker'),.3,.85,1);
+
+      window.__timelines['07-pack']=tl;
+    })();
+  </script>
+</template>
