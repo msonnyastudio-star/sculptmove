@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useState, type CSSProperties } from 'react'
 import { products, siteConfig, type Product } from './config'
+import { CreamHero } from './CreamHero'
 import { HeroFilm } from './HeroFilm'
 import { I18nContext, useI18n, useLanguage } from './i18n'
 import { prefersReducedMotion, Title, trackPointer, useReveal, useScrollEffects } from './motion'
@@ -41,7 +42,7 @@ function usePath() {
   return { path, navigate }
 }
 
-type IconName = 'bag' | 'arrow' | 'menu' | 'close' | 'plus' | 'minus' | 'trash' | 'whatsapp' | 'sparkle' | 'mail' | 'pin'
+type IconName = 'bag' | 'arrow' | 'menu' | 'close' | 'plus' | 'minus' | 'trash' | 'whatsapp' | 'mail' | 'pin'
 
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true as const }
@@ -54,7 +55,6 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     minus: <path d="M5 12h14"/>,
     trash: <><path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3"/></>,
     whatsapp: <><path d="M20.3 11.8a8.2 8.2 0 0 1-12.2 7.1l-4.1 1 1.1-4A8.2 8.2 0 1 1 20.3 11.8Z"/><path d="M9 8.5c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.8 1.1 1.4 1.9 1.9.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.5 0 .4-.2 1.1-.6 1.5-.4.4-1 .7-1.7.7-.4 0-1.1-.1-2.2-.6-1-.5-2.1-1.3-3-2.3-.8-.9-1.3-1.9-1.5-2.6-.2-.8 0-1.5.4-2.1.2-.3.6-.7 1-.7Z"/></>,
-    sparkle: <><path d="m12 3 1.4 5.6L19 10l-5.6 1.4L12 17l-1.4-5.6L5 10l5.6-1.4L12 3Z"/><path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/></>,
     mail: <><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></>,
     pin: <><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></>,
   }
@@ -85,7 +85,7 @@ function Prefs({ className, theme, onTheme }: { className: string; theme: Theme;
 
 function Brand({ onClick }: { onClick: () => void }) {
   const { t } = useI18n()
-  return <button className="brand" onClick={onClick} aria-label={t.brandHome}><span className="brand-mark">S<span>M</span></span><span className="brand-name">SCULPT MOVE<small>WELLNESS PARTNER</small></span></button>
+  return <button className="brand" onClick={onClick} aria-label={t.brandHome}><span className="brand-logo"><img src="/images/sculpt-move-logo.jpg" alt="" width="1280" height="960"/></span><span className="brand-name">SCULPT MOVE<small>WELLNESS PARTNER</small></span></button>
 }
 
 function Header({ onNavigate, cartCount, onCart, theme, onTheme }: { onNavigate: (to: string) => void; cartCount: number; onCart: () => void; theme: Theme; onTheme: (origin: HTMLElement) => void }) {
@@ -158,7 +158,7 @@ function CartDrawer({ cart, setCart, onClose }: { cart: CartLine[]; setCart: Rea
 
 function Marquee() {
   const { t } = useI18n()
-  const group = (hidden: boolean) => <div className="marquee-group" aria-hidden={hidden || undefined}>{t.marquee.map((item) => <span key={item}>{item}<i aria-hidden="true">✦</i></span>)}</div>
+  const group = (hidden: boolean) => <div className="marquee-group" aria-hidden={hidden || undefined}>{t.marquee.map((item) => <span key={item}>{item}<i className="marquee-separator" aria-hidden="true"/></span>)}</div>
   return <div className="marquee"><div className="marquee-track">{group(false)}{group(true)}</div></div>
 }
 
@@ -184,8 +184,9 @@ function Home({ onNavigate, onAdd }: { onNavigate: (to: string) => void; onAdd: 
   const { t, products: localized } = useI18n()
   return <main>
     <HeroFilm onDiscover={() => scrollToId('produits')} whatsappUrl={wa(t.wa.hero)}/>
+    <CreamHero onDiscover={() => onNavigate('/produit/pdrn-repair-cream')} onCollection={() => scrollToId('produits')}/>
     <Marquee/>
-    <section className="intro-band"><div className="intro-inner" data-reveal="up"><span className="intro-symbol">S<span>M</span></span><p>{t.intro.text}</p><a href="#univers" onClick={(event) => { event.preventDefault(); scrollToId('univers') }}>{t.intro.link} <Icon name="arrow" size={16}/></a></div></section>
+    <section className="intro-band"><div className="intro-inner" data-reveal="up"><span className="intro-logo"><img src="/images/sculpt-move-logo.jpg" alt="" width="1280" height="960" loading="lazy"/></span><p>{t.intro.text}</p><a href="#univers" onClick={(event) => { event.preventDefault(); scrollToId('univers') }}>{t.intro.link} <Icon name="arrow" size={16}/></a></div></section>
     <section className="products-section section-shell" id="produits"><div className="section-heading"><div><div className="eyebrow" data-reveal="up">{t.productsSection.eyebrow}</div><Title lead={t.productsSection.title[0]} accent={t.productsSection.title[1]}/></div><p data-reveal="up" style={delay(250)}>{t.productsSection.text}</p></div><div className="products-grid">{localized.map((product, index) => <ProductCard key={product.slug} index={index} product={product} onNavigate={onNavigate} onAdd={onAdd}/>)}</div></section>
     <Delivery/>
     <section className="duo-section" id="duo"><div className="duo-inner"><div className="duo-photo" data-reveal="image" data-parallax="26"><img src="/images/multi-collagene.jpg" alt={t.duo.alt} loading="lazy"/><span className="photo-label">{t.duo.label}</span></div><div className="duo-content"><div className="eyebrow" data-reveal="up">{t.duo.eyebrow}</div><Title lead={t.duo.title[0]} accent={t.duo.title[1]} br/><p data-reveal="up" style={delay(200)}>{t.duo.text}</p><div className="duo-pair">{t.duo.items.map(([title, text], index) => <div className="duo-item" key={index} data-reveal="up" style={delay(280 + index * 120)}><span className="duo-number">0{index + 1}</span><div><b>{title}</b><small>{text}</small></div></div>)}</div><div data-reveal="up" style={delay(500)}><button className="button button-dark" onClick={() => onNavigate('/produit/beauty-duo')}>{t.duo.cta} <Icon name="arrow"/></button></div></div></div></section>
@@ -216,7 +217,7 @@ function ProductPage({ product, onNavigate, onAdd }: { product: Product; onNavig
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [zoomOpen])
-  return <main className="detail-page">
+  return <main className={`detail-page detail-${product.slug}`}>
     <div className="breadcrumbs"><button onClick={() => onNavigate('/')}>{t.product.home}</button><span>/</span><button onClick={() => onNavigate('/#produits')}>{t.product.essentials}</button><span>/</span><span>{product.name}</span></div>
     <section className="detail-layout">
       <div className="detail-gallery"><button className="detail-image" data-reveal="image" onClick={() => setZoomOpen(true)} aria-label={t.product.zoom(product.name)}><img src={product.image} alt={product.imageAlt}/><span>{t.product.enlarge} <Icon name="plus" size={15}/></span></button>{product.detailImage && <div className="detail-secondary-wrap" data-reveal="image" style={delay(200)}><img className="detail-secondary" src={product.detailImage} alt={product.detailImageAlt ?? ''} loading="lazy"/></div>}</div>
@@ -229,7 +230,7 @@ function ProductPage({ product, onNavigate, onAdd }: { product: Product; onNavig
         <div className="detail-points" data-reveal="up" style={delay(360)}>{product.highlights.map((point) => <div key={point}><span className="check-mark">✓</span>{point}</div>)}</div>
         <div className="detail-quantity" data-reveal="up" style={delay(420)}><span>{t.product.quantity}</span><div className="quantity"><button aria-label={t.product.less} onClick={() => setQuantity((value) => Math.max(1, value - 1))}><Icon name="minus" size={15}/></button><span key={quantity}>{quantity}</span><button aria-label={t.product.more} onClick={() => setQuantity((value) => value + 1)}><Icon name="plus" size={15}/></button></div></div>
         <div className="detail-actions" data-reveal="up" style={delay(480)}><button className="button button-primary" onClick={() => onAdd(product.slug, quantity)}><Icon name="bag"/> {t.card.add}</button><a className="button button-soft" href={wa(t.wa.product(product.name))} target="_blank" rel="noreferrer"><Icon name="whatsapp"/> {t.product.order}</a></div>
-        <div className="usage-card" data-reveal="up" style={delay(540)}><span className="usage-icon"><Icon name="sparkle"/></span><div><b>{t.product.usage}</b><p>{product.usage}</p></div></div>
+        <div className="usage-card" data-reveal="up" style={delay(540)}><div><b>{t.product.usage}</b><p>{product.usage}</p></div></div>
         <p className="supplement-note">{product.category === 'skincare' ? t.product.skincareNote : t.product.supplementNote}</p>
       </div>
     </section>

@@ -1,0 +1,18 @@
+.brand-logo{display:grid;place-items:center;width:55px;height:43px;flex:0 0 auto;background:#fff;border:1px solid #ddc98f70;border-radius:3px;padding:3px;overflow:hidden}
+.brand-logo img{display:block;width:100%;height:100%;object-fit:contain}
+.intro-logo{display:block;width:47px;height:36px;flex:0 0 auto;background:#fff;border-radius:2px;padding:3px}
+.intro-logo img{width:100%;height:100%;display:block;object-fit:contain}
+:root{--pdrn-photo-background:radial-gradient(ellipse 46% 7% at 50% 83%,#60376a20,transparent),radial-gradient(ellipse at 25% 12%,#fff7ed 0,transparent 58%),linear-gradient(145deg,#f2dce5 5%,#e4d2ed 58%,#cdb5de 100%)}
+.product-pdrn-repair-cream .product-image{background:var(--pdrn-photo-background);isolation:isolate}
+.product-pdrn-repair-cream .product-image img{object-fit:contain;object-position:center;background:transparent;mix-blend-mode:multiply;padding:15px 10px 23px}
+.detail-pdrn-repair-cream .detail-image{background:var(--pdrn-photo-background);isolation:isolate}
+.detail-pdrn-repair-cream .detail-image img{background:transparent;mix-blend-mode:multiply;padding:clamp(18px,3vw,42px)}
+.detail-pdrn-repair-cream .lightbox{background:radial-gradient(ellipse at 50% 35%,#faf0f0,#d5bce3)}
+.detail-pdrn-repair-cream .lightbox>img{mix-blend-mode:multiply}
+.detail-pdrn-repair-cream .lightbox .icon-button{color:#3d174e}
+.cream-detail-photo{overflow:hidden}
+.cream-detail-packshot{background:var(--pdrn-photo-background)}
+.cream-detail-packshot img{mix-blend-mode:multiply}
+.marquee-group .marquee-separator{display:block;width:1px;height:15px;background:currentColor;opacity:.45}
+@media(max-width:760px){.brand-logo{width:43px;height:35px;padding:2px}.intro-logo{width:37px;height:29px}.product-pdrn-repair-cream .product-image img{object-fit:contain;object-position:center}}
+@media(max-width:390px){.brand-logo{width:38px;height:31px}.brand-name{font-size:9px}}
