@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.sculptmove.online/</loc>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/sculpt-move-duo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/pdrn-jar.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/multi-collagene.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/glutathion-glow-skin.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/boutique-facade.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sculptmove.online/images/boutique-accueil.jpg</image:loc>
+    </image:image>
+  </url>
+</urlset>
